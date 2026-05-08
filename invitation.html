@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yael & Elias</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #f5f0ea;
+    font-family: 'Cormorant Garamond', serif;
+    color: #5a4a3a;
+    min-height: 100vh;
+  }
+
+  .page {
+    max-width: 540px;
+    margin: 0 auto;
+    background: #fff;
+    border: 1px solid #e0d5c5;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .border-frame {
+    position: absolute;
+    inset: 12px;
+    border: 1px solid #c8b89a;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .corner-ornament {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    z-index: 2;
+  }
+  .corner-ornament.tl { top: 12px; left: 12px; border-top: 2px solid #b8a07a; border-left: 2px solid #b8a07a; }
+  .corner-ornament.tr { top: 12px; right: 12px; border-top: 2px solid #b8a07a; border-right: 2px solid #b8a07a; }
+  .corner-ornament.bl { bottom: 12px; left: 12px; border-bottom: 2px solid #b8a07a; border-left: 2px solid #b8a07a; }
+  .corner-ornament.br { bottom: 12px; right: 12px; border-bottom: 2px solid #b8a07a; border-right: 2px solid #b8a07a; }
+
+  .section {
+    padding: 50px 40px;
+    text-align: center;
+    position: relative;
+    z-index: 3;
+    border-bottom: 1px dashed #d5c5a8;
+  }
+  .section:last-child { border-bottom: none; }
+
+  .bh {
+    font-size: 13px;
+    color: #9a8060;
+    letter-spacing: 2px;
+    text-align: right;
+    padding: 14px 20px 0 0;
+    font-style: italic;
+  }
+
+  .section-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 46px;
+    color: #8a6a3a;
+    margin-bottom: 6px;
+    line-height: 1.1;
+  }
+
+  .monogram {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 16px;
+  }
+
+  .divider-ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 14px 0;
+    color: #b8a07a;
+    font-size: 18px;
+  }
+  .divider-ornament::before,
+  .divider-ornament::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #c8b08a, transparent);
+  }
+
+  .quote {
+    font-style: italic;
+    font-size: 14px;
+    color: #7a6a50;
+    margin: 10px 0 20px;
+    line-height: 1.5;
+  }
+
+  .names {
+    font-family: 'Great Vibes', cursive;
+    font-size: 54px;
+    color: #7a5c2e;
+    line-height: 1.0;
+    margin: 10px 0;
+  }
+
+  .names-ampersand {
+    font-size: 40px;
+    color: #b8a07a;
+  }
+
+  .date-line {
+    font-size: 18px;
+    color: #6a5535;
+    font-style: italic;
+    margin: 12px 0 4px;
+    letter-spacing: 0.5px;
+  }
+
+  .time-line {
+    font-size: 15px;
+    color: #8a7050;
+    font-style: italic;
+    margin-bottom: 8px;
+  }
+
+  .location {
+    font-size: 16px;
+    color: #6a5535;
+    font-style: italic;
+    margin: 4px 0;
+  }
+
+  .note {
+    font-size: 13.5px;
+    color: #8a7050;
+    font-style: italic;
+    margin-top: 14px;
+    line-height: 1.5;
+  }
+
+  .btn-row {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 22px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #9a7a45;
+    color: #fff;
+    border: none;
+    padding: 11px 26px;
+    font-size: 14px;
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .btn:hover { background: #7a5c2e; }
+
+  .bouquet-svg { margin: 0 auto 14px; display: block; }
+
+  /* RESPONSE FORM */
+  .form-section {
+    padding: 50px 40px;
+    text-align: center;
+    position: relative;
+    z-index: 3;
+  }
+
+  .form-group {
+    margin-bottom: 16px;
+    text-align: left;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 13px;
+    color: #8a7050;
+    margin-bottom: 5px;
+    font-style: italic;
+    letter-spacing: 0.5px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    border: 1px solid #d5c5a8;
+    padding: 10px 14px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    color: #5a4a3a;
+    background: #faf8f4;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: #9a7a45;
+  }
+
+  .presence-block {
+    background: #faf7f2;
+    border: 1px solid #e0d5c5;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+    text-align: left;
+  }
+
+  .presence-label {
+    font-size: 15px;
+    color: #6a5535;
+    font-style: italic;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  .radio-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 10px;
+  }
+
+  .radio-option {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #5a4a3a;
+  }
+
+  .radio-option input[type="radio"] {
+    accent-color: #9a7a45;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+
+  .nb-persons-row {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    margin-top: 8px;
+  }
+  .nb-persons-row.visible { display: flex; }
+
+  .nb-persons-row label {
+    font-size: 13px;
+    color: #8a7050;
+    font-style: italic;
+    white-space: nowrap;
+  }
+
+  .nb-persons-row select {
+    border: 1px solid #d5c5a8;
+    padding: 7px 10px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    color: #5a4a3a;
+    background: #faf8f4;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .success-msg {
+    display: none;
+    background: #f0ece3;
+    border: 1px solid #c8b08a;
+    padding: 20px;
+    font-style: italic;
+    color: #6a5535;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-top: 20px;
+  }
+
+  .tab-bar {
+    display: flex;
+    border-bottom: 1px solid #d5c5a8;
+    background: #faf8f4;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .tab {
+    flex: 1;
+    padding: 14px 8px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: #9a8060;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: all 0.2s;
+  }
+  .tab.active {
+    color: #7a5c2e;
+    border-bottom-color: #9a7a45;
+  }
+
+  .page-content { display: none; }
+  .page-content.active { display: block; }
+</style>
+</head>
+<body>
+
+<div class="page" id="app">
+  <div class="border-frame"></div>
+  <div class="corner-ornament tl"></div>
+  <div class="corner-ornament tr"></div>
+  <div class="corner-ornament bl"></div>
+  <div class="corner-ornament br"></div>
+
+  <div class="bh">ב״ה</div>
+
+  <div class="tab-bar">
+    <button class="tab active" onclick="showPage('mairie')">La Mairie</button>
+    <button class="tab" onclick="showPage('houppa')">Houppa & Soirée</button>
+    <button class="tab" onclick="showPage('reponse')">Réponse</button>
+  </div>
+
+  <!-- PAGE MAIRIE -->
+  <div class="page-content active" id="page-mairie">
+    <div class="section">
+      <svg class="monogram" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="35" cy="35" r="32" stroke="#c8b08a" stroke-width="1"/>
+        <text x="50%" y="54%" text-anchor="middle" dominant-baseline="middle"
+          font-family="Georgia, serif" font-size="26" fill="#9a7a45" font-style="italic">Y&amp;E</text>
+        <circle cx="35" cy="35" r="28" stroke="#e0d0b0" stroke-width="0.5" stroke-dasharray="3,4"/>
+      </svg>
+
+      <div class="section-title">La Mairie</div>
+
+      <div class="divider-ornament">❧</div>
+
+      <svg class="bouquet-svg" width="50" height="55" viewBox="0 0 50 55">
+        <ellipse cx="25" cy="42" rx="12" ry="6" fill="#d4c5a5" opacity="0.6"/>
+        <line x1="25" y1="36" x2="25" y2="50" stroke="#9a8060" stroke-width="1.5"/>
+        <line x1="20" y1="40" x2="25" y2="36" stroke="#9a8060" stroke-width="1"/>
+        <line x1="30" y1="40" x2="25" y2="36" stroke="#9a8060" stroke-width="1"/>
+        <circle cx="25" cy="18" r="8" fill="#e8d5b5" stroke="#c8a870" stroke-width="0.5"/>
+        <circle cx="16" cy="22" r="6" fill="#e0c8a0" stroke="#c8a870" stroke-width="0.5"/>
+        <circle cx="34" cy="22" r="6" fill="#e0c8a0" stroke="#c8a870" stroke-width="0.5"/>
+        <circle cx="20" cy="12" r="5" fill="#d8bfa0" stroke="#c8a870" stroke-width="0.5"/>
+        <circle cx="30" cy="12" r="5" fill="#d8bfa0" stroke="#c8a870" stroke-width="0.5"/>
+        <circle cx="25" cy="8" r="4" fill="#c8a870" stroke="#a88850" stroke-width="0.5"/>
+      </svg>
+
+      <p class="quote">« Un jour exceptionnel, un Oui extraordinaire »</p>
+
+      <div class="names">
+        Yael <span class="names-ampersand">&</span> Elias
+      </div>
+
+      <div class="divider-ornament">✦</div>
+
+      <p class="date-line">Le Mercredi 26 Août 2026</p>
+      <p class="time-line">à 14h00 précises</p>
+
+      <div class="divider-ornament" style="margin:8px 0"></div>
+
+      <p class="location">Mairie de Maisons-Alfort</p>
+      <p class="location" style="font-size:13px; color:#9a8060;">Maisons-Alfort, 94700</p>
+
+      <div class="btn-row">
+        <a class="btn" href="https://www.waze.com/ul?q=Mairie+Maisons-Alfort&navigate=yes" target="_blank">
+          🧭 Waze
+        </a>
+        <a class="btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mariage+Yael+%26+Elias+-+Mairie&dates=20260826T120000Z/20260826T140000Z&details=C%C3%A9r%C3%A9monie+civile+%C3%A0+la+Mairie+de+Maisons-Alfort&location=Mairie+de+Maisons-Alfort" target="_blank">
+          📅 Bloquer la date
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE HOUPPA -->
+  <div class="page-content" id="page-houppa">
+    <div class="section">
+      <svg class="monogram" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="35" cy="35" r="32" stroke="#c8b08a" stroke-width="1"/>
+        <text x="50%" y="54%" text-anchor="middle" dominant-baseline="middle"
+          font-family="Georgia, serif" font-size="26" fill="#9a7a45" font-style="italic">Y&amp;E</text>
+        <circle cx="35" cy="35" r="28" stroke="#e0d0b0" stroke-width="0.5" stroke-dasharray="3,4"/>
+      </svg>
+
+      <div class="section-title">Houppa & Soirée</div>
+
+      <div class="divider-ornament">❧</div>
+
+      <p class="quote" style="font-size:12px; color:#9a7050; margin-bottom:6px;">
+        כל המשמח חתן וכלה כאלו בנה אחת מחורבות ירושלים
+      </p>
+      <p class="quote" style="font-size:12.5px; margin-bottom:18px;">
+        « Celui qui prend part à la joie des mariés est récompensé,<br>comme s'il avait rebâti les ruines de Jérusalem »
+      </p>
+
+      <p style="font-size:15px; font-style:italic; color:#6a5535; margin-bottom:16px;">
+        Ont la joie de vous faire part du mariage de
+      </p>
+
+      <div class="names">
+        Yael <span class="names-ampersand">&</span> Elias
+      </div>
+
+      <p style="font-size:14px; font-style:italic; color:#8a7050; margin: 8px 0 16px;">
+        et vous convient à la cérémonie religieuse
+      </p>
+
+      <div class="divider-ornament">✦</div>
+
+      <p class="date-line">Le Mardi 1ᵉʳ Septembre 2026</p>
+      <p class="time-line">à 18h30 précises</p>
+
+      <div class="divider-ornament" style="margin:8px 0"></div>
+
+      <p class="location">InterContinental Paris</p>
+      <p class="location" style="font-size:13px; color:#9a8060;">Paris, France</p>
+
+      <p class="note">La cérémonie religieuse sera suivie de la réception</p>
+
+      <div class="divider-ornament" style="margin:16px 0 10px"></div>
+      <p class="note" style="color:#9a8060; font-size:13px;">
+        ♡ Une pensée émue pour ceux qui auraient tant aimé partager ce moment<br>et qui veillent sur nous…
+      </p>
+
+      <div class="btn-row">
+        <a class="btn" href="https://www.waze.com/ul?q=InterContinental+Paris+Le+Grand&navigate=yes" target="_blank">
+          🧭 Waze
+        </a>
+        <a class="btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mariage+Yael+%26+Elias+-+Houppa+%26+Soir%C3%A9e&dates=20260901T163000Z/20260902T000000Z&details=C%C3%A9r%C3%A9monie+religieuse+et+r%C3%A9ception&location=InterContinental+Paris" target="_blank">
+          📅 Bloquer la date
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE REPONSE -->
+  <div class="page-content" id="page-reponse">
+    <div class="form-section">
+      <svg class="monogram" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="35" cy="35" r="32" stroke="#c8b08a" stroke-width="1"/>
+        <text x="50%" y="54%" text-anchor="middle" dominant-baseline="middle"
+          font-family="Georgia, serif" font-size="26" fill="#9a7a45" font-style="italic">Y&amp;E</text>
+        <circle cx="35" cy="35" r="28" stroke="#e0d0b0" stroke-width="0.5" stroke-dasharray="3,4"/>
+      </svg>
+
+      <div class="section-title">Réponse</div>
+      <div class="divider-ornament" style="margin-bottom:28px;">✦</div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Monsieur</label>
+          <input type="text" id="nom-m" placeholder="Nom de famille">
+        </div>
+        <div class="form-group">
+          <label>Madame</label>
+          <input type="text" id="nom-f" placeholder="Nom de famille">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Prénom (M.)</label>
+          <input type="text" id="prenom-m" placeholder="Prénom">
+        </div>
+        <div class="form-group">
+          <label>Prénom (Mme)</label>
+          <input type="text" id="prenom-f" placeholder="Prénom">
+        </div>
+      </div>
+
+      <!-- MAIRIE -->
+      <div class="presence-block">
+        <div class="presence-label">Présence à La Mairie</div>
+        <div class="radio-row">
+          <label class="radio-option">
+            <input type="radio" name="mairie" value="oui" onchange="toggleNb('mairie', true)"> Oui
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="mairie" value="non" onchange="toggleNb('mairie', false)"> Non
+          </label>
+        </div>
+        <div class="nb-persons-row" id="nb-mairie-row">
+          <label>Nombre de personnes :</label>
+          <select id="nb-mairie">
+            <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+            <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+            <option value="7">7</option><option value="8">8</option><option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- HOUPPA -->
+      <div class="presence-block">
+        <div class="presence-label">Présence à la Houppa & Soirée</div>
+        <div class="radio-row">
+          <label class="radio-option">
+            <input type="radio" name="houppa" value="oui" onchange="toggleNb('houppa', true)"> Oui
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="houppa" value="non" onchange="toggleNb('houppa', false)"> Non
+          </label>
+        </div>
+        <div class="nb-persons-row" id="nb-houppa-row">
+          <label>Nombre de personnes :</label>
+          <select id="nb-houppa">
+            <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+            <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+            <option value="7">7</option><option value="8">8</option><option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Un petit mot pour les mariés</label>
+        <textarea id="message" rows="4" placeholder="Laissez-nous un message…" style="resize:vertical;"></textarea>
+      </div>
+
+      <button class="btn" onclick="submitForm()" style="margin-top:8px; letter-spacing:2px;">
+        Envoyer
+      </button>
+
+      <div class="success-msg" id="success-msg">
+        ✦ Merci ! Votre réponse a bien été enregistrée.<br>
+        Nous avons hâte de partager ce moment avec vous. ✦
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function showPage(name) {
+  document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  event.target.classList.add('active');
+}
+
+function toggleNb(event_name, show) {
+  const row = document.getElementById('nb-' + event_name + '-row');
+  if (show) row.classList.add('visible');
+  else row.classList.remove('visible');
+}
+
+function submitForm() {
+  const nomM = document.getElementById('nom-m').value.trim();
+  const prenomM = document.getElementById('prenom-m').value.trim();
+  const mairieOui = document.querySelector('input[name="mairie"]:checked');
+  const houppaOui = document.querySelector('input[name="houppa"]:checked');
+
+  if (!nomM && !prenomM) {
+    alert('Merci de renseigner au moins un nom ou prénom.');
+    return;
+  }
+
+  const nbMairie = mairieOui && mairieOui.value === 'oui' ? parseInt(document.getElementById('nb-mairie').value) : 0;
+  const nbHouppa = houppaOui && houppaOui.value === 'oui' ? parseInt(document.getElementById('nb-houppa').value) : 0;
+
+  console.log({
+    nom_m: nomM, prenom_m: prenomM,
+    nom_f: document.getElementById('nom-f').value,
+    prenom_f: document.getElementById('prenom-f').value,
+    mairie: mairieOui ? mairieOui.value : 'non répondu', nb_mairie: nbMairie,
+    houppa: houppaOui ? houppaOui.value : 'non répondu', nb_houppa: nbHouppa,
+    message: document.getElementById('message').value
+  });
+
+  document.getElementById('success-msg').style.display = 'block';
+  document.querySelector('.btn[onclick="submitForm()"]').style.display = 'none';
+}
+</script>
+</body>
+</html>
