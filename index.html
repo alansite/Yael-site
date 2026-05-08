@@ -1,163 +1,300 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&display=swap');
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:#f5f0ea;font-family:'Cormorant Garamond',serif;color:#5a4a3a;min-height:100vh;display:flex;align-items:flex-start;justify-content:center;}
+body{background:#fff;font-family:'Cormorant Garamond',serif;color:#5a4520;min-height:100vh;display:flex;align-items:center;justify-content:center;}
 
-.page{background:#fff;max-width:540px;width:100%;margin:30px auto;position:relative;border:1px solid #e0d5c5;}
+.page{background:#fff;max-width:480px;width:100%;margin:20px auto;position:relative;text-align:center;padding:0 20px 50px;}
 
-.corner{position:absolute;width:36px;height:36px;z-index:5;}
-.corner.tl{top:12px;left:12px;border-top:2px solid #b8a07a;border-left:2px solid #b8a07a;}
-.corner.tr{top:12px;right:12px;border-top:2px solid #b8a07a;border-right:2px solid #b8a07a;}
-.corner.bl{bottom:12px;left:12px;border-bottom:2px solid #b8a07a;border-left:2px solid #b8a07a;}
-.corner.br{bottom:12px;right:12px;border-bottom:2px solid #b8a07a;border-right:2px solid #b8a07a;}
-.inner-border{position:absolute;inset:12px;border:1px solid #c8b89a;pointer-events:none;z-index:4;}
+.wreath-wrap{position:relative;width:100%;display:flex;align-items:center;justify-content:center;}
+.wreath-wrap svg{width:100%;height:auto;display:block;}
 
-.photo-wrap{position:relative;width:100%;height:340px;overflow:hidden;}
-.photo-wrap img{width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;}
-.photo-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(to bottom, rgba(250,248,244,0) 0%, rgba(250,248,244,0.18) 40%, rgba(255,255,255,0.92) 85%, rgba(255,255,255,1) 100%);
-}
-.photo-caption{position:absolute;bottom:8px;right:14px;font-size:10px;color:#b0a080;font-style:italic;z-index:2;}
+.inner-content{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52%;display:flex;flex-direction:column;align-items:center;justify-content:center;}
 
-.content{padding:0 40px 50px;text-align:center;position:relative;z-index:3;}
+.monogram{font-family:'Great Vibes',cursive;font-size:36px;color:#b8922a;line-height:1;margin-bottom:4px;}
+.names{font-family:'Great Vibes',cursive;font-size:46px;color:#8a6418;line-height:1.05;}
+.amp{color:#c8a030;}
 
-.bh{font-size:13px;color:#9a8060;letter-spacing:2px;font-style:italic;text-align:right;padding:16px 0 0;margin-bottom:20px;}
+.orn{display:flex;align-items:center;gap:8px;margin:8px auto;width:90%;}
+.orn::before,.orn::after{content:'';flex:1;height:0.5px;background:#c8a030;opacity:0.6;}
+.orn span{color:#c8a030;font-size:12px;}
 
-.ring{width:78px;height:78px;margin:0 auto 22px;}
-.ring svg{width:100%;height:100%;}
-
-.pre{font-size:13px;color:#9a8060;letter-spacing:4px;font-style:italic;margin-bottom:10px;}
-
-.names{font-family:'Great Vibes',cursive;font-size:82px;color:#7a5c2e;line-height:.92;}
-.amp{display:block;font-size:58px;color:#b8a07a;margin:2px 0;}
-
-.orn{display:flex;align-items:center;gap:12px;margin:22px auto;max-width:260px;}
-.orn::before,.orn::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,#c8b08a,transparent);}
-.orn span{color:#b8a07a;font-size:15px;}
-
-.cd{display:flex;gap:14px;justify-content:center;margin-bottom:40px;}
+.cd{display:flex;gap:10px;justify-content:center;margin:10px 0 0;}
 .block{text-align:center;}
-.block-inner{border:1px solid #d5c5a8;background:#faf8f4;padding:13px 16px;min-width:64px;margin-bottom:6px;}
-.num{font-family:'Great Vibes',cursive;font-size:48px;color:#7a5c2e;line-height:1;display:block;}
-.lbl{font-size:11px;letter-spacing:3px;color:#9a8060;text-transform:uppercase;}
+.num{font-family:'Cormorant Garamond',serif;font-size:28px;color:#8a6418;font-weight:400;line-height:1;display:block;}
+.lbl{font-size:9px;letter-spacing:2.5px;color:#b8922a;text-transform:uppercase;display:block;margin-top:1px;}
 
-.btn{display:inline-block;padding:13px 40px;background:#9a7a45;color:#fff;font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;letter-spacing:2px;border:none;text-decoration:none;cursor:pointer;transition:background .25s;}
-.btn:hover{background:#7a5c2e;}
+.btn-wrap{margin-top:16px;}
+.btn{display:inline-block;padding:10px 28px;background:#b8922a;color:#fff;font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;letter-spacing:2px;cursor:pointer;border:none;text-decoration:none;transition:background .25s;}
+.btn:hover{background:#8a6418;}
+
+.bh{font-size:11px;color:#c8a868;letter-spacing:2px;font-style:italic;margin-bottom:2px;}
 </style>
 
 <div class="page">
-  <div class="corner tl"></div>
-  <div class="corner tr"></div>
-  <div class="corner bl"></div>
-  <div class="corner br"></div>
-  <div class="inner-border"></div>
+  <div class="wreath-wrap">
 
-  <div class="photo-wrap">
-    <img
-      src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=900&q=80"
-      alt="Décoration florale de mariage"
-      onerror="this.parentElement.style.height='120px'; this.style.display='none';"
-    />
-    <div class="photo-overlay"></div>
-  </div>
+    <!-- GRANDE COURONNE FLORALE OVALE EN TRAITS DORÉS -->
+    <svg viewBox="0 0 480 620" xmlns="http://www.w3.org/2000/svg" style="max-height:98vh;">
+      <defs>
+        <style>
+          .g{fill:none;stroke:#c8a030;stroke-linecap:round;stroke-linejoin:round;}
+          .gf{fill:#c8a030;stroke:none;}
+          .gl{fill:#b89820;stroke:none;}
+        </style>
+      </defs>
 
-  <div class="content">
-    <div class="bh">ב״ה</div>
+      <!-- ══ OVALE CENTRAL ══ -->
+      <ellipse cx="240" cy="315" rx="118" ry="165" class="g" stroke-width="0.8" opacity="0.35"/>
 
-    <div class="ring">
-      <svg viewBox="0 0 78 78" fill="none">
-        <circle cx="39" cy="39" r="36" stroke="#c8b08a" stroke-width="0.8"/>
-        <circle cx="39" cy="39" r="31" stroke="#e0d0b0" stroke-width="0.5" stroke-dasharray="3,5"/>
-        <text x="39" y="46" text-anchor="middle" font-family="Georgia,serif" font-size="19" fill="#9a7a45" font-style="italic">Y &amp; E</text>
-      </svg>
-    </div>
+      <!-- ════════════════════════════════
+           HAUT – fleurs et feuillage
+           ════════════════════════════════ -->
 
-    <p class="pre">Mariage de</p>
+      <!-- Tige principale haute -->
+      <path d="M200,100 Q215,78 240,68 Q265,78 280,100" class="g" stroke-width="1.2"/>
+      <path d="M170,118 Q195,88 240,70 Q285,88 310,118" class="g" stroke-width="1"/>
 
-    <div class="names">
-      Yael
-      <span class="amp">&</span>
-      Elias
-    </div>
+      <!-- GRANDE FLEUR CENTRALE HAUT -->
+      <g transform="translate(240,60)">
+        <!-- pétales extérieurs -->
+        <ellipse cx="0" cy="-18" rx="7" ry="14" class="g" stroke-width="0.9" transform="rotate(0)"/>
+        <ellipse cx="0" cy="-18" rx="7" ry="14" class="g" stroke-width="0.9" transform="rotate(45)"/>
+        <ellipse cx="0" cy="-18" rx="7" ry="14" class="g" stroke-width="0.9" transform="rotate(90)"/>
+        <ellipse cx="0" cy="-18" rx="7" ry="14" class="g" stroke-width="0.9" transform="rotate(135)"/>
+        <ellipse cx="0" cy="-18" rx="7" ry="14" class="g" stroke-width="0.9" transform="rotate(180)"/>
+        <ellipse cx="0" cy="-18" rx="7" ry="14" class="g" stroke-width="0.9" transform="rotate(225)"/>
+        <ellipse cx="0" cy="-18" rx="7" ry="14" class="g" stroke-width="0.9" transform="rotate(270)"/>
+        <ellipse cx="0" cy="-18" rx="7" ry="14" class="g" stroke-width="0.9" transform="rotate(315)"/>
+        <!-- pétales intérieurs -->
+        <ellipse cx="0" cy="-11" rx="5" ry="9" class="g" stroke-width="0.7" transform="rotate(22)"/>
+        <ellipse cx="0" cy="-11" rx="5" ry="9" class="g" stroke-width="0.7" transform="rotate(67)"/>
+        <ellipse cx="0" cy="-11" rx="5" ry="9" class="g" stroke-width="0.7" transform="rotate(112)"/>
+        <ellipse cx="0" cy="-11" rx="5" ry="9" class="g" stroke-width="0.7" transform="rotate(157)"/>
+        <ellipse cx="0" cy="-11" rx="5" ry="9" class="g" stroke-width="0.7" transform="rotate(202)"/>
+        <ellipse cx="0" cy="-11" rx="5" ry="9" class="g" stroke-width="0.7" transform="rotate(247)"/>
+        <ellipse cx="0" cy="-11" rx="5" ry="9" class="g" stroke-width="0.7" transform="rotate(292)"/>
+        <ellipse cx="0" cy="-11" rx="5" ry="9" class="g" stroke-width="0.7" transform="rotate(337)"/>
+        <circle cx="0" cy="0" r="6" class="g" stroke-width="0.8"/>
+        <circle cx="0" cy="0" r="3.5" class="gf" opacity="0.6"/>
+        <!-- étamines -->
+        <circle cx="2" cy="-2" r="1" class="gf" opacity="0.8"/>
+        <circle cx="-2" cy="1" r="1" class="gf" opacity="0.8"/>
+        <circle cx="0" cy="2" r="1" class="gf" opacity="0.8"/>
+      </g>
 
-    <div class="orn"><span>✦</span></div>
+      <!-- Fleur gauche haut -->
+      <g transform="translate(192,95)">
+        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(0)"/>
+        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(60)"/>
+        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(120)"/>
+        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(180)"/>
+        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(240)"/>
+        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(300)"/>
+        <circle cx="0" cy="0" r="4.5" class="g" stroke-width="0.7"/>
+        <circle cx="0" cy="0" r="2.5" class="gf" opacity="0.5"/>
+      </g>
 
-    <div class="cd">
-      <div class="block"><div class="block-inner"><span class="num" id="cd-j">—</span></div><span class="lbl">Jours</span></div>
-      <div class="block"><div class="block-inner"><span class="num" id="cd-h">—</span></div><span class="lbl">Heures</span></div>
-      <div class="block"><div class="block-inner"><span class="num" id="cd-m">—</span></div><span class="lbl">Minutes</span></div>
-      <div class="block"><div class="block-inner"><span class="num" id="cd-s">—</span></div><span class="lbl">Secondes</span></div>
-    </div>
+      <!-- Fleur droite haut -->
+      <g transform="translate(288,95)">
+        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(0)"/>
+        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(60)"/>
+        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(120)"/>
+        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(180)"/>
+        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(240)"/>
+        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(300)"/>
+        <circle cx="0" cy="0" r="4.5" class="g" stroke-width="0.7"/>
+        <circle cx="0" cy="0" r="2.5" class="gf" opacity="0.5"/>
+      </g>
 
-    <a class="btn" href="#" onclick="sendPrompt('Montrez-moi l\'invitation complète de Yael et Elias'); return false;">Voir l'invitation</a>
-  </div>
-</div>
+      <!-- Feuilles haut gauche -->
+      <path d="M178,112 Q165,95 155,105 Q160,118 178,112Z" class="g" stroke-width="0.8"/>
+      <path d="M178,112 Q168,100 160,106Z" class="g" stroke-width="0.5"/>
+      <path d="M168,128 Q150,115 142,128 Q148,140 168,128Z" class="g" stroke-width="0.8"/>
+      <path d="M168,128 Q155,118 148,126Z" class="g" stroke-width="0.5"/>
+      <path d="M302,112 Q315,95 325,105 Q320,118 302,112Z" class="g" stroke-width="0.8"/>
+      <path d="M302,112 Q312,100 320,106Z" class="g" stroke-width="0.5"/>
+      <path d="M312,128 Q330,115 338,128 Q332,140 312,128Z" class="g" stroke-width="0.8"/>
+      <path d="M312,128 Q325,118 332,126Z" class="g" stroke-width="0.5"/>
 
-<script>
-const TARGET=new Date('2026-08-26T14:00:00');
-function pad(n){return String(n).padStart(2,'0');}
-function tick(){
-  const d=TARGET-new Date();
-  if(d<=0){['cd-j','cd-h','cd-m','cd-s'].forEach(id=>document.getElementById(id).textContent='00');return;}
-  document.getElementById('cd-j').textContent=Math.floor(d/864e5);
-  document.getElementById('cd-h').textContent=pad(Math.floor(d%864e5/36e5));
-  document.getElementById('cd-m').textContent=pad(Math.floor(d%36e5/6e4));
-  document.getElementById('cd-s').textContent=pad(Math.floor(d%6e4/1e3));
-}
-tick();setInterval(tick,1000);
-</script>
-.bouquet{margin:0 auto 18px;display:block;}
-</style>
+      <!-- Baies haut gauche -->
+      <circle cx="163" cy="108" r="4.5" class="g" stroke-width="0.8"/><circle cx="163" cy="108" r="1.5" class="gf" opacity="0.5"/>
+      <circle cx="155" cy="118" r="4" class="g" stroke-width="0.8"/><circle cx="155" cy="118" r="1.5" class="gf" opacity="0.5"/>
+      <circle cx="148" cy="130" r="3.5" class="g" stroke-width="0.8"/><circle cx="148" cy="130" r="1.2" class="gf" opacity="0.5"/>
+      <path d="M163,104 Q160,96 163,108" class="g" stroke-width="0.7"/>
+      <path d="M155,114 Q152,106 155,118" class="g" stroke-width="0.7"/>
+      <!-- Baies haut droite -->
+      <circle cx="317" cy="108" r="4.5" class="g" stroke-width="0.8"/><circle cx="317" cy="108" r="1.5" class="gf" opacity="0.5"/>
+      <circle cx="325" cy="118" r="4" class="g" stroke-width="0.8"/><circle cx="325" cy="118" r="1.5" class="gf" opacity="0.5"/>
+      <circle cx="332" cy="130" r="3.5" class="g" stroke-width="0.8"/><circle cx="332" cy="130" r="1.2" class="gf" opacity="0.5"/>
+      <path d="M317,104 Q320,96 317,108" class="g" stroke-width="0.7"/>
+      <path d="M325,114 Q328,106 325,118" class="g" stroke-width="0.7"/>
 
-<div class="page">
-  <div class="corner tl"></div>
-  <div class="corner tr"></div>
-  <div class="corner bl"></div>
-  <div class="corner br"></div>
-  <div class="inner-border"></div>
+      <!-- ════ CÔTÉ GAUCHE ════ -->
+      <path d="M148,148 Q125,180 118,215 Q112,250 118,285 Q122,310 130,335" class="g" stroke-width="1.2"/>
+      <path d="M138,155 Q116,188 110,225 Q105,260 112,295" class="g" stroke-width="0.8"/>
 
-  <div class="bh">ב״ה</div>
+      <!-- Fleur gauche milieu haut -->
+      <g transform="translate(130,172)">
+        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(0)"/>
+        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(72)"/>
+        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(144)"/>
+        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(216)"/>
+        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(288)"/>
+        <circle cx="0" cy="0" r="5" class="g" stroke-width="0.7"/>
+        <circle cx="0" cy="0" r="2.5" class="gf" opacity="0.5"/>
+      </g>
 
-  <div class="ring">
-    <svg viewBox="0 0 80 80" fill="none">
-      <circle cx="40" cy="40" r="37" stroke="#c8b08a" stroke-width="0.8"/>
-      <circle cx="40" cy="40" r="33" stroke="#e0d0b0" stroke-width="0.5" stroke-dasharray="3,5"/>
-      <text x="40" y="47" text-anchor="middle" font-family="Georgia,serif" font-size="18" fill="#9a7a45" font-style="italic">Y &amp; E</text>
+      <!-- Feuilles gauche -->
+      <path d="M118,220 Q96,208 88,220 Q94,234 118,220Z" class="g" stroke-width="0.8"/>
+      <path d="M118,220 Q100,210 92,218Z" class="g" stroke-width="0.5"/>
+      <path d="M113,250 Q90,240 84,254 Q90,267 113,250Z" class="g" stroke-width="0.8"/>
+      <path d="M113,250 Q95,242 88,252Z" class="g" stroke-width="0.5"/>
+      <path d="M116,278 Q95,268 88,282 Q95,295 116,278Z" class="g" stroke-width="0.8"/>
+
+      <!-- Fleur gauche milieu bas -->
+      <g transform="translate(122,305)">
+        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(0)"/>
+        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(60)"/>
+        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(120)"/>
+        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(180)"/>
+        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(240)"/>
+        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(300)"/>
+        <circle cx="0" cy="0" r="4.5" class="g" stroke-width="0.7"/>
+        <circle cx="0" cy="0" r="2.2" class="gf" opacity="0.5"/>
+      </g>
+
+      <!-- ════ CÔTÉ DROIT ════ -->
+      <path d="M332,148 Q355,180 362,215 Q368,250 362,285 Q358,310 350,335" class="g" stroke-width="1.2"/>
+      <path d="M342,155 Q364,188 370,225 Q375,260 368,295" class="g" stroke-width="0.8"/>
+
+      <!-- Fleur droite milieu haut -->
+      <g transform="translate(350,172)">
+        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(0)"/>
+        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(72)"/>
+        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(144)"/>
+        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(216)"/>
+        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(288)"/>
+        <circle cx="0" cy="0" r="5" class="g" stroke-width="0.7"/>
+        <circle cx="0" cy="0" r="2.5" class="gf" opacity="0.5"/>
+      </g>
+
+      <!-- Feuilles droite -->
+      <path d="M362,220 Q384,208 392,220 Q386,234 362,220Z" class="g" stroke-width="0.8"/>
+      <path d="M362,220 Q380,210 388,218Z" class="g" stroke-width="0.5"/>
+      <path d="M367,250 Q390,240 396,254 Q390,267 367,250Z" class="g" stroke-width="0.8"/>
+      <path d="M367,250 Q385,242 392,252Z" class="g" stroke-width="0.5"/>
+      <path d="M364,278 Q385,268 392,282 Q385,295 364,278Z" class="g" stroke-width="0.8"/>
+
+      <!-- Fleur droite milieu bas -->
+      <g transform="translate(358,305)">
+        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(0)"/>
+        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(60)"/>
+        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(120)"/>
+        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(180)"/>
+        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(240)"/>
+        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(300)"/>
+        <circle cx="0" cy="0" r="4.5" class="g" stroke-width="0.7"/>
+        <circle cx="0" cy="0" r="2.2" class="gf" opacity="0.5"/>
+      </g>
+
+      <!-- ════ BAS ════ -->
+      <path d="M130,348 Q175,390 240,400 Q305,390 350,348" class="g" stroke-width="1.2"/>
+      <path d="M140,360 Q180,398 240,408 Q300,398 340,360" class="g" stroke-width="0.8"/>
+
+      <!-- Fleur bas gauche -->
+      <g transform="translate(172,382)">
+        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(0)"/>
+        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(60)"/>
+        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(120)"/>
+        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(180)"/>
+        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(240)"/>
+        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(300)"/>
+        <circle cx="0" cy="0" r="5" class="g" stroke-width="0.7"/>
+        <circle cx="0" cy="0" r="2.5" class="gf" opacity="0.5"/>
+      </g>
+
+      <!-- Grande fleur bas centre -->
+      <g transform="translate(240,408)">
+        <ellipse cx="0" cy="-16" rx="7" ry="13" class="g" stroke-width="0.9" transform="rotate(0)"/>
+        <ellipse cx="0" cy="-16" rx="7" ry="13" class="g" stroke-width="0.9" transform="rotate(45)"/>
+        <ellipse cx="0" cy="-16" rx="7" ry="13" class="g" stroke-width="0.9" transform="rotate(90)"/>
+        <ellipse cx="0" cy="-16" rx="7" ry="13" class="g" stroke-width="0.9" transform="rotate(135)"/>
+        <ellipse cx="0" cy="-16" rx="7" ry="13" class="g" stroke-width="0.9" transform="rotate(180)"/>
+        <ellipse cx="0" cy="-16" rx="7" ry="13" class="g" stroke-width="0.9" transform="rotate(225)"/>
+        <ellipse cx="0" cy="-16" rx="7" ry="13" class="g" stroke-width="0.9" transform="rotate(270)"/>
+        <ellipse cx="0" cy="-16" rx="7" ry="13" class="g" stroke-width="0.9" transform="rotate(315)"/>
+        <ellipse cx="0" cy="-10" rx="5" ry="8" class="g" stroke-width="0.7" transform="rotate(22)"/>
+        <ellipse cx="0" cy="-10" rx="5" ry="8" class="g" stroke-width="0.7" transform="rotate(67)"/>
+        <ellipse cx="0" cy="-10" rx="5" ry="8" class="g" stroke-width="0.7" transform="rotate(112)"/>
+        <ellipse cx="0" cy="-10" rx="5" ry="8" class="g" stroke-width="0.7" transform="rotate(157)"/>
+        <ellipse cx="0" cy="-10" rx="5" ry="8" class="g" stroke-width="0.7" transform="rotate(202)"/>
+        <ellipse cx="0" cy="-10" rx="5" ry="8" class="g" stroke-width="0.7" transform="rotate(247)"/>
+        <ellipse cx="0" cy="-10" rx="5" ry="8" class="g" stroke-width="0.7" transform="rotate(292)"/>
+        <ellipse cx="0" cy="-10" rx="5" ry="8" class="g" stroke-width="0.7" transform="rotate(337)"/>
+        <circle cx="0" cy="0" r="6" class="g" stroke-width="0.8"/>
+        <circle cx="0" cy="0" r="3" class="gf" opacity="0.6"/>
+      </g>
+
+      <!-- Fleur bas droite -->
+      <g transform="translate(308,382)">
+        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(0)"/>
+        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(60)"/>
+        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(120)"/>
+        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(180)"/>
+        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(240)"/>
+        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(300)"/>
+        <circle cx="0" cy="0" r="5" class="g" stroke-width="0.7"/>
+        <circle cx="0" cy="0" r="2.5" class="gf" opacity="0.5"/>
+      </g>
+
+      <!-- Feuilles bas -->
+      <path d="M155,370 Q140,355 130,365 Q136,378 155,370Z" class="g" stroke-width="0.8"/>
+      <path d="M155,370 Q142,357 133,364Z" class="g" stroke-width="0.5"/>
+      <path d="M205,400 Q196,385 184,390 Q186,403 205,400Z" class="g" stroke-width="0.8"/>
+      <path d="M325,370 Q340,355 350,365 Q344,378 325,370Z" class="g" stroke-width="0.8"/>
+      <path d="M325,370 Q338,357 347,364Z" class="g" stroke-width="0.5"/>
+      <path d="M275,400 Q284,385 296,390 Q294,403 275,400Z" class="g" stroke-width="0.8"/>
+
+      <!-- Baies bas -->
+      <circle cx="148" cy="362" r="4" class="g" stroke-width="0.8"/><circle cx="148" cy="362" r="1.5" class="gf" opacity="0.5"/>
+      <circle cx="140" cy="372" r="3.5" class="g" stroke-width="0.8"/><circle cx="140" cy="372" r="1.2" class="gf" opacity="0.5"/>
+      <circle cx="332" cy="362" r="4" class="g" stroke-width="0.8"/><circle cx="332" cy="362" r="1.5" class="gf" opacity="0.5"/>
+      <circle cx="340" cy="372" r="3.5" class="g" stroke-width="0.8"/><circle cx="340" cy="372" r="1.2" class="gf" opacity="0.5"/>
+
+      <!-- ══ CONTENU INTÉRIEUR ══ -->
+      <!-- ב״ה -->
+      <text x="240" y="148" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#c8a030" font-style="italic" opacity="0.8">ב״ה</text>
+
+      <!-- Monogramme -->
+      <text x="240" y="200" text-anchor="middle" font-family="Georgia,serif" font-size="38" fill="#b8922a" font-style="italic" opacity="0.9">YE</text>
+
+      <!-- Ligne ornementale -->
+      <line x1="175" y1="215" x2="305" y2="215" stroke="#c8a030" stroke-width="0.6" opacity="0.5"/>
+      <text x="240" y="220" text-anchor="middle" font-size="8" fill="#c8a030" opacity="0.7">✦</text>
+
+      <!-- Noms -->
+      <text x="240" y="262" text-anchor="middle" font-family="'Great Vibes', cursive" font-size="48" fill="#8a6418">Yael</text>
+      <text x="240" y="288" text-anchor="middle" font-family="'Great Vibes', cursive" font-size="30" fill="#c8a030">&amp;</text>
+      <text x="240" y="330" text-anchor="middle" font-family="'Great Vibes', cursive" font-size="48" fill="#8a6418">Elias</text>
+
+      <!-- Ligne ornementale bas noms -->
+      <line x1="185" y1="340" x2="295" y2="340" stroke="#c8a030" stroke-width="0.6" opacity="0.5"/>
     </svg>
+
+    <!-- Countdown par dessus -->
+    <div style="position:absolute;bottom:118px;left:50%;transform:translateX(-50%);width:68%;display:flex;gap:8px;justify-content:center;">
+      <div class="block"><span class="num" id="cd-j" style="font-size:24px;color:#8a6418;">—</span><span class="lbl">Jours</span></div>
+      <div class="block"><span class="num" id="cd-h" style="font-size:24px;color:#8a6418;">—</span><span class="lbl">Hrs</span></div>
+      <div class="block"><span class="num" id="cd-m" style="font-size:24px;color:#8a6418;">—</span><span class="lbl">Min</span></div>
+      <div class="block"><span class="num" id="cd-s" style="font-size:24px;color:#8a6418;">—</span><span class="lbl">Sec</span></div>
+    </div>
+
+    <!-- Bouton -->
+    <div style="position:absolute;bottom:62px;left:50%;transform:translateX(-50%);white-space:nowrap;">
+      <a class="btn" href="#" onclick="sendPrompt('Montrez-moi l\'invitation complète de Yael et Elias'); return false;" style="font-size:12px;padding:10px 28px;letter-spacing:3px;">Voir l'invitation</a>
+    </div>
+
   </div>
-
-  <svg class="bouquet" width="48" height="52" viewBox="0 0 50 55">
-    <ellipse cx="25" cy="43" rx="11" ry="5" fill="#d4c5a5" opacity="0.5"/>
-    <line x1="25" y1="37" x2="25" y2="50" stroke="#9a8060" stroke-width="1.5"/>
-    <line x1="20" y1="41" x2="25" y2="37" stroke="#9a8060" stroke-width="1"/>
-    <line x1="30" y1="41" x2="25" y2="37" stroke="#9a8060" stroke-width="1"/>
-    <circle cx="25" cy="19" r="8" fill="#e8d5b5" stroke="#c8a870" stroke-width="0.5"/>
-    <circle cx="16" cy="23" r="6" fill="#e0c8a0" stroke="#c8a870" stroke-width="0.5"/>
-    <circle cx="34" cy="23" r="6" fill="#e0c8a0" stroke="#c8a870" stroke-width="0.5"/>
-    <circle cx="20" cy="13" r="5" fill="#d8bfa0" stroke="#c8a870" stroke-width="0.5"/>
-    <circle cx="30" cy="13" r="5" fill="#d8bfa0" stroke="#c8a870" stroke-width="0.5"/>
-    <circle cx="25" cy="8" r="4" fill="#c8a870" stroke="#a88850" stroke-width="0.5"/>
-  </svg>
-
-  <p class="pre">Mariage de</p>
-
-  <div class="names">
-    Yael
-    <span class="amp">&</span>
-    Elias
-  </div>
-
-  <div class="orn"><span>✦</span></div>
-
-  <div class="cd">
-    <div class="block"><div class="block-inner"><span class="num" id="cd-j">—</span></div><span class="lbl">Jours</span></div>
-    <div class="block"><div class="block-inner"><span class="num" id="cd-h">—</span></div><span class="lbl">Heures</span></div>
-    <div class="block"><div class="block-inner"><span class="num" id="cd-m">—</span></div><span class="lbl">Minutes</span></div>
-    <div class="block"><div class="block-inner"><span class="num" id="cd-s">—</span></div><span class="lbl">Secondes</span></div>
-  </div>
-
-  <a class="btn" href="invitation.html" onclick="sendPrompt('Montrez-moi l\'invitation complète de Yael et Elias'); return false;">Voir l'invitation</a>
 </div>
 
 <script>
