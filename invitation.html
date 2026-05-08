@@ -10,7 +10,7 @@
 body{background:#f5f0ea;font-family:'Cormorant Garamond',serif;color:#5a4a3a;min-height:100vh;}
 .page{max-width:540px;margin:0 auto;background:#fff;border:1px solid #e0d5c5;position:relative;overflow:hidden;}
 .border-frame{position:absolute;inset:12px;border:1px solid #c8b89a;pointer-events:none;z-index:1;}
-.corner{position:absolute;width:40px;height:40px;z-index:2;}
+.corner{position:absolute;width:40px;height:40px;z-index:5;}
 .corner.tl{top:12px;left:12px;border-top:2px solid #b8a07a;border-left:2px solid #b8a07a;}
 .corner.tr{top:12px;right:12px;border-top:2px solid #b8a07a;border-right:2px solid #b8a07a;}
 .corner.bl{bottom:12px;left:12px;border-bottom:2px solid #b8a07a;border-left:2px solid #b8a07a;}
@@ -33,15 +33,16 @@ body{background:#f5f0ea;font-family:'Cormorant Garamond',serif;color:#5a4a3a;min
 .btn-row{display:flex;gap:12px;justify-content:center;margin-top:22px;flex-wrap:wrap;}
 .btn{display:inline-flex;align-items:center;gap:8px;background:#9a7a45;color:#fff;border:none;padding:11px 26px;font-size:14px;font-family:'Cormorant Garamond',serif;letter-spacing:1.5px;cursor:pointer;text-decoration:none;transition:background .2s;}
 .btn:hover{background:#7a5c2e;}
-.venue-img{width:100%;height:200px;object-fit:cover;margin:20px 0 6px;display:block;}
 .tab-bar{display:flex;border-bottom:1px solid #d5c5a8;background:#faf8f4;position:sticky;top:0;z-index:10;}
 .tab{flex:1;padding:14px 8px;font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:#9a8060;background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;letter-spacing:.5px;transition:all .2s;}
 .tab.active{color:#7a5c2e;border-bottom-color:#9a7a45;}
 .page-content{display:none;}
 .page-content.active{display:block;}
-
-.floral-top{width:100%;text-align:center;padding-top:10px;}
-
+.hero-img{width:100%;height:220px;object-fit:cover;object-position:center 40%;display:block;}
+.hero-img-wrap{position:relative;overflow:hidden;}
+.hero-fade{position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(to bottom,transparent,#fff);}
+.venue-img{width:100%;height:210px;object-fit:cover;display:block;}
+.venue-caption{font-size:11px;color:#b0a080;font-style:italic;text-align:center;padding:5px 0 0;}
 .form-section{padding:44px 36px;text-align:center;position:relative;z-index:3;}
 .presence-block{background:#faf7f2;border:1px solid #e0d5c5;padding:16px 20px;margin-bottom:14px;text-align:left;}
 .presence-label{font-size:15px;color:#6a5535;font-style:italic;margin-bottom:10px;font-weight:600;}
@@ -73,39 +74,24 @@ body{background:#f5f0ea;font-family:'Cormorant Garamond',serif;color:#5a4a3a;min
     <button class="tab" onclick="showPage('reponse',this)">Réponse</button>
   </div>
 
-  <!-- ========== MAIRIE ========== -->
+  <!-- ===== MAIRIE ===== -->
   <div class="page-content active" id="page-mairie">
-    <div class="section">
 
-      <div class="floral-top">
-        <svg width="160" height="90" viewBox="0 0 160 90">
-          <ellipse cx="80" cy="82" rx="30" ry="6" fill="#d4c5a5" opacity="0.4"/>
-          <line x1="80" y1="76" x2="80" y2="86" stroke="#9a8060" stroke-width="1.5"/>
-          <line x1="65" y1="80" x2="80" y2="76" stroke="#9a8060" stroke-width="1"/>
-          <line x1="95" y1="80" x2="80" y2="76" stroke="#9a8060" stroke-width="1"/>
-          <circle cx="80" cy="44" r="14" fill="#f0e2c8" stroke="#c8a870" stroke-width="0.8"/>
-          <circle cx="56" cy="52" r="11" fill="#ebd8b8" stroke="#c8a870" stroke-width="0.7"/>
-          <circle cx="104" cy="52" r="11" fill="#ebd8b8" stroke="#c8a870" stroke-width="0.7"/>
-          <circle cx="62" cy="32" r="9" fill="#e2cab0" stroke="#c8a870" stroke-width="0.7"/>
-          <circle cx="98" cy="32" r="9" fill="#e2cab0" stroke="#c8a870" stroke-width="0.7"/>
-          <circle cx="80" cy="22" r="8" fill="#d8bfa0" stroke="#b89060" stroke-width="0.7"/>
-          <circle cx="46" cy="42" r="7" fill="#d5bb9a" stroke="#b89060" stroke-width="0.6"/>
-          <circle cx="114" cy="42" r="7" fill="#d5bb9a" stroke="#b89060" stroke-width="0.6"/>
-          <circle cx="68" cy="14" r="6" fill="#c8a870" stroke="#a07840" stroke-width="0.6"/>
-          <circle cx="92" cy="14" r="6" fill="#c8a870" stroke="#a07840" stroke-width="0.6"/>
-          <circle cx="80" cy="8" r="5" fill="#b8983c" stroke="#906820" stroke-width="0.5"/>
-          <circle cx="56" cy="52" r="4" fill="#fff8ee" opacity="0.6"/>
-          <circle cx="80" cy="44" r="5" fill="#fff8ee" opacity="0.5"/>
-          <circle cx="104" cy="52" r="4" fill="#fff8ee" opacity="0.6"/>
-        </svg>
-      </div>
+    <div class="hero-img-wrap">
+      <img class="hero-img"
+        src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&q=80"
+        alt="Bouquet floral mariage"
+        onerror="this.style.display='none'"
+      />
+      <div class="hero-fade"></div>
+    </div>
 
+    <div class="section" style="padding-top:24px;">
       <svg class="monogram" viewBox="0 0 70 70" fill="none">
         <circle cx="35" cy="35" r="32" stroke="#c8b08a" stroke-width="1"/>
         <text x="50%" y="54%" text-anchor="middle" dominant-baseline="middle" font-family="Georgia,serif" font-size="22" fill="#9a7a45" font-style="italic">Y &amp; E</text>
         <circle cx="35" cy="35" r="28" stroke="#e0d0b0" stroke-width="0.5" stroke-dasharray="3,4"/>
       </svg>
-
       <div class="section-title">La Mairie</div>
       <div class="orn">❧</div>
       <p class="quote">« Un jour exceptionnel, un Oui extraordinaire »</p>
@@ -115,27 +101,26 @@ body{background:#f5f0ea;font-family:'Cormorant Garamond',serif;color:#5a4a3a;min
       <p class="time-line">à 14h00 précises</p>
       <div class="orn" style="margin:8px 0"></div>
       <p class="location">Mairie de Maisons-Alfort</p>
-      <p class="address">14 Rue du Général Leclerc, 94700 Maisons-Alfort</p>
+      <p class="address">118 Avenue du Général de Gaulle, 94700 Maisons-Alfort</p>
       <div class="btn-row">
-        <a class="btn" href="https://www.waze.com/ul?q=14+Rue+du+General+Leclerc+94700+Maisons-Alfort&navigate=yes" target="_blank">🧭 Waze</a>
-        <a class="btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mariage+Yael+%26+Elias+-+Mairie&dates=20260826T120000Z/20260826T140000Z&location=Mairie+de+Maisons-Alfort" target="_blank">📅 Bloquer la date</a>
+        <a class="btn" href="https://www.waze.com/ul?q=118+Avenue+du+General+de+Gaulle+94700+Maisons-Alfort&navigate=yes" target="_blank">🧭 Waze</a>
+        <a class="btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mariage+Yael+%26+Elias+-+Mairie&dates=20260826T120000Z/20260826T140000Z&location=118+Avenue+du+General+de+Gaulle+94700+Maisons-Alfort" target="_blank">📅 Bloquer la date</a>
       </div>
     </div>
   </div>
 
-  <!-- ========== HOUPPA ========== -->
+  <!-- ===== HOUPPA ===== -->
   <div class="page-content" id="page-houppa">
-    <div class="section" style="padding-bottom:0;">
-      <img
-        class="venue-img"
-        src="https://parislegrand.intercontinental.com/wp-content/uploads/sites/84/2022/12/InterContinental-Paris-Le-Grand-Salon-Opera-768x512.jpg"
+    <div class="hero-img-wrap">
+      <img class="venue-img"
+        src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80"
+        alt="Décoration florale salle de réception"
         onerror="this.style.display='none'"
-        alt="Salon Opéra – InterContinental Paris Le Grand"
-        style="border:1px solid #e0d5c5;"
       />
-      <p style="font-size:11px;color:#b0a080;font-style:italic;text-align:center;padding:4px 0 18px;">Salon Opéra · InterContinental Paris Le Grand</p>
+      <div class="hero-fade"></div>
     </div>
-    <div class="section">
+
+    <div class="section" style="padding-top:24px;">
       <svg class="monogram" viewBox="0 0 70 70" fill="none">
         <circle cx="35" cy="35" r="32" stroke="#c8b08a" stroke-width="1"/>
         <text x="50%" y="54%" text-anchor="middle" dominant-baseline="middle" font-family="Georgia,serif" font-size="22" fill="#9a7a45" font-style="italic">Y &amp; E</text>
@@ -143,8 +128,8 @@ body{background:#f5f0ea;font-family:'Cormorant Garamond',serif;color:#5a4a3a;min
       </svg>
       <div class="section-title">Houppa & Soirée</div>
       <div class="orn">❧</div>
-      <p class="quote" style="font-size:12px;color:#9a7050;">שִׂמְחוּ אֶת הֶחָתָן וְאֶת הַכַּלָּה</p>
-      <p class="quote" style="font-size:13px;margin-bottom:18px;">« Réjouissez le marié et la mariée — car leur joie est une mitsva pour tous »</p>
+      <p class="quote" style="font-size:12px;color:#9a7050;margin-bottom:4px;">שִׂמְחוּ אֶת הֶחָתָן וְאֶת הַכַּלָּה</p>
+      <p class="quote" style="font-size:13px;margin-bottom:18px;">« Réjouissez le marié et la mariée —<br>car leur joie est une mitsva pour tous »</p>
       <p style="font-size:15px;font-style:italic;color:#6a5535;margin-bottom:14px;">Ont la joie de vous faire part du mariage de</p>
       <div class="names">Yael <span class="names-amp">&</span> Elias</div>
       <p style="font-size:14px;font-style:italic;color:#8a7050;margin:8px 0 16px;">et vous convient à la cérémonie religieuse</p>
@@ -164,7 +149,7 @@ body{background:#f5f0ea;font-family:'Cormorant Garamond',serif;color:#5a4a3a;min
     </div>
   </div>
 
-  <!-- ========== RÉPONSE ========== -->
+  <!-- ===== RÉPONSE ===== -->
   <div class="page-content" id="page-reponse">
     <div class="form-section">
       <svg class="monogram" viewBox="0 0 70 70" fill="none">
@@ -186,7 +171,6 @@ body{background:#f5f0ea;font-family:'Cormorant Garamond',serif;color:#5a4a3a;min
         </div>
       </div>
 
-      <!-- MAIRIE -->
       <div class="presence-block">
         <div class="presence-label">Présence à La Mairie</div>
         <div class="radio-row">
@@ -194,22 +178,19 @@ body{background:#f5f0ea;font-family:'Cormorant Garamond',serif;color:#5a4a3a;min
           <label class="radio-opt"><input type="radio" name="r-mairie" value="non" onchange="togglePresence('mairie',false)"> Non</label>
         </div>
         <div class="sub-grid" id="sub-mairie">
-          <div>
-            <span class="sub-label">Adultes</span>
+          <div><span class="sub-label">Adultes</span>
             <select class="sub-select" id="nb-mairie-a">
-              <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>
+              <option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
             </select>
           </div>
-          <div>
-            <span class="sub-label">Enfants</span>
+          <div><span class="sub-label">Enfants</span>
             <select class="sub-select" id="nb-mairie-e">
-              <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>
+              <option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
             </select>
           </div>
         </div>
       </div>
 
-      <!-- HOUPPA -->
       <div class="presence-block">
         <div class="presence-label">Présence à la Houppa & Soirée</div>
         <div class="radio-row">
@@ -217,16 +198,14 @@ body{background:#f5f0ea;font-family:'Cormorant Garamond',serif;color:#5a4a3a;min
           <label class="radio-opt"><input type="radio" name="r-houppa" value="non" onchange="togglePresence('houppa',false)"> Non</label>
         </div>
         <div class="sub-grid" id="sub-houppa">
-          <div>
-            <span class="sub-label">Adultes</span>
+          <div><span class="sub-label">Adultes</span>
             <select class="sub-select" id="nb-houppa-a">
-              <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>
+              <option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
             </select>
           </div>
-          <div>
-            <span class="sub-label">Enfants</span>
+          <div><span class="sub-label">Enfants</span>
             <select class="sub-select" id="nb-houppa-e">
-              <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>
+              <option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
             </select>
           </div>
         </div>
@@ -244,13 +223,13 @@ body{background:#f5f0ea;font-family:'Cormorant Garamond',serif;color:#5a4a3a;min
 </div>
 
 <script>
-function showPage(name, btn){
+function showPage(name,btn){
   document.querySelectorAll('.page-content').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   document.getElementById('page-'+name).classList.add('active');
   btn.classList.add('active');
 }
-function togglePresence(ev, show){
+function togglePresence(ev,show){
   const el=document.getElementById('sub-'+ev);
   if(show) el.classList.add('visible');
   else el.classList.remove('visible');
