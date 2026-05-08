@@ -1,26 +1,36 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&display=swap');
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:#f5f0ea;font-family:'Cormorant Garamond',serif;color:#5a4a3a;min-height:100vh;display:flex;align-items:center;justify-content:center;}
+body{background:#f5f0ea;font-family:'Cormorant Garamond',serif;color:#5a4a3a;min-height:100vh;display:flex;align-items:flex-start;justify-content:center;}
 
-.page{background:#fff;max-width:540px;width:100%;margin:30px auto;position:relative;border:1px solid #e0d5c5;padding:50px 40px;text-align:center;}
+.page{background:#fff;max-width:540px;width:100%;margin:30px auto;position:relative;border:1px solid #e0d5c5;}
 
-.corner{position:absolute;width:36px;height:36px;}
+.corner{position:absolute;width:36px;height:36px;z-index:5;}
 .corner.tl{top:12px;left:12px;border-top:2px solid #b8a07a;border-left:2px solid #b8a07a;}
 .corner.tr{top:12px;right:12px;border-top:2px solid #b8a07a;border-right:2px solid #b8a07a;}
 .corner.bl{bottom:12px;left:12px;border-bottom:2px solid #b8a07a;border-left:2px solid #b8a07a;}
 .corner.br{bottom:12px;right:12px;border-bottom:2px solid #b8a07a;border-right:2px solid #b8a07a;}
-.inner-border{position:absolute;inset:12px;border:1px solid #c8b89a;pointer-events:none;}
+.inner-border{position:absolute;inset:12px;border:1px solid #c8b89a;pointer-events:none;z-index:4;}
 
-.bh{font-size:13px;color:#9a8060;letter-spacing:2px;font-style:italic;text-align:right;margin-bottom:30px;}
+.photo-wrap{position:relative;width:100%;height:340px;overflow:hidden;}
+.photo-wrap img{width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;}
+.photo-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to bottom, rgba(250,248,244,0) 0%, rgba(250,248,244,0.18) 40%, rgba(255,255,255,0.92) 85%, rgba(255,255,255,1) 100%);
+}
+.photo-caption{position:absolute;bottom:8px;right:14px;font-size:10px;color:#b0a080;font-style:italic;z-index:2;}
 
-.ring{width:80px;height:80px;margin:0 auto 24px;}
+.content{padding:0 40px 50px;text-align:center;position:relative;z-index:3;}
+
+.bh{font-size:13px;color:#9a8060;letter-spacing:2px;font-style:italic;text-align:right;padding:16px 0 0;margin-bottom:20px;}
+
+.ring{width:78px;height:78px;margin:0 auto 22px;}
 .ring svg{width:100%;height:100%;}
 
 .pre{font-size:13px;color:#9a8060;letter-spacing:4px;font-style:italic;margin-bottom:10px;}
 
-.names{font-family:'Great Vibes',cursive;font-size:78px;color:#7a5c2e;line-height:.95;}
-.amp{display:block;font-size:56px;color:#b8a07a;margin:2px 0;}
+.names{font-family:'Great Vibes',cursive;font-size:82px;color:#7a5c2e;line-height:.92;}
+.amp{display:block;font-size:58px;color:#b8a07a;margin:2px 0;}
 
 .orn{display:flex;align-items:center;gap:12px;margin:22px auto;max-width:260px;}
 .orn::before,.orn::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,#c8b08a,transparent);}
@@ -28,13 +38,75 @@ body{background:#f5f0ea;font-family:'Cormorant Garamond',serif;color:#5a4a3a;min
 
 .cd{display:flex;gap:14px;justify-content:center;margin-bottom:40px;}
 .block{text-align:center;}
-.block-inner{border:1px solid #d5c5a8;background:#faf8f4;padding:12px 16px;min-width:64px;margin-bottom:6px;}
-.num{font-family:'Great Vibes',cursive;font-size:46px;color:#7a5c2e;line-height:1;display:block;}
+.block-inner{border:1px solid #d5c5a8;background:#faf8f4;padding:13px 16px;min-width:64px;margin-bottom:6px;}
+.num{font-family:'Great Vibes',cursive;font-size:48px;color:#7a5c2e;line-height:1;display:block;}
 .lbl{font-size:11px;letter-spacing:3px;color:#9a8060;text-transform:uppercase;}
 
-.btn{display:inline-block;padding:13px 38px;background:#9a7a45;color:#fff;font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;letter-spacing:2px;cursor:pointer;border:none;text-decoration:none;transition:background .25s;}
+.btn{display:inline-block;padding:13px 40px;background:#9a7a45;color:#fff;font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;letter-spacing:2px;border:none;text-decoration:none;cursor:pointer;transition:background .25s;}
 .btn:hover{background:#7a5c2e;}
+</style>
 
+<div class="page">
+  <div class="corner tl"></div>
+  <div class="corner tr"></div>
+  <div class="corner bl"></div>
+  <div class="corner br"></div>
+  <div class="inner-border"></div>
+
+  <div class="photo-wrap">
+    <img
+      src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=900&q=80"
+      alt="Décoration florale de mariage"
+      onerror="this.parentElement.style.height='120px'; this.style.display='none';"
+    />
+    <div class="photo-overlay"></div>
+  </div>
+
+  <div class="content">
+    <div class="bh">ב״ה</div>
+
+    <div class="ring">
+      <svg viewBox="0 0 78 78" fill="none">
+        <circle cx="39" cy="39" r="36" stroke="#c8b08a" stroke-width="0.8"/>
+        <circle cx="39" cy="39" r="31" stroke="#e0d0b0" stroke-width="0.5" stroke-dasharray="3,5"/>
+        <text x="39" y="46" text-anchor="middle" font-family="Georgia,serif" font-size="19" fill="#9a7a45" font-style="italic">Y &amp; E</text>
+      </svg>
+    </div>
+
+    <p class="pre">Mariage de</p>
+
+    <div class="names">
+      Yael
+      <span class="amp">&</span>
+      Elias
+    </div>
+
+    <div class="orn"><span>✦</span></div>
+
+    <div class="cd">
+      <div class="block"><div class="block-inner"><span class="num" id="cd-j">—</span></div><span class="lbl">Jours</span></div>
+      <div class="block"><div class="block-inner"><span class="num" id="cd-h">—</span></div><span class="lbl">Heures</span></div>
+      <div class="block"><div class="block-inner"><span class="num" id="cd-m">—</span></div><span class="lbl">Minutes</span></div>
+      <div class="block"><div class="block-inner"><span class="num" id="cd-s">—</span></div><span class="lbl">Secondes</span></div>
+    </div>
+
+    <a class="btn" href="#" onclick="sendPrompt('Montrez-moi l\'invitation complète de Yael et Elias'); return false;">Voir l'invitation</a>
+  </div>
+</div>
+
+<script>
+const TARGET=new Date('2026-08-26T14:00:00');
+function pad(n){return String(n).padStart(2,'0');}
+function tick(){
+  const d=TARGET-new Date();
+  if(d<=0){['cd-j','cd-h','cd-m','cd-s'].forEach(id=>document.getElementById(id).textContent='00');return;}
+  document.getElementById('cd-j').textContent=Math.floor(d/864e5);
+  document.getElementById('cd-h').textContent=pad(Math.floor(d%864e5/36e5));
+  document.getElementById('cd-m').textContent=pad(Math.floor(d%36e5/6e4));
+  document.getElementById('cd-s').textContent=pad(Math.floor(d%6e4/1e3));
+}
+tick();setInterval(tick,1000);
+</script>
 .bouquet{margin:0 auto 18px;display:block;}
 </style>
 
