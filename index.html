@@ -1,312 +1,720 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yael & Elias — 26.08 · 01.09.2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Marcellus&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&display=swap');
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:#fff;font-family:'Cormorant Garamond',serif;color:#5a4520;min-height:100vh;display:flex;align-items:center;justify-content:center;}
+:root{
+  --gold:#b8965a;
+  --gold-light:#d4b878;
+  --gold-pale:#f0e8d0;
+  --cream:#fdf9f3;
+  --dark:#3a2e1e;
+  --mid:#7a6040;
+}
+html{scroll-behavior:smooth;}
+body{background:#0e0902;font-family:'Cormorant Garamond',serif;color:var(--dark);overflow-x:hidden;}
 
-.page{background:#fff;max-width:480px;width:100%;margin:20px auto;position:relative;text-align:center;padding:0 20px 50px;}
+/* ── CANVAS OVERLAY ── */
+#confetti-canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;}
 
-.wreath-wrap{position:relative;width:100%;display:flex;align-items:center;justify-content:center;}
-.wreath-wrap svg{width:100%;height:auto;display:block;}
+/* ── PETALS ── */
+.petal{position:fixed;pointer-events:none;z-index:9998;opacity:0;animation:petalFall linear infinite;}
+@keyframes petalFall{
+  0%{transform:translateY(-60px) rotate(0deg) translateX(0);opacity:0;}
+  8%{opacity:.65;}
+  92%{opacity:.3;}
+  100%{transform:translateY(108vh) rotate(560deg) translateX(55px);opacity:0;}
+}
 
-.inner-content{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52%;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+/* ── MUSIC PLAYER ── */
+#music-btn{
+  position:fixed;bottom:24px;right:24px;z-index:2000;
+  width:48px;height:48px;border-radius:50%;
+  background:rgba(14,9,2,0.88);
+  border:1px solid rgba(184,150,90,.45);
+  backdrop-filter:blur(8px);
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .3s;
+  box-shadow:0 4px 20px rgba(0,0,0,.5);
+}
+#music-btn:hover{border-color:var(--gold);transform:scale(1.08);}
+#music-btn svg{width:20px;height:20px;fill:var(--gold);}
+#music-btn.playing{border-color:var(--gold);box-shadow:0 0 18px rgba(184,150,90,.35);}
+.music-pulse{
+  position:absolute;inset:-4px;border-radius:50%;
+  border:1px solid rgba(184,150,90,.3);
+  animation:musicPulse 1.8s ease-out infinite;
+  opacity:0;pointer-events:none;
+}
+.music-pulse:nth-child(2){animation-delay:.6s;}
+.music-pulse:nth-child(3){animation-delay:1.2s;}
+@keyframes musicPulse{0%{transform:scale(1);opacity:.5;}100%{transform:scale(1.7);opacity:0;}}
 
-.monogram{font-family:'Great Vibes',cursive;font-size:36px;color:#b8922a;line-height:1;margin-bottom:4px;}
-.names{font-family:'Great Vibes',cursive;font-size:46px;color:#8a6418;line-height:1.05;}
-.amp{color:#c8a030;}
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:rgba(10,6,2,.92);backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(184,150,90,.22);
+  display:flex;justify-content:center;align-items:center;
+}
+.nav-logo{font-family:'Great Vibes',cursive;font-size:26px;color:var(--gold);padding:10px 26px;border-right:1px solid rgba(184,150,90,.18);}
+.nav-link{padding:15px 18px;font-size:10px;letter-spacing:3px;color:rgba(212,184,120,.6);text-decoration:none;text-transform:uppercase;font-family:'Marcellus',serif;transition:color .3s;}
+.nav-link:hover,.nav-link.active{color:var(--gold-light);}
 
-.orn{display:flex;align-items:center;gap:8px;margin:8px auto;width:90%;}
-.orn::before,.orn::after{content:'';flex:1;height:0.5px;background:#c8a030;opacity:0.6;}
-.orn span{color:#c8a030;font-size:12px;}
+/* ── HERO ── */
+#hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#060401;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 22% 50%,rgba(184,150,90,.08),transparent 55%),radial-gradient(ellipse at 78% 30%,rgba(140,100,50,.05),transparent 48%);}
+.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:.32;}
+.hero-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 15%,rgba(6,4,1,.92) 100%);}
+.hero-content{position:relative;z-index:2;text-align:center;padding:120px 40px 80px;max-width:740px;}
 
-.cd{display:flex;gap:10px;justify-content:center;margin:10px 0 0;}
-.block{text-align:center;}
-.num{font-family:'Cormorant Garamond',serif;font-size:28px;color:#8a6418;font-weight:400;line-height:1;display:block;}
-.lbl{font-size:9px;letter-spacing:2.5px;color:#b8922a;text-transform:uppercase;display:block;margin-top:1px;}
+.bh-hero{font-size:16px;color:var(--gold);letter-spacing:3px;font-style:italic;margin-bottom:28px;opacity:0;animation:fadeUp .8s .3s forwards;}
+.pre-label{font-size:10px;color:rgba(212,184,120,.5);letter-spacing:6px;text-transform:uppercase;margin-bottom:16px;font-family:'Marcellus',serif;opacity:0;animation:fadeUp .8s .5s forwards;}
+.hero-names{font-family:'Great Vibes',cursive;font-size:clamp(82px,13vw,126px);color:#fff;line-height:.87;text-shadow:0 0 90px rgba(184,150,90,.32);opacity:0;animation:fadeUp .9s .7s forwards;}
+.hero-amp{display:block;font-size:clamp(52px,8vw,78px);color:var(--gold);margin:7px 0;}
+.hero-family{font-size:13px;color:rgba(212,184,120,.62);letter-spacing:4px;margin-top:16px;font-style:italic;opacity:0;animation:fadeUp .8s 1s forwards;}
+.hero-line{display:flex;align-items:center;gap:16px;margin:26px auto;max-width:300px;opacity:0;animation:fadeUp .8s 1.2s forwards;}
+.hero-line::before,.hero-line::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);}
+.hero-line span{color:var(--gold);font-size:14px;}
+.cd-wrap{display:flex;gap:14px;justify-content:center;margin-bottom:30px;opacity:0;animation:fadeUp .8s 1.4s forwards;}
+.cd-block{text-align:center;}
+.cd-inner{border:1px solid rgba(184,150,90,.32);background:rgba(184,150,90,.06);padding:13px 16px;min-width:68px;margin-bottom:6px;backdrop-filter:blur(4px);}
+.cd-num{font-family:'Great Vibes',cursive;font-size:48px;color:#fff;line-height:1;display:block;text-shadow:0 0 22px rgba(184,150,90,.38);}
+.cd-lbl{font-size:9px;letter-spacing:4px;color:rgba(212,184,120,.52);text-transform:uppercase;font-family:'Marcellus',serif;}
+.scroll-hint{opacity:0;animation:fadeUp .8s 1.7s forwards;font-size:10px;letter-spacing:4px;color:rgba(212,184,120,.42);text-transform:uppercase;font-family:'Marcellus',serif;}
+.scroll-arr{display:block;width:18px;height:18px;border-right:1px solid var(--gold);border-bottom:1px solid var(--gold);transform:rotate(45deg);margin:10px auto 0;animation:arrBounce 1.6s infinite;}
+@keyframes arrBounce{0%,100%{transform:rotate(45deg) translateY(0);}50%{transform:rotate(45deg) translateY(6px);}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
 
-.btn-wrap{margin-top:16px;}
-.btn{display:inline-block;padding:10px 28px;background:#b8922a;color:#fff;font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;letter-spacing:2px;cursor:pointer;border:none;text-decoration:none;transition:background .25s;}
-.btn:hover{background:#8a6418;}
+/* ── SECTIONS ── */
+.section{position:relative;background:var(--cream);overflow:hidden;}
+.section-dark{background:#070402;}
+.section-inner{max-width:580px;margin:0 auto;padding:80px 48px;text-align:center;position:relative;z-index:2;}
+.section-dark .section-inner{color:#e8d8b0;}
 
-.bh{font-size:11px;color:#c8a868;letter-spacing:2px;font-style:italic;margin-bottom:2px;}
+.frame{position:absolute;inset:18px;border:1px solid rgba(184,150,90,.18);pointer-events:none;z-index:1;}
+.frame::before,.frame::after{content:'';position:absolute;width:44px;height:44px;}
+.frame::before{top:-1px;left:-1px;border-top:2px solid var(--gold);border-left:2px solid var(--gold);}
+.frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--gold);border-right:2px solid var(--gold);}
+.frame-tr{position:absolute;top:17px;right:17px;width:44px;height:44px;border-top:2px solid var(--gold);border-right:2px solid var(--gold);}
+.frame-bl{position:absolute;bottom:17px;left:17px;width:44px;height:44px;border-bottom:2px solid var(--gold);border-left:2px solid var(--gold);}
+
+.bg-watermark{position:absolute;font-family:'Great Vibes',cursive;font-size:280px;color:rgba(184,150,90,.04);pointer-events:none;z-index:0;line-height:1;user-select:none;}
+
+.monogram{width:76px;height:76px;margin:0 auto 22px;}
+.s-badge{font-size:10px;color:rgba(184,150,90,.58);letter-spacing:4px;text-transform:uppercase;font-family:'Marcellus',serif;margin-bottom:6px;}
+.s-title{font-family:'Great Vibes',cursive;font-size:62px;color:var(--gold);line-height:1;margin-bottom:4px;}
+.section-dark .s-title{color:var(--gold-light);}
+
+.orn{display:flex;align-items:center;gap:14px;margin:16px auto;max-width:260px;}
+.orn::before,.orn::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,var(--gold-light),transparent);}
+.orn span{color:var(--gold);font-size:14px;}
+
+/* KOL SASSON BANNER */
+.kol-sasson{
+  background:rgba(184,150,90,.07);
+  border:1px solid rgba(184,150,90,.25);
+  border-left:3px solid var(--gold);
+  padding:18px 22px;
+  margin-bottom:22px;
+  text-align:center;
+}
+.kol-heb{
+  font-size:22px;color:var(--gold-light);
+  margin-bottom:8px;
+  line-height:1.5;letter-spacing:1px;
+  text-shadow:0 0 20px rgba(184,150,90,.2);
+}
+.kol-tr{font-size:13.5px;color:rgba(212,184,120,.6);font-style:italic;line-height:1.6;}
+
+.heb{font-size:15px;color:var(--mid);margin-bottom:6px;line-height:1.6;}
+.section-dark .heb{color:rgba(212,184,120,.6);}
+.quote{font-style:italic;font-size:15px;color:#8a7050;line-height:1.7;margin:8px 0 20px;}
+.section-dark .quote{color:rgba(212,184,120,.52);}
+
+.names{font-family:'Great Vibes',cursive;font-size:56px;color:var(--dark);line-height:1;}
+.section-dark .names{color:#f0e8d0;}
+.amp{font-size:40px;color:var(--gold);}
+.fam{font-size:12px;letter-spacing:3px;color:var(--mid);font-style:italic;margin:6px 0 16px;}
+.section-dark .fam{color:rgba(212,184,120,.48);}
+.invite{font-size:15px;font-style:italic;color:var(--mid);margin:14px 0;}
+.section-dark .invite{color:rgba(212,184,120,.62);}
+
+.date-card{display:inline-block;border:1px solid rgba(184,150,90,.38);padding:20px 34px;margin:14px 0;background:rgba(184,150,90,.04);}
+.date-big{font-size:19px;color:var(--dark);font-style:italic;letter-spacing:.5px;margin-bottom:5px;}
+.section-dark .date-big{color:#e8d8b0;}
+.time-big{font-size:14px;color:var(--mid);font-style:italic;letter-spacing:2px;}
+.section-dark .time-big{color:rgba(212,184,120,.52);}
+.place{font-size:17px;color:var(--dark);font-style:italic;margin:12px 0 3px;}
+.section-dark .place{color:#e8d8b0;}
+.place-sub{font-size:13px;color:var(--mid);}
+.section-dark .place-sub{color:rgba(212,184,120,.44);}
+
+.vin-box{margin:20px 0;padding:18px 22px;border:1px solid rgba(184,150,90,.28);background:rgba(184,150,90,.04);}
+.vin-lbl{font-size:10px;letter-spacing:3px;text-transform:uppercase;font-family:'Marcellus',serif;color:var(--mid);margin-bottom:4px;}
+.vin-title{font-family:'Great Vibes',cursive;font-size:42px;color:var(--gold);line-height:1.1;}
+.vin-note{font-size:13px;color:var(--mid);font-style:italic;margin-top:4px;}
+.note{font-size:13.5px;color:var(--mid);font-style:italic;margin-top:14px;line-height:1.7;}
+.section-dark .note{color:rgba(212,184,120,.48);}
+
+.btn-row{display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;gap:8px;background:transparent;border:1px solid var(--gold);color:var(--gold);padding:12px 26px;font-size:11px;font-family:'Marcellus',serif;letter-spacing:2px;cursor:pointer;text-decoration:none;text-transform:uppercase;transition:all .25s;}
+.btn:hover{background:var(--gold);color:#fff;}
+.btn-f{background:var(--gold);color:#fff;}
+.btn-f:hover{background:#9a7a3a;border-color:#9a7a3a;}
+.section-dark .btn{border-color:rgba(184,150,90,.45);color:var(--gold-light);}
+.section-dark .btn:hover{background:rgba(184,150,90,.18);}
+
+/* PHOTO BAND */
+.photo-band{width:100%;height:400px;position:relative;overflow:hidden;background:#060401;}
+.photo-band img{width:100%;height:100%;object-fit:cover;object-position:center;opacity:.58;}
+.photo-band-ov{position:absolute;inset:0;background:linear-gradient(to bottom,#070402 0%,transparent 18%,transparent 82%,#070402 100%);}
+
+/* SEPARATORS */
+.sep{text-align:center;padding:22px 0;background:linear-gradient(to right,#060401,#12100a,#060401);}
+.sep-text{font-family:'Great Vibes',cursive;font-size:32px;color:rgba(184,150,90,.32);letter-spacing:10px;}
+
+/* RINGS ANIMATION */
+@keyframes ringFloat{0%,100%{transform:translateY(0) rotate(-4deg);}50%{transform:translateY(-9px) rotate(4deg);}}
+
+/* FORM */
+.form-group{margin-bottom:15px;text-align:left;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.form-group label{display:block;font-size:10px;color:var(--mid);margin-bottom:4px;font-style:italic;letter-spacing:1px;text-transform:uppercase;font-family:'Marcellus',serif;}
+.form-group input,.form-group select,.form-group textarea{width:100%;border:1px solid rgba(184,150,90,.28);padding:11px 13px;font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--dark);background:#faf7f0;outline:none;transition:border-color .2s;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--gold);}
+.pres-block{background:#faf7f0;border:1px solid rgba(184,150,90,.22);padding:15px 18px;margin-bottom:14px;text-align:left;}
+.pres-label{font-size:14.5px;color:var(--dark);font-style:italic;margin-bottom:8px;font-weight:600;}
+.radio-row{display:flex;gap:22px;margin-bottom:8px;}
+.radio-opt{display:flex;align-items:center;gap:8px;cursor:pointer;font-size:15px;color:var(--dark);}
+.radio-opt input{accent-color:var(--gold);}
+.nb-row{display:none;align-items:center;gap:10px;font-size:13px;font-style:italic;color:var(--mid);margin-top:7px;}
+.nb-row.visible{display:flex;}
+.nb-row select{width:78px;padding:5px 8px;border:1px solid rgba(184,150,90,.28);background:#faf7f0;font-family:'Cormorant Garamond',serif;font-size:14px;}
+.success-msg{display:none;margin-top:16px;padding:18px 22px;border:1px solid rgba(184,150,90,.32);background:rgba(184,150,90,.05);font-style:italic;font-size:16px;color:var(--dark);line-height:1.7;}
+.sending-msg{display:none;margin-top:12px;font-size:14px;color:var(--mid);font-style:italic;text-align:center;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .85s,transform .85s;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+footer{background:#030201;padding:34px 40px;text-align:center;border-top:1px solid rgba(184,150,90,.12);}
+footer p{font-size:11px;letter-spacing:3px;color:rgba(184,150,90,.32);font-style:italic;}
 </style>
+</head>
+<body>
 
-<div class="page">
-  <div class="wreath-wrap">
+<canvas id="confetti-canvas"></canvas>
 
-    <!-- GRANDE COURONNE FLORALE OVALE EN TRAITS DORÉS -->
-    <svg viewBox="0 0 480 620" xmlns="http://www.w3.org/2000/svg" style="max-height:98vh;">
-      <defs>
-        <style>
-          .g{fill:none;stroke:#c8a030;stroke-linecap:round;stroke-linejoin:round;}
-          .gf{fill:#c8a030;stroke:none;}
-          .gl{fill:#b89820;stroke:none;}
-        </style>
-      </defs>
-
-      <!-- ══ OVALE CENTRAL ══ -->
-      <ellipse cx="240" cy="315" rx="118" ry="165" class="g" stroke-width="0.8" opacity="0.35"/>
-
-      <!-- ════════════════════════════════
-           HAUT – fleurs et feuillage
-           ════════════════════════════════ -->
-
-      <!-- Tige principale haute -->
-      <path d="M200,100 Q215,78 240,68 Q265,78 280,100" class="g" stroke-width="1.2"/>
-      <path d="M170,118 Q195,88 240,70 Q285,88 310,118" class="g" stroke-width="1"/>
-
-      <!-- GRANDE FLEUR CENTRALE HAUT -->
-      <g transform="translate(240,60)">
-        <!-- pétales extérieurs -->
-        <ellipse cx="0" cy="-18" rx="7" ry="14" class="g" stroke-width="0.9" transform="rotate(0)"/>
-        <ellipse cx="0" cy="-18" rx="7" ry="14" class="g" stroke-width="0.9" transform="rotate(45)"/>
-        <ellipse cx="0" cy="-18" rx="7" ry="14" class="g" stroke-width="0.9" transform="rotate(90)"/>
-        <ellipse cx="0" cy="-18" rx="7" ry="14" class="g" stroke-width="0.9" transform="rotate(135)"/>
-        <ellipse cx="0" cy="-18" rx="7" ry="14" class="g" stroke-width="0.9" transform="rotate(180)"/>
-        <ellipse cx="0" cy="-18" rx="7" ry="14" class="g" stroke-width="0.9" transform="rotate(225)"/>
-        <ellipse cx="0" cy="-18" rx="7" ry="14" class="g" stroke-width="0.9" transform="rotate(270)"/>
-        <ellipse cx="0" cy="-18" rx="7" ry="14" class="g" stroke-width="0.9" transform="rotate(315)"/>
-        <!-- pétales intérieurs -->
-        <ellipse cx="0" cy="-11" rx="5" ry="9" class="g" stroke-width="0.7" transform="rotate(22)"/>
-        <ellipse cx="0" cy="-11" rx="5" ry="9" class="g" stroke-width="0.7" transform="rotate(67)"/>
-        <ellipse cx="0" cy="-11" rx="5" ry="9" class="g" stroke-width="0.7" transform="rotate(112)"/>
-        <ellipse cx="0" cy="-11" rx="5" ry="9" class="g" stroke-width="0.7" transform="rotate(157)"/>
-        <ellipse cx="0" cy="-11" rx="5" ry="9" class="g" stroke-width="0.7" transform="rotate(202)"/>
-        <ellipse cx="0" cy="-11" rx="5" ry="9" class="g" stroke-width="0.7" transform="rotate(247)"/>
-        <ellipse cx="0" cy="-11" rx="5" ry="9" class="g" stroke-width="0.7" transform="rotate(292)"/>
-        <ellipse cx="0" cy="-11" rx="5" ry="9" class="g" stroke-width="0.7" transform="rotate(337)"/>
-        <circle cx="0" cy="0" r="6" class="g" stroke-width="0.8"/>
-        <circle cx="0" cy="0" r="3.5" class="gf" opacity="0.6"/>
-        <!-- étamines -->
-        <circle cx="2" cy="-2" r="1" class="gf" opacity="0.8"/>
-        <circle cx="-2" cy="1" r="1" class="gf" opacity="0.8"/>
-        <circle cx="0" cy="2" r="1" class="gf" opacity="0.8"/>
-      </g>
-
-      <!-- Fleur gauche haut -->
-      <g transform="translate(192,95)">
-        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(0)"/>
-        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(60)"/>
-        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(120)"/>
-        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(180)"/>
-        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(240)"/>
-        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(300)"/>
-        <circle cx="0" cy="0" r="4.5" class="g" stroke-width="0.7"/>
-        <circle cx="0" cy="0" r="2.5" class="gf" opacity="0.5"/>
-      </g>
-
-      <!-- Fleur droite haut -->
-      <g transform="translate(288,95)">
-        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(0)"/>
-        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(60)"/>
-        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(120)"/>
-        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(180)"/>
-        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(240)"/>
-        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(300)"/>
-        <circle cx="0" cy="0" r="4.5" class="g" stroke-width="0.7"/>
-        <circle cx="0" cy="0" r="2.5" class="gf" opacity="0.5"/>
-      </g>
-
-      <!-- Feuilles haut gauche -->
-      <path d="M178,112 Q165,95 155,105 Q160,118 178,112Z" class="g" stroke-width="0.8"/>
-      <path d="M178,112 Q168,100 160,106Z" class="g" stroke-width="0.5"/>
-      <path d="M168,128 Q150,115 142,128 Q148,140 168,128Z" class="g" stroke-width="0.8"/>
-      <path d="M168,128 Q155,118 148,126Z" class="g" stroke-width="0.5"/>
-      <path d="M302,112 Q315,95 325,105 Q320,118 302,112Z" class="g" stroke-width="0.8"/>
-      <path d="M302,112 Q312,100 320,106Z" class="g" stroke-width="0.5"/>
-      <path d="M312,128 Q330,115 338,128 Q332,140 312,128Z" class="g" stroke-width="0.8"/>
-      <path d="M312,128 Q325,118 332,126Z" class="g" stroke-width="0.5"/>
-
-      <!-- Baies haut gauche -->
-      <circle cx="163" cy="108" r="4.5" class="g" stroke-width="0.8"/><circle cx="163" cy="108" r="1.5" class="gf" opacity="0.5"/>
-      <circle cx="155" cy="118" r="4" class="g" stroke-width="0.8"/><circle cx="155" cy="118" r="1.5" class="gf" opacity="0.5"/>
-      <circle cx="148" cy="130" r="3.5" class="g" stroke-width="0.8"/><circle cx="148" cy="130" r="1.2" class="gf" opacity="0.5"/>
-      <path d="M163,104 Q160,96 163,108" class="g" stroke-width="0.7"/>
-      <path d="M155,114 Q152,106 155,118" class="g" stroke-width="0.7"/>
-      <!-- Baies haut droite -->
-      <circle cx="317" cy="108" r="4.5" class="g" stroke-width="0.8"/><circle cx="317" cy="108" r="1.5" class="gf" opacity="0.5"/>
-      <circle cx="325" cy="118" r="4" class="g" stroke-width="0.8"/><circle cx="325" cy="118" r="1.5" class="gf" opacity="0.5"/>
-      <circle cx="332" cy="130" r="3.5" class="g" stroke-width="0.8"/><circle cx="332" cy="130" r="1.2" class="gf" opacity="0.5"/>
-      <path d="M317,104 Q320,96 317,108" class="g" stroke-width="0.7"/>
-      <path d="M325,114 Q328,106 325,118" class="g" stroke-width="0.7"/>
-
-      <!-- ════ CÔTÉ GAUCHE ════ -->
-      <path d="M148,148 Q125,180 118,215 Q112,250 118,285 Q122,310 130,335" class="g" stroke-width="1.2"/>
-      <path d="M138,155 Q116,188 110,225 Q105,260 112,295" class="g" stroke-width="0.8"/>
-
-      <!-- Fleur gauche milieu haut -->
-      <g transform="translate(130,172)">
-        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(0)"/>
-        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(72)"/>
-        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(144)"/>
-        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(216)"/>
-        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(288)"/>
-        <circle cx="0" cy="0" r="5" class="g" stroke-width="0.7"/>
-        <circle cx="0" cy="0" r="2.5" class="gf" opacity="0.5"/>
-      </g>
-
-      <!-- Feuilles gauche -->
-      <path d="M118,220 Q96,208 88,220 Q94,234 118,220Z" class="g" stroke-width="0.8"/>
-      <path d="M118,220 Q100,210 92,218Z" class="g" stroke-width="0.5"/>
-      <path d="M113,250 Q90,240 84,254 Q90,267 113,250Z" class="g" stroke-width="0.8"/>
-      <path d="M113,250 Q95,242 88,252Z" class="g" stroke-width="0.5"/>
-      <path d="M116,278 Q95,268 88,282 Q95,295 116,278Z" class="g" stroke-width="0.8"/>
-
-      <!-- Fleur gauche milieu bas -->
-      <g transform="translate(122,305)">
-        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(0)"/>
-        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(60)"/>
-        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(120)"/>
-        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(180)"/>
-        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(240)"/>
-        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(300)"/>
-        <circle cx="0" cy="0" r="4.5" class="g" stroke-width="0.7"/>
-        <circle cx="0" cy="0" r="2.2" class="gf" opacity="0.5"/>
-      </g>
-
-      <!-- ════ CÔTÉ DROIT ════ -->
-      <path d="M332,148 Q355,180 362,215 Q368,250 362,285 Q358,310 350,335" class="g" stroke-width="1.2"/>
-      <path d="M342,155 Q364,188 370,225 Q375,260 368,295" class="g" stroke-width="0.8"/>
-
-      <!-- Fleur droite milieu haut -->
-      <g transform="translate(350,172)">
-        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(0)"/>
-        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(72)"/>
-        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(144)"/>
-        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(216)"/>
-        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(288)"/>
-        <circle cx="0" cy="0" r="5" class="g" stroke-width="0.7"/>
-        <circle cx="0" cy="0" r="2.5" class="gf" opacity="0.5"/>
-      </g>
-
-      <!-- Feuilles droite -->
-      <path d="M362,220 Q384,208 392,220 Q386,234 362,220Z" class="g" stroke-width="0.8"/>
-      <path d="M362,220 Q380,210 388,218Z" class="g" stroke-width="0.5"/>
-      <path d="M367,250 Q390,240 396,254 Q390,267 367,250Z" class="g" stroke-width="0.8"/>
-      <path d="M367,250 Q385,242 392,252Z" class="g" stroke-width="0.5"/>
-      <path d="M364,278 Q385,268 392,282 Q385,295 364,278Z" class="g" stroke-width="0.8"/>
-
-      <!-- Fleur droite milieu bas -->
-      <g transform="translate(358,305)">
-        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(0)"/>
-        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(60)"/>
-        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(120)"/>
-        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(180)"/>
-        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(240)"/>
-        <ellipse cx="0" cy="-13" rx="5.5" ry="10" class="g" stroke-width="0.8" transform="rotate(300)"/>
-        <circle cx="0" cy="0" r="4.5" class="g" stroke-width="0.7"/>
-        <circle cx="0" cy="0" r="2.2" class="gf" opacity="0.5"/>
-      </g>
-
-      <!-- ════ BAS ════ -->
-      <path d="M130,348 Q175,390 240,400 Q305,390 350,348" class="g" stroke-width="1.2"/>
-      <path d="M140,360 Q180,398 240,408 Q300,398 340,360" class="g" stroke-width="0.8"/>
-
-      <!-- Fleur bas gauche -->
-      <g transform="translate(172,382)">
-        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(0)"/>
-        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(60)"/>
-        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(120)"/>
-        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(180)"/>
-        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(240)"/>
-        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(300)"/>
-        <circle cx="0" cy="0" r="5" class="g" stroke-width="0.7"/>
-        <circle cx="0" cy="0" r="2.5" class="gf" opacity="0.5"/>
-      </g>
-
-      <!-- Grande fleur bas centre -->
-      <g transform="translate(240,408)">
-        <ellipse cx="0" cy="-16" rx="7" ry="13" class="g" stroke-width="0.9" transform="rotate(0)"/>
-        <ellipse cx="0" cy="-16" rx="7" ry="13" class="g" stroke-width="0.9" transform="rotate(45)"/>
-        <ellipse cx="0" cy="-16" rx="7" ry="13" class="g" stroke-width="0.9" transform="rotate(90)"/>
-        <ellipse cx="0" cy="-16" rx="7" ry="13" class="g" stroke-width="0.9" transform="rotate(135)"/>
-        <ellipse cx="0" cy="-16" rx="7" ry="13" class="g" stroke-width="0.9" transform="rotate(180)"/>
-        <ellipse cx="0" cy="-16" rx="7" ry="13" class="g" stroke-width="0.9" transform="rotate(225)"/>
-        <ellipse cx="0" cy="-16" rx="7" ry="13" class="g" stroke-width="0.9" transform="rotate(270)"/>
-        <ellipse cx="0" cy="-16" rx="7" ry="13" class="g" stroke-width="0.9" transform="rotate(315)"/>
-        <ellipse cx="0" cy="-10" rx="5" ry="8" class="g" stroke-width="0.7" transform="rotate(22)"/>
-        <ellipse cx="0" cy="-10" rx="5" ry="8" class="g" stroke-width="0.7" transform="rotate(67)"/>
-        <ellipse cx="0" cy="-10" rx="5" ry="8" class="g" stroke-width="0.7" transform="rotate(112)"/>
-        <ellipse cx="0" cy="-10" rx="5" ry="8" class="g" stroke-width="0.7" transform="rotate(157)"/>
-        <ellipse cx="0" cy="-10" rx="5" ry="8" class="g" stroke-width="0.7" transform="rotate(202)"/>
-        <ellipse cx="0" cy="-10" rx="5" ry="8" class="g" stroke-width="0.7" transform="rotate(247)"/>
-        <ellipse cx="0" cy="-10" rx="5" ry="8" class="g" stroke-width="0.7" transform="rotate(292)"/>
-        <ellipse cx="0" cy="-10" rx="5" ry="8" class="g" stroke-width="0.7" transform="rotate(337)"/>
-        <circle cx="0" cy="0" r="6" class="g" stroke-width="0.8"/>
-        <circle cx="0" cy="0" r="3" class="gf" opacity="0.6"/>
-      </g>
-
-      <!-- Fleur bas droite -->
-      <g transform="translate(308,382)">
-        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(0)"/>
-        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(60)"/>
-        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(120)"/>
-        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(180)"/>
-        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(240)"/>
-        <ellipse cx="0" cy="-14" rx="6" ry="11" class="g" stroke-width="0.85" transform="rotate(300)"/>
-        <circle cx="0" cy="0" r="5" class="g" stroke-width="0.7"/>
-        <circle cx="0" cy="0" r="2.5" class="gf" opacity="0.5"/>
-      </g>
-
-      <!-- Feuilles bas -->
-      <path d="M155,370 Q140,355 130,365 Q136,378 155,370Z" class="g" stroke-width="0.8"/>
-      <path d="M155,370 Q142,357 133,364Z" class="g" stroke-width="0.5"/>
-      <path d="M205,400 Q196,385 184,390 Q186,403 205,400Z" class="g" stroke-width="0.8"/>
-      <path d="M325,370 Q340,355 350,365 Q344,378 325,370Z" class="g" stroke-width="0.8"/>
-      <path d="M325,370 Q338,357 347,364Z" class="g" stroke-width="0.5"/>
-      <path d="M275,400 Q284,385 296,390 Q294,403 275,400Z" class="g" stroke-width="0.8"/>
-
-      <!-- Baies bas -->
-      <circle cx="148" cy="362" r="4" class="g" stroke-width="0.8"/><circle cx="148" cy="362" r="1.5" class="gf" opacity="0.5"/>
-      <circle cx="140" cy="372" r="3.5" class="g" stroke-width="0.8"/><circle cx="140" cy="372" r="1.2" class="gf" opacity="0.5"/>
-      <circle cx="332" cy="362" r="4" class="g" stroke-width="0.8"/><circle cx="332" cy="362" r="1.5" class="gf" opacity="0.5"/>
-      <circle cx="340" cy="372" r="3.5" class="g" stroke-width="0.8"/><circle cx="340" cy="372" r="1.2" class="gf" opacity="0.5"/>
-
-      <!-- ══ CONTENU INTÉRIEUR ══ -->
-      <!-- ב״ה -->
-      <text x="240" y="148" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#c8a030" font-style="italic" opacity="0.8">ב״ה</text>
-
-      <!-- Monogramme -->
-      <text x="240" y="200" text-anchor="middle" font-family="Georgia,serif" font-size="38" fill="#b8922a" font-style="italic" opacity="0.9">YE</text>
-
-      <!-- Ligne ornementale -->
-      <line x1="175" y1="215" x2="305" y2="215" stroke="#c8a030" stroke-width="0.6" opacity="0.5"/>
-      <text x="240" y="220" text-anchor="middle" font-size="8" fill="#c8a030" opacity="0.7">✦</text>
-
-      <!-- Noms -->
-      <text x="240" y="262" text-anchor="middle" font-family="'Great Vibes', cursive" font-size="48" fill="#8a6418">Yael</text>
-      <text x="240" y="288" text-anchor="middle" font-family="'Great Vibes', cursive" font-size="30" fill="#c8a030">&amp;</text>
-      <text x="240" y="330" text-anchor="middle" font-family="'Great Vibes', cursive" font-size="48" fill="#8a6418">Elias</text>
-
-      <!-- Ligne ornementale bas noms -->
-      <line x1="185" y1="340" x2="295" y2="340" stroke="#c8a030" stroke-width="0.6" opacity="0.5"/>
-    </svg>
-
-    <!-- Countdown par dessus -->
-    <div style="position:absolute;bottom:118px;left:50%;transform:translateX(-50%);width:68%;display:flex;gap:8px;justify-content:center;">
-      <div class="block"><span class="num" id="cd-j" style="font-size:24px;color:#8a6418;">—</span><span class="lbl">Jours</span></div>
-      <div class="block"><span class="num" id="cd-h" style="font-size:24px;color:#8a6418;">—</span><span class="lbl">Hrs</span></div>
-      <div class="block"><span class="num" id="cd-m" style="font-size:24px;color:#8a6418;">—</span><span class="lbl">Min</span></div>
-      <div class="block"><span class="num" id="cd-s" style="font-size:24px;color:#8a6418;">—</span><span class="lbl">Sec</span></div>
-    </div>
-
-    <!-- Bouton -->
-    <div style="position:absolute;bottom:62px;left:50%;transform:translateX(-50%);white-space:nowrap;">
-      <a class="btn" href="invitation.html" onclick="sendPrompt('Montrez-moi l\'invitation complète de Yael et Elias'); return false;" style="font-size:12px;padding:10px 28px;letter-spacing:3px;">Voir l'invitation</a>
-    </div>
-
-  </div>
+<!-- MUSIC PLAYER -->
+<div id="music-btn" onclick="toggleMusic()" title="Musique">
+  <div class="music-pulse"></div>
+  <div class="music-pulse"></div>
+  <div class="music-pulse"></div>
+  <!-- Play icon -->
+  <svg id="music-icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+  <!-- Pause icon (hidden) -->
+  <svg id="music-icon-pause" viewBox="0 0 24 24" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
 </div>
 
+<audio id="bgmusic" loop>
+  <source src="musique.mp3" type="audio/mpeg">
+</audio>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Y &amp; E</div>
+  <a class="nav-link" href="#hero">Accueil</a>
+  <a class="nav-link" href="#mairie">Mairie</a>
+  <a class="nav-link" href="#houppa">Houppa</a>
+  <a class="nav-link" href="#reponse">Répondre</a>
+</nav>
+
+<!-- ══════════ HERO ══════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <img class="hero-photo" src="https://alansite.github.io/Yael-site/couple.jpg" alt="Yael & Elias" onerror="this.style.opacity=0">
+  <div class="hero-vignette"></div>
+  <div class="hero-content">
+    <div class="bh-hero">ב״ה</div>
+    <p class="pre-label">Mariage de</p>
+    <div class="hero-names">
+      Yael<span class="hero-amp">&</span>Elias
+    </div>
+    <p class="hero-family">Azoulay &nbsp;·&nbsp; Alimi</p>
+    <div class="hero-line"><span>✦</span></div>
+    <div class="cd-wrap">
+      <div class="cd-block"><div class="cd-inner"><span class="cd-num" id="cd-j">—</span></div><span class="cd-lbl">Jours</span></div>
+      <div class="cd-block"><div class="cd-inner"><span class="cd-num" id="cd-h">—</span></div><span class="cd-lbl">Heures</span></div>
+      <div class="cd-block"><div class="cd-inner"><span class="cd-num" id="cd-m">—</span></div><span class="cd-lbl">Minutes</span></div>
+      <div class="cd-block"><div class="cd-inner"><span class="cd-num" id="cd-s">—</span></div><span class="cd-lbl">Secondes</span></div>
+    </div>
+    <p class="scroll-hint">Découvrir <span class="scroll-arr"></span></p>
+  </div>
+</section>
+
+<div class="sep"><div class="sep-text">✦ &nbsp; ✦ &nbsp; ✦</div></div>
+
+<!-- ══════════ MAIRIE ══════════ -->
+<section class="section" id="mairie">
+  <div class="frame"></div><div class="frame-tr"></div><div class="frame-bl"></div>
+  <div class="bg-watermark" style="right:-40px;top:-40px;">M</div>
+  <div class="section-inner reveal">
+    <svg class="monogram" viewBox="0 0 76 76" fill="none">
+      <circle cx="38" cy="38" r="35" stroke="#b8965a" stroke-width="1"/>
+      <circle cx="38" cy="38" r="28" stroke="#d4b878" stroke-width=".5" stroke-dasharray="3,5"/>
+      <text x="38" y="45" text-anchor="middle" font-family="Georgia,serif" font-size="21" fill="#9a7a45" font-style="italic">Y&amp;E</text>
+    </svg>
+    <p class="s-badge">Cérémonie Civile</p>
+    <div class="s-title">La Mairie</div>
+    <div class="orn"><span>❧</span></div>
+    <p class="quote">« Un jour exceptionnel, un Oui extraordinaire »</p>
+    <div class="names">Yael <span class="amp">&</span> Elias</div>
+    <p class="fam">Azoulay &nbsp;·&nbsp; Alimi</p>
+    <div class="orn"><span>✦</span></div>
+    <div class="date-card">
+      <p class="date-big">Le Mercredi 26 Août 2026</p>
+      <p class="time-big">à 14h00 précises</p>
+    </div>
+    <p class="place">Mairie de Maisons-Alfort</p>
+    <p class="place-sub">Maisons-Alfort, 94700</p>
+    <div class="vin-box">
+      <p class="vin-lbl">Suivie d'un</p>
+      <p class="vin-title">Vin d'Honneur</p>
+      <p class="vin-note">Lieu à définir — restez connectés !</p>
+    </div>
+    <div class="btn-row">
+      <a class="btn" href="https://www.waze.com/ul?q=Mairie+Maisons-Alfort&navigate=yes" target="_blank">🧭 Waze</a>
+      <a class="btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mariage+Yael+%26+Elias+-+Mairie&dates=20260826T120000Z/20260826T140000Z&location=Mairie+de+Maisons-Alfort" target="_blank">📅 Bloquer la date</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PHOTO BAND ══════════ -->
+<div class="photo-band">
+  <img src="https://alansite.github.io/Yael-site/houppa.jpeg" alt="Houppa" onerror="this.style.display='none'">
+  <div class="photo-band-ov"></div>
+</div>
+
+<!-- ══════════ HOUPPA ══════════ -->
+<section class="section section-dark" id="houppa">
+  <div class="frame" style="border-color:rgba(184,150,90,.1)"></div>
+  <div class="frame-tr"></div><div class="frame-bl"></div>
+  <div class="bg-watermark" style="left:-30px;bottom:-60px;color:rgba(184,150,90,.025);">H</div>
+  <div class="section-inner reveal">
+
+    <!-- KOL SASSON BANNER -->
+    <div class="kol-sasson">
+      <p class="kol-heb">קוֹל שָׂשׂוֹן וְקוֹל שִׂמְחָה קוֹל חָתָן וְקוֹל כַּלָּה</p>
+      <p class="kol-tr">« Voix de joie et voix d'allégresse, voix du fiancé et voix de la fiancée »</p>
+    </div>
+
+    <!-- Rings SVG -->
+    <svg width="88" height="50" viewBox="0 0 88 50" style="margin:0 auto 20px;display:block;animation:ringFloat 4s ease-in-out infinite;">
+      <circle cx="28" cy="25" r="21" stroke="#b8965a" stroke-width="2" fill="none"/>
+      <circle cx="60" cy="25" r="21" stroke="#b8965a" stroke-width="2" fill="none"/>
+      <path d="M40 25 Q44 17 48 25" stroke="#d4b878" stroke-width="1.5" fill="none"/>
+    </svg>
+
+    <p class="s-badge" style="color:rgba(184,150,90,.48);">Cérémonie Religieuse</p>
+    <div class="s-title">Houppa &amp; Soirée</div>
+    <div class="orn"><span>❧</span></div>
+
+    <p class="heb">כל המשמח חתן וכלה כאלו בנה אחת מחורבות ירושלים</p>
+    <p class="quote">« Celui qui prend part à la joie des mariés est récompensé,<br>comme s'il avait rebâti les ruines de Jérusalem »</p>
+
+    <p class="invite">Ont la joie de vous faire part du mariage de</p>
+    <div class="names">Yael <span class="amp">&</span> Elias</div>
+    <p class="fam">Azoulay &nbsp;·&nbsp; Alimi</p>
+    <p class="invite">et vous <em>convie</em> à la cérémonie religieuse</p>
+
+    <div class="orn"><span>✦</span></div>
+    <div class="date-card" style="border-color:rgba(184,150,90,.26);">
+      <p class="date-big">Le Mardi 1<sup>er</sup> Septembre 2026</p>
+      <p class="time-big">à 18h30 précises</p>
+    </div>
+    <p class="place">InterContinental Paris Le Grand</p>
+    <p class="place-sub">Paris, France</p>
+    <p class="note">La cérémonie religieuse sera suivie de la réception</p>
+    <div class="orn" style="margin:20px auto 8px;"><span>♡</span></div>
+    <p class="note" style="font-size:13px;">Une pensée émue pour ceux qui auraient tant aimé partager ce moment<br>et qui veillent sur nous…</p>
+    <div class="btn-row">
+      <a class="btn" href="https://www.waze.com/ul?q=InterContinental+Paris+Le+Grand&navigate=yes" target="_blank">🧭 Waze</a>
+      <a class="btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mariage+Yael+%26+Elias+-+Houppa+%26+Soir%C3%A9e&dates=20260901T163000Z/20260902T000000Z&location=InterContinental+Paris" target="_blank">📅 Bloquer la date</a>
+    </div>
+  </div>
+</section>
+
+<div class="sep"><div class="sep-text">✦ &nbsp; ✦ &nbsp; ✦</div></div>
+
+<!-- ══════════ RÉPONSE ══════════ -->
+<section class="section" id="reponse">
+  <div class="frame"></div><div class="frame-tr"></div><div class="frame-bl"></div>
+  <div class="bg-watermark" style="right:-30px;top:-30px;">R</div>
+  <div class="section-inner reveal">
+    <svg class="monogram" viewBox="0 0 76 76" fill="none">
+      <circle cx="38" cy="38" r="35" stroke="#b8965a" stroke-width="1"/>
+      <circle cx="38" cy="38" r="28" stroke="#d4b878" stroke-width=".5" stroke-dasharray="3,5"/>
+      <text x="38" y="45" text-anchor="middle" font-family="Georgia,serif" font-size="21" fill="#9a7a45" font-style="italic">Y&amp;E</text>
+    </svg>
+    <div class="s-title">Réponse</div>
+    <div class="orn" style="margin-bottom:28px;"><span>✦</span></div>
+
+    <div class="form-row">
+      <div class="form-group"><label>Monsieur — Nom</label><input type="text" id="nom-m" placeholder="Nom de famille"></div>
+      <div class="form-group"><label>Madame — Nom</label><input type="text" id="nom-f" placeholder="Nom de famille"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>Prénom (M.)</label><input type="text" id="prenom-m" placeholder="Prénom"></div>
+      <div class="form-group"><label>Prénom (Mme)</label><input type="text" id="prenom-f" placeholder="Prénom"></div>
+    </div>
+
+    <div class="pres-block">
+      <div class="pres-label">Présence à La Mairie</div>
+      <div class="radio-row">
+        <label class="radio-opt"><input type="radio" name="mairie" value="oui" onchange="nb('mairie',true)"> Oui</label>
+        <label class="radio-opt"><input type="radio" name="mairie" value="non" onchange="nb('mairie',false)"> Non</label>
+      </div>
+      <div class="nb-row" id="nb-mairie-row"><span>Nombre de personnes :</span>
+        <select id="nb-mairie"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select>
+      </div>
+    </div>
+
+    <div class="pres-block">
+      <div class="pres-label">Présence à la Houppa &amp; Soirée</div>
+      <div class="radio-row">
+        <label class="radio-opt"><input type="radio" name="houppa" value="oui" onchange="nb('houppa',true)"> Oui</label>
+        <label class="radio-opt"><input type="radio" name="houppa" value="non" onchange="nb('houppa',false)"> Non</label>
+      </div>
+      <div class="nb-row" id="nb-houppa-row"><span>Nombre de personnes :</span>
+        <select id="nb-houppa"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Un petit mot pour les mariés</label>
+      <textarea id="message" rows="4" placeholder="Laissez-nous un message…" style="resize:vertical;"></textarea>
+    </div>
+
+    <button class="btn btn-f" id="submit-btn" onclick="sendForm()" style="margin-top:8px;width:100%;justify-content:center;font-size:12px;">
+      Envoyer ma réponse
+    </button>
+    <p class="sending-msg" id="sending-msg">⏳ Envoi en cours…</p>
+    <div class="success-msg" id="success-msg">
+      ✦ &nbsp; Merci ! Votre réponse a bien été enregistrée.<br>Nous avons hâte de partager ce moment avec vous. &nbsp; ✦
+    </div>
+    <div class="success-msg" id="error-msg" style="border-color:rgba(200,80,80,.3);color:#8a3030;">
+      ⚠️ Une erreur s'est produite. Merci de réessayer ou de nous contacter directement.
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Yael Azoulay &amp; Elias Alimi &nbsp;·&nbsp; 26 Août · 1<sup>er</sup> Septembre 2026 &nbsp;·&nbsp; ב״ה</p>
+  <p style="margin-top:8px;opacity:.55;font-size:10px;">Avec tout notre amour</p>
+</footer>
+
 <script>
-const TARGET=new Date('2026-08-26T14:00:00');
+/* ════════════════════════════════════
+   GOOGLE SHEETS — CONFIGURATION
+   ════════════════════════════════════
+   1. Ouvre ton Google Sheet
+   2. Extensions > Apps Script > colle le script Apps Script ci-dessous
+   3. Déploie > Nouvelle déploiement > Application Web
+   4. Copie l'URL de déploiement et remplace SCRIPT_URL ci-dessous
+
+   ── SCRIPT APPS SCRIPT À COLLER ──
+   function doPost(e) {
+     const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+     const data = JSON.parse(e.postData.contents);
+     sheet.appendRow([
+       new Date(),
+       data.nom_m, data.prenom_m,
+       data.nom_f, data.prenom_f,
+       data.mairie, data.nb_mairie,
+       data.houppa, data.nb_houppa,
+       data.message
+     ]);
+     return ContentService.createTextOutput(JSON.stringify({status:'ok'}))
+       .setMimeType(ContentService.MimeType.JSON);
+   }
+   ──────────────────────────────────── */
+const SCRIPT_URL = 'COLLER_ICI_L_URL_DU_SCRIPT_GOOGLE';
+
+/* ════════════════════════════════════
+   COUNTDOWN
+   ════════════════════════════════════ */
+const TARGET = new Date('2026-08-26T14:00:00');
 function pad(n){return String(n).padStart(2,'0');}
 function tick(){
-  const d=TARGET-new Date();
+  const d = TARGET - new Date();
   if(d<=0){['cd-j','cd-h','cd-m','cd-s'].forEach(id=>document.getElementById(id).textContent='00');return;}
-  document.getElementById('cd-j').textContent=Math.floor(d/864e5);
-  document.getElementById('cd-h').textContent=pad(Math.floor(d%864e5/36e5));
-  document.getElementById('cd-m').textContent=pad(Math.floor(d%36e5/6e4));
-  document.getElementById('cd-s').textContent=pad(Math.floor(d%6e4/1e3));
+  document.getElementById('cd-j').textContent = Math.floor(d/864e5);
+  document.getElementById('cd-h').textContent = pad(Math.floor(d%864e5/36e5));
+  document.getElementById('cd-m').textContent = pad(Math.floor(d%36e5/6e4));
+  document.getElementById('cd-s').textContent = pad(Math.floor(d%6e4/1e3));
 }
-tick();setInterval(tick,1000);
+tick(); setInterval(tick, 1000);
+
+/* ════════════════════════════════════
+   FORM → GOOGLE SHEETS
+   ════════════════════════════════════ */
+function nb(name, show){document.getElementById('nb-'+name+'-row').classList.toggle('visible', show);}
+
+function sendForm(){
+  const nomM    = document.getElementById('nom-m').value.trim();
+  const prenomM = document.getElementById('prenom-m').value.trim();
+  const nomF    = document.getElementById('nom-f').value.trim();
+  const prenomF = document.getElementById('prenom-f').value.trim();
+
+  if(!nomM && !prenomM && !nomF && !prenomF){
+    alert('Merci de renseigner au moins un nom ou prénom.');
+    return;
+  }
+
+  const mairieEl  = document.querySelector('input[name="mairie"]:checked');
+  const houppaEl  = document.querySelector('input[name="houppa"]:checked');
+  const mairieVal = mairieEl  ? mairieEl.value  : 'non répondu';
+  const houppaVal = houppaEl  ? houppaEl.value  : 'non répondu';
+  const nbMairie  = mairieVal === 'oui' ? document.getElementById('nb-mairie').value : '0';
+  const nbHouppa  = houppaVal === 'oui' ? document.getElementById('nb-houppa').value : '0';
+  const msg       = document.getElementById('message').value;
+
+  const payload = {
+    nom_m: nomM, prenom_m: prenomM,
+    nom_f: nomF, prenom_f: prenomF,
+    mairie: mairieVal, nb_mairie: nbMairie,
+    houppa: houppaVal, nb_houppa: nbHouppa,
+    message: msg
+  };
+
+  document.getElementById('submit-btn').style.display = 'none';
+  document.getElementById('sending-msg').style.display = 'block';
+
+  fetch(SCRIPT_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(payload)
+  })
+  .then(() => {
+    document.getElementById('sending-msg').style.display = 'none';
+    document.getElementById('success-msg').style.display = 'block';
+    celebrate();
+  })
+  .catch(() => {
+    document.getElementById('sending-msg').style.display = 'none';
+    document.getElementById('error-msg').style.display = 'block';
+    document.getElementById('submit-btn').style.display = 'flex';
+  });
+}
+
+/* ════════════════════════════════════
+   MUSIC — autoplay au premier scroll
+   ════════════════════════════════════ */
+const audio   = document.getElementById('bgmusic');
+const musicBtn = document.getElementById('music-btn');
+const iconPlay  = document.getElementById('music-icon-play');
+const iconPause = document.getElementById('music-icon-pause');
+let musicStarted = false;
+let isMusicPlaying = false;
+
+audio.volume = 0;
+
+function setMusicUI(playing){
+  isMusicPlaying = playing;
+  iconPlay.style.display  = playing ? 'none'  : 'block';
+  iconPause.style.display = playing ? 'block' : 'none';
+  musicBtn.classList.toggle('playing', playing);
+}
+
+function fadeMusicIn(){
+  let vol = 0;
+  const iv = setInterval(()=>{
+    vol = Math.min(vol + 0.02, 0.55);
+    audio.volume = vol;
+    if(vol >= 0.55) clearInterval(iv);
+  }, 80);
+}
+
+function startMusic(){
+  if(musicStarted) return;
+  musicStarted = true;
+  audio.play().then(()=>{
+    setMusicUI(true);
+    fadeMusicIn();
+  }).catch(()=>{});
+}
+
+function toggleMusic(){
+  if(!musicStarted){
+    startMusic();
+    return;
+  }
+  if(isMusicPlaying){
+    audio.pause();
+    setMusicUI(false);
+  } else {
+    audio.play();
+    setMusicUI(true);
+  }
+}
+
+// Démarre la musique au premier scroll
+window.addEventListener('scroll', function onFirstScroll(){
+  if(window.scrollY > 80){
+    startMusic();
+    window.removeEventListener('scroll', onFirstScroll);
+  }
+}, {passive: true});
+
+/* ════════════════════════════════════
+   SCROLL REVEAL
+   ════════════════════════════════════ */
+const reveals = document.querySelectorAll('.reveal');
+const revealIO = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revealIO.unobserve(e.target);}});
+},{threshold:.1});
+reveals.forEach(el=>revealIO.observe(el));
+
+/* ════════════════════════════════════
+   NAV ACTIVE
+   ════════════════════════════════════ */
+const navLinks = document.querySelectorAll('.nav-link');
+const secs = ['hero','mairie','houppa','reponse'].map(id=>document.getElementById(id));
+function updateNav(){
+  const y = window.scrollY + 90;
+  let cur = secs[0];
+  secs.forEach(s=>{if(s && s.offsetTop <= y) cur = s;});
+  navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#'+cur.id));
+}
+window.addEventListener('scroll', updateNav, {passive:true});
+updateNav();
+
+/* ════════════════════════════════════
+   CONFETTI / FIREWORKS
+   ════════════════════════════════════ */
+const canvas = document.getElementById('confetti-canvas');
+const ctx    = canvas.getContext('2d');
+let parts = []; let busy = false;
+
+function resize(){canvas.width=innerWidth;canvas.height=innerHeight;}
+resize(); window.addEventListener('resize', resize);
+
+const GOLDS  = ['#b8965a','#d4b878','#e8d0a0','#f0e8d0','#ffe8a0','#fff0c0','#c8a870','#ffd080'];
+const FESTIF = ['#ff6b6b','#ff8e53','#ffd700','#ff61d8','#7ee8fa','#80ff72','#ffffff','#b8965a','#d4b878'];
+
+function mkPart(x,y,palette,speed,upward){
+  const a = Math.random()*Math.PI*2;
+  const sp = speed[0] + Math.random()*(speed[1]-speed[0]);
+  return{x,y,
+    vx:Math.cos(a)*sp,
+    vy:(upward ? -1:1)*(Math.sin(a)*sp)*Math.random() - (upward?4:0),
+    w:4+Math.random()*9, h:3+Math.random()*5,
+    rot:Math.random()*360, rv:(Math.random()-.5)*10,
+    col:palette[0|Math.random()*palette.length],
+    shape:Math.random()>.7?'star':'rect',
+    life:1, dec:.006+Math.random()*.009, g:.12
+  };
+}
+
+function drawStar(ctx,cx,cy,r){
+  ctx.beginPath();
+  for(let i=0;i<5;i++){
+    const a=((i*4*Math.PI)/5)-(Math.PI/2);
+    const b=((i*4*Math.PI)/5+(2*Math.PI/5))-(Math.PI/2);
+    i===0?ctx.moveTo(cx+r*Math.cos(a),cy+r*Math.sin(a)):ctx.lineTo(cx+r*Math.cos(a),cy+r*Math.sin(a));
+    ctx.lineTo(cx+(r*.4)*Math.cos(b),cy+(r*.4)*Math.sin(b));
+  }
+  ctx.closePath();ctx.fill();
+}
+
+function burst(x,y,n,palette,speed,upward){
+  for(let i=0;i<n;i++) parts.push(mkPart(x,y,palette||GOLDS,speed||[2,8],upward!==false));
+}
+
+function step(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  parts = parts.filter(p=>p.life>0);
+  parts.forEach(p=>{
+    p.x+=p.vx; p.y+=p.vy; p.vy+=p.g; p.vx*=.992; p.rot+=p.rv; p.life-=p.dec;
+    ctx.save();
+    ctx.translate(p.x,p.y); ctx.rotate(p.rot*Math.PI/180);
+    ctx.globalAlpha = Math.max(0,p.life);
+    ctx.fillStyle = p.col;
+    if(p.shape==='star') drawStar(ctx,0,0,p.w/1.5);
+    else{ctx.beginPath();ctx.ellipse(0,0,p.w/2,p.h/2,0,0,Math.PI*2);ctx.fill();}
+    ctx.restore();
+  });
+  if(parts.length>0) requestAnimationFrame(step);
+  else{busy=false;ctx.clearRect(0,0,canvas.width,canvas.height);}
+}
+
+function ensureLoop(){if(!busy){busy=true;step();}}
+
+/* Feu d'artifice : explosions qui partent du bas */
+function firework(){
+  const w=canvas.width, h=canvas.height;
+  const x = w*.1 + Math.random()*w*.8;
+  const y = h*.15 + Math.random()*h*.4;
+  const pal = Math.random()>.5 ? FESTIF : GOLDS;
+  burst(x, y, 80, pal, [3,10], false);
+  ensureLoop();
+  // trail
+  for(let i=0;i<6;i++){
+    const tx = x+(Math.random()-.5)*30;
+    const ty = y+(Math.random()-.5)*30;
+    setTimeout(()=>{burst(tx,ty,20,GOLDS,[1,4],false);ensureLoop();},i*60);
+  }
+}
+
+function fireShow(){
+  firework();
+  setTimeout(firework, 350);
+  setTimeout(firework, 700);
+  setTimeout(firework, 1050);
+  setTimeout(firework, 1400);
+}
+
+function celebrate(){
+  const w=canvas.width;
+  for(let i=0;i<16;i++){
+    setTimeout(()=>{
+      burst(Math.random()*w, canvas.height*.2+Math.random()*canvas.height*.3, 55, FESTIF, [3,9], false);
+      ensureLoop();
+    }, i*160);
+  }
+}
+
+// Feu d'artifice au chargement
+setTimeout(fireShow, 800);
+// Répétition toutes les 12 secondes
+setInterval(fireShow, 12000);
+
+/* ════════════════════════════════════
+   ROSE PETALS
+   ════════════════════════════════════ */
+(function(){
+  const pc=['#e8c0c0','#f0d0d0','#fce8e8','#d4b0a0','#e8d0c8','#f5e0d8','#fcd5ce'];
+  for(let i=0;i<22;i++){
+    const p=document.createElement('div');
+    p.className='petal';
+    const sz=7+Math.random()*14;
+    p.style.cssText=
+      `left:${Math.random()*100}vw;`+
+      `width:${sz}px;height:${sz}px;`+
+      `border-radius:${36+Math.random()*24}% ${58+Math.random()*20}%;`+
+      `background:${pc[0|Math.random()*pc.length]};`+
+      `animation-duration:${9+Math.random()*15}s;`+
+      `animation-delay:${Math.random()*16}s;`;
+    document.body.appendChild(p);
+  }
+})();
 </script>
+</body>
+</html>
