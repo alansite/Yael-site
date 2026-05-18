@@ -14,20 +14,20 @@
   --dark:  #2a1f08;
   --mid:   #7a5518;
   --light: #a07828;
-  --bg:    #fdf8f0;
-  --bg2:   #faf4e8;
+  --bg:    #ffffff;
+  --bg2:   #ffffff;
   --bord:  rgba(192,144,32,.22);
 }
 html{scroll-behavior:smooth;}
-body{background:var(--bg);font-family:'Cormorant Garamond',serif;color:var(--dark);overflow-x:hidden;}
+body{background:#fff;font-family:'Cormorant Garamond',serif;color:var(--dark);overflow-x:hidden;}
 
 /* MUSIC */
-#music-btn{position:fixed;bottom:24px;right:24px;z-index:3000;width:42px;height:42px;border-radius:50%;background:var(--bg);border:1px solid var(--goldl);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 14px rgba(192,144,32,.16);transition:transform .3s;}
+#music-btn{position:fixed;bottom:24px;right:24px;z-index:3000;width:42px;height:42px;border-radius:50%;background:#fff;border:1px solid var(--goldl);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 14px rgba(192,144,32,.16);transition:transform .3s;}
 #music-btn:hover{transform:scale(1.1);}
 #music-btn svg{width:14px;height:14px;fill:var(--gold);}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(253,248,240,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--bord);display:flex;justify-content:center;align-items:center;height:54px;}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--bord);display:flex;justify-content:center;align-items:center;height:54px;}
 .nav-logo-wrap{padding:0 16px 0 12px;border-right:1px solid var(--bord);display:flex;align-items:center;height:54px;}
 .nav-link{padding:0 14px;font-family:'Marcellus',serif;font-size:10px;letter-spacing:3px;color:var(--mid);text-decoration:none;text-transform:uppercase;line-height:54px;transition:color .25s;}
 .nav-link:hover,.nav-link.active{color:var(--gold);}
@@ -35,7 +35,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(253,248,240
 /* HERO */
 #hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--bg);}
 .hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:.10;}
-.hero-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 5%,rgba(253,248,240,.94) 100%);}
+.hero-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 5%,rgba(255,255,255,.94) 100%);}
 .hero-content{position:relative;z-index:2;text-align:center;padding:96px 28px 76px;max-width:560px;width:100%;}
 .bh{font-size:13px;color:var(--goldl);letter-spacing:3px;font-style:italic;margin-bottom:16px;opacity:0;animation:fadeUp .8s .2s forwards;}
 .hero-logo-wrap{margin:0 auto 20px;opacity:0;animation:fadeUp 1s .1s forwards;display:flex;justify-content:center;}
@@ -58,10 +58,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(253,248,240
 @keyframes bounce{0%,100%{transform:rotate(45deg) translateY(0);}50%{transform:rotate(45deg) translateY(4px);}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
 
-/* SECTIONS — beige */
+/* SECTIONS — tout blanc */
 .sec{position:relative;overflow:hidden;}
-.sec-light{background:var(--bg);}
-.sec-mid{background:var(--bg2);}  /* houppa légèrement plus foncé */
+.sec-light{background:#fff;}
+.sec-mid{background:#fff;}
 .sec-in{max-width:480px;margin:0 auto;padding:64px 32px;text-align:center;position:relative;z-index:2;}
 .wm{position:absolute;font-family:'Great Vibes',cursive;font-size:180px;color:rgba(192,144,32,.02);pointer-events:none;z-index:0;line-height:1;user-select:none;}
 .sec-logo-wrap{margin:0 auto 14px;display:flex;justify-content:center;}
@@ -96,25 +96,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(253,248,240
 .pb-ov{position:absolute;inset:0;background:linear-gradient(to bottom,var(--bg) 0%,transparent 14%,transparent 86%,var(--bg2) 100%);}
 
 /* SÉPARATEUR — blanc */
-.sep{text-align:center;padding:11px 0;background:var(--bg2);}
+.sep{text-align:center;padding:14px 0;background:#f5f0e6;}
 .sep-t{font-family:'Great Vibes',cursive;font-size:20px;color:var(--golll);letter-spacing:10px;}
 
 /* HOUPPA */
-.houppa-title{font-family:'Marcellus',serif;font-size:clamp(16px,4vw,24px);letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.houppa-title{font-family:'Marcellus',serif;font-size:clamp(16px,4vw,24px);letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:4px;}
 
-/* Kol Sasson hébreu */
-.kol-heb{
-  font-family:'Cormorant Garamond',Georgia,serif;
-  font-size:clamp(16px,3.5vw,21px);
-  color:var(--gold);
-  direction:rtl;
-  unicode-bidi:bidi-override;
-  line-height:1.8;
-  letter-spacing:1px;
-  margin:0 auto 8px;
-  display:block;
-}
-.kol-rule{display:flex;align-items:center;gap:10px;margin:0 auto 22px;max-width:220px;}
+/* Kol Sasson — arc SVG bien séparé du titre */
+.kol-arc-svg{display:block;margin:0 auto 4px;overflow:visible;}
+.kol-rule{display:flex;align-items:center;gap:10px;margin:6px auto 22px;max-width:220px;}
 .kol-rule::before,.kol-rule::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,var(--golll),transparent);}
 .kol-rule span{color:var(--goldl);font-size:10px;}
 
@@ -319,8 +309,20 @@ footer p+p{margin-top:4px;font-size:9px;opacity:.55;}
 
     <div class="houppa-title">Houppa &amp; Soirée</div>
 
-    <!-- Kol Sasson hébreu — texte HTML simple, toujours visible -->
-    <p class="kol-heb">קוֹל שָׂשׂוֹן וְקוֹל שִׂמְחָה קוֹל חָתָן וְקוֹל כַּלָּה</p>
+    <!-- Kol Sasson hébreu en arc de cercle — sous le titre, bien séparé -->
+    <svg class="kol-arc-svg" style="margin-top:16px;" width="300" height="56" viewBox="0 0 300 56" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- Arc peu courbé, texte apparaît bien en dessous du titre -->
+        <path id="kolArc" d="M 10,48 A 200,200 0 0,1 290,48"/>
+      </defs>
+      <circle cx="10"  cy="48" r="2" fill="#c09020" opacity="0.45"/>
+      <circle cx="290" cy="48" r="2" fill="#c09020" opacity="0.45"/>
+      <text font-family="Cormorant Garamond,Georgia,serif" font-size="14.5" fill="#c09020" text-anchor="middle">
+        <textPath xlink:href="#kolArc" href="#kolArc" startOffset="50%">
+          קוֹל שָׂשׂוֹן וְקוֹל שִׂמְחָה קוֹל חָתָן וְקוֹל כַּלָּה
+        </textPath>
+      </text>
+    </svg>
     <div class="kol-rule"><span>✦</span></div>
 
     <!-- Familles -->
