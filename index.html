@@ -14,7 +14,6 @@
   --dark:  #2a1f08;
   --mid:   #7a5518;
   --light: #a07828;
-  --bg:    #ffffff;
   --bg2:   #fdfaf5;
   --bg3:   #f7f2e8;
   --bord:  rgba(192,144,32,.22);
@@ -23,127 +22,180 @@ html{scroll-behavior:smooth;}
 body{background:#fff;font-family:'Cormorant Garamond',serif;color:var(--dark);overflow-x:hidden;}
 
 /* ── MUSIC ── */
-#music-btn{position:fixed;bottom:24px;right:24px;z-index:3000;width:44px;height:44px;border-radius:50%;background:#fff;border:1px solid var(--goldl);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 16px rgba(192,144,32,.18);transition:transform .3s;}
+#music-btn{
+  position:fixed;bottom:24px;right:24px;z-index:3000;
+  width:42px;height:42px;border-radius:50%;
+  background:#fff;border:1px solid var(--goldl);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 2px 14px rgba(192,144,32,.16);transition:transform .3s;
+}
 #music-btn:hover{transform:scale(1.1);}
-#music-btn svg{width:16px;height:16px;fill:var(--gold);}
+#music-btn svg{width:14px;height:14px;fill:var(--gold);}
 
 /* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--bord);display:flex;justify-content:center;align-items:center;height:56px;}
-.nav-logo-wrap{padding:0 18px 0 14px;border-right:1px solid var(--bord);display:flex;align-items:center;height:56px;}
-.nav-link{padding:0 15px;font-family:'Marcellus',serif;font-size:10px;letter-spacing:3px;color:var(--mid);text-decoration:none;text-transform:uppercase;line-height:56px;transition:color .25s;}
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:rgba(255,255,255,.97);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--bord);
+  display:flex;justify-content:center;align-items:center;height:54px;
+}
+.nav-logo-wrap{
+  padding:0 16px 0 12px;border-right:1px solid var(--bord);
+  display:flex;align-items:center;height:54px;
+}
+.nav-link{
+  padding:0 14px;font-family:'Marcellus',serif;font-size:10px;
+  letter-spacing:3px;color:var(--mid);text-decoration:none;
+  text-transform:uppercase;line-height:54px;transition:color .25s;
+}
 .nav-link:hover,.nav-link.active{color:var(--gold);}
 
 /* ── HERO ── */
-#hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#fff;}
-.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:.11;}
+#hero{
+  position:relative;min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;background:#fff;
+}
+.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:.10;}
 .hero-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 5%,rgba(255,255,255,.94) 100%);}
-.hero-content{position:relative;z-index:2;text-align:center;padding:100px 36px 80px;max-width:660px;}
-.hero-logo{margin:0 auto 20px;display:block;opacity:0;animation:fadeUp 1s .2s forwards;}
-.bh{font-size:13px;color:var(--goldl);letter-spacing:3px;font-style:italic;margin-bottom:16px;opacity:0;animation:fadeUp .8s .5s forwards;}
-.pre{font-family:'Marcellus',serif;font-size:10px;color:var(--mid);letter-spacing:6px;text-transform:uppercase;margin-bottom:10px;opacity:0;animation:fadeUp .8s .7s forwards;}
-.hero-names{font-family:'Great Vibes',cursive;font-size:clamp(68px,12vw,114px);color:var(--gold);line-height:.88;opacity:0;animation:fadeUp .9s .9s forwards;}
-.hero-amp{display:block;font-size:clamp(42px,7vw,68px);color:var(--goldl);margin:2px 0;}
-.hero-fam{font-size:12px;color:var(--mid);letter-spacing:4px;font-style:italic;margin-top:11px;opacity:0;animation:fadeUp .8s 1.2s forwards;}
-.hero-rule{display:flex;align-items:center;gap:14px;margin:20px auto;max-width:240px;opacity:0;animation:fadeUp .8s 1.4s forwards;}
+.hero-content{
+  position:relative;z-index:2;text-align:center;
+  padding:96px 28px 76px;max-width:560px;width:100%;
+}
+.bh{font-size:13px;color:var(--goldl);letter-spacing:3px;font-style:italic;margin-bottom:16px;opacity:0;animation:fadeUp .8s .2s forwards;}
+.hero-logo-wrap{margin:0 auto 20px;opacity:0;animation:fadeUp 1s .1s forwards;display:flex;justify-content:center;}
+.pre{font-family:'Marcellus',serif;font-size:10px;color:var(--mid);letter-spacing:6px;text-transform:uppercase;margin-bottom:10px;opacity:0;animation:fadeUp .8s .5s forwards;}
+.hero-names{font-family:'Great Vibes',cursive;font-size:clamp(56px,9vw,90px);color:var(--gold);line-height:1.1;opacity:0;animation:fadeUp .9s .7s forwards;}
+.hero-amp{display:block;font-size:clamp(34px,5.5vw,52px);color:var(--goldl);margin:6px 0;}
+.hero-fam{font-size:11px;color:var(--mid);letter-spacing:4px;font-style:italic;margin-top:14px;opacity:0;animation:fadeUp .8s 1s forwards;}
+.hero-rule{display:flex;align-items:center;gap:14px;margin:16px auto;max-width:200px;opacity:0;animation:fadeUp .8s 1.2s forwards;}
 .hero-rule::before,.hero-rule::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,var(--goldl),transparent);}
-.hero-rule span{color:var(--goldl);font-size:12px;}
-.cd{display:flex;gap:9px;justify-content:center;margin-bottom:26px;opacity:0;animation:fadeUp .8s 1.6s forwards;}
+.hero-rule span{color:var(--goldl);font-size:11px;}
+
+/* COUNTDOWN */
+.cd{display:flex;gap:8px;justify-content:center;margin-bottom:22px;opacity:0;animation:fadeUp .8s 1.4s forwards;}
 .cd-b{text-align:center;}
-.cd-box{border:1px solid var(--bord);background:rgba(192,144,32,.04);padding:10px 11px;min-width:58px;margin-bottom:4px;}
-.cd-n{font-family:'Great Vibes',cursive;font-size:40px;color:var(--gold);line-height:1;display:block;}
-.cd-l{font-family:'Marcellus',serif;font-size:8px;letter-spacing:4px;color:var(--mid);text-transform:uppercase;}
-.scroll-cue{font-family:'Marcellus',serif;font-size:9px;letter-spacing:4px;color:var(--light);text-transform:uppercase;opacity:0;animation:fadeUp .8s 1.9s forwards;}
-.scroll-arr{display:block;width:12px;height:12px;border-right:1px solid var(--goldl);border-bottom:1px solid var(--goldl);transform:rotate(45deg);margin:7px auto 0;animation:bounce 1.8s infinite;}
-@keyframes bounce{0%,100%{transform:rotate(45deg) translateY(0);}50%{transform:rotate(45deg) translateY(5px);}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.cd-box{border:1px solid var(--bord);background:rgba(192,144,32,.04);padding:9px 9px;min-width:54px;margin-bottom:3px;}
+.cd-n{font-family:'Great Vibes',cursive;font-size:36px;color:var(--gold);line-height:1;display:block;}
+.cd-l{font-family:'Marcellus',serif;font-size:7px;letter-spacing:3px;color:var(--mid);text-transform:uppercase;}
+.scroll-cue{font-family:'Marcellus',serif;font-size:9px;letter-spacing:4px;color:var(--light);text-transform:uppercase;opacity:0;animation:fadeUp .8s 1.7s forwards;}
+.scroll-arr{display:block;width:10px;height:10px;border-right:1px solid var(--goldl);border-bottom:1px solid var(--goldl);transform:rotate(45deg);margin:5px auto 0;animation:bounce 1.8s infinite;}
+@keyframes bounce{0%,100%{transform:rotate(45deg) translateY(0);}50%{transform:rotate(45deg) translateY(4px);}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
 
 /* ── SECTIONS ── */
 .sec{position:relative;overflow:hidden;}
 .sec-light{background:#fff;}
 .sec-mid{background:var(--bg2);}
-.sec-in{max-width:520px;margin:0 auto;padding:72px 38px;text-align:center;position:relative;z-index:2;}
-.wm{position:absolute;font-family:'Great Vibes',cursive;font-size:210px;color:rgba(192,144,32,.022);pointer-events:none;z-index:0;line-height:1;user-select:none;}
-.sec-logo{margin:0 auto 16px;display:block;}
-.s-eyebrow{font-family:'Marcellus',serif;font-size:9px;color:var(--mid);letter-spacing:4px;text-transform:uppercase;margin-bottom:5px;}
-.s-title{font-family:'Great Vibes',cursive;font-size:52px;color:var(--gold);line-height:1;margin-bottom:3px;}
-.rule{display:flex;align-items:center;gap:12px;margin:12px auto;max-width:200px;}
+.sec-in{max-width:480px;margin:0 auto;padding:64px 32px;text-align:center;position:relative;z-index:2;}
+.wm{position:absolute;font-family:'Great Vibes',cursive;font-size:180px;color:rgba(192,144,32,.02);pointer-events:none;z-index:0;line-height:1;user-select:none;}
+.sec-logo-wrap{margin:0 auto 14px;display:flex;justify-content:center;}
+.s-eyebrow{font-family:'Marcellus',serif;font-size:9px;color:var(--mid);letter-spacing:4px;text-transform:uppercase;margin-bottom:6px;}
+.s-title{font-family:'Great Vibes',cursive;font-size:48px;color:var(--gold);line-height:1.1;margin-bottom:6px;}
+.rule{display:flex;align-items:center;gap:12px;margin:10px auto;max-width:180px;}
 .rule::before,.rule::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,var(--golll),transparent);}
-.rule span{color:var(--goldl);font-size:11px;}
+.rule span{color:var(--goldl);font-size:10px;}
 
 /* ── MAIRIE ── */
-.mairie-names{font-family:'Great Vibes',cursive;font-size:clamp(40px,8vw,58px);color:var(--gold);line-height:1.05;margin-bottom:2px;}
-.mairie-amp2{font-size:.78em;color:var(--goldl);}
-.mairie-fam{font-size:11px;letter-spacing:4px;color:var(--mid);font-style:italic;margin-bottom:18px;}
-.mairie-se-diront{font-family:'Marcellus',serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--mid);margin-bottom:0;}
-.mairie-oui{font-family:'Great Vibes',cursive;font-size:clamp(90px,19vw,138px);color:var(--gold);line-height:.82;display:block;margin:0 auto 10px;}
-.mairie-date-line{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:var(--mid);line-height:1.5;}
-.dc-place{font-size:16px;color:var(--gold);font-style:italic;margin:16px 0 3px;}
+.mairie-names{font-family:'Great Vibes',cursive;font-size:clamp(34px,6vw,48px);color:var(--gold);line-height:1.2;margin-bottom:6px;}
+.mairie-fam{font-size:11px;letter-spacing:4px;color:var(--mid);font-style:italic;margin-bottom:24px;}
+.mairie-se-diront{font-family:'Marcellus',serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--mid);margin-bottom:8px;display:block;}
+.mairie-oui{font-family:'Great Vibes',cursive;font-size:clamp(64px,13vw,100px);color:var(--gold);line-height:1.05;display:block;margin:0 auto 18px;}
+.mairie-date-line{font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:var(--mid);line-height:1.6;}
+.dc-place{font-size:15px;color:var(--gold);font-style:italic;margin:14px 0 2px;}
 .dc-sub{font-size:12px;color:var(--mid);}
-.vin{margin:16px 0;padding:14px 20px;border:1px solid var(--bord);background:rgba(192,144,32,.04);}
+.vin{margin:14px 0;padding:12px 16px;border:1px solid var(--bord);background:rgba(192,144,32,.03);}
 .vin-eyebrow{font-family:'Marcellus',serif;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--mid);margin-bottom:2px;}
-.vin-title{font-family:'Great Vibes',cursive;font-size:33px;color:var(--gold);line-height:1.1;}
+.vin-title{font-family:'Great Vibes',cursive;font-size:28px;color:var(--gold);line-height:1.1;}
 .vin-note{font-size:11px;color:var(--mid);font-style:italic;margin-top:2px;}
 
 /* ── BUTTONS ── */
-.btn-row{display:flex;gap:10px;justify-content:center;margin-top:20px;flex-wrap:wrap;}
-.btn{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--goldl);color:var(--gold);background:transparent;padding:9px 20px;font-family:'Marcellus',serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:all .25s;}
+.btn-row{display:flex;gap:10px;justify-content:center;margin-top:16px;flex-wrap:wrap;}
+.btn{
+  display:inline-flex;align-items:center;gap:6px;
+  border:1px solid var(--goldl);color:var(--gold);background:transparent;
+  padding:9px 18px;font-family:'Marcellus',serif;font-size:10px;
+  letter-spacing:2px;text-transform:uppercase;text-decoration:none;
+  cursor:pointer;transition:all .25s;
+}
 .btn:hover,.btn-f{background:var(--gold);color:#fff;border-color:var(--gold);}
+.btn-f:hover{background:var(--dark);border-color:var(--dark);}
 
 /* ── PHOTO BAND ── */
-.pb{width:100%;height:300px;position:relative;overflow:hidden;background:var(--bg2);}
-.pb img{width:100%;height:100%;object-fit:cover;object-position:center 40%;opacity:.62;}
+.pb{width:100%;height:270px;position:relative;overflow:hidden;background:var(--bg2);}
+.pb img{width:100%;height:100%;object-fit:cover;object-position:center 35%;}
 .pb-ov{position:absolute;inset:0;background:linear-gradient(to bottom,#fff 0%,transparent 14%,transparent 86%,var(--bg2) 100%);}
 
-.sep{text-align:center;padding:13px 0;background:var(--bg3);}
-.sep-t{font-family:'Great Vibes',cursive;font-size:22px;color:var(--golll);letter-spacing:10px;}
+.sep{text-align:center;padding:11px 0;background:var(--bg3);}
+.sep-t{font-family:'Great Vibes',cursive;font-size:20px;color:var(--golll);letter-spacing:10px;}
 
 /* ── HOUPPA ── */
-.houppa-title{font-family:'Marcellus',serif;font-size:clamp(18px,5vw,27px);letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
-.kol-arc-wrap{margin:0 auto 20px;display:block;overflow:visible;}
-.houppa-families{display:flex;justify-content:space-between;gap:10px;margin:0 0 18px;}
+.houppa-title{font-family:'Marcellus',serif;font-size:clamp(16px,4vw,24px);letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.kol-arc-wrap{margin:0 auto 18px;display:block;}
+.houppa-families{display:flex;justify-content:space-between;gap:8px;margin:0 0 14px;}
 .houppa-fam-col{flex:1;}
 .houppa-fam-col:last-child{text-align:right;}
-.houppa-fam-label{font-family:'Marcellus',serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--mid);margin-bottom:1px;}
-.houppa-fam-name{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:var(--goldl);line-height:1.3;}
-.houppa-fam-prenom{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--mid);font-style:italic;}
-.houppa-invite{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:var(--mid);line-height:1.7;margin:11px 0;}
-.houppa-couple{font-family:'Great Vibes',cursive;font-size:clamp(46px,10vw,74px);color:var(--gold);line-height:1;margin:5px 0 2px;}
-.houppa-couple-heb{font-size:clamp(18px,4vw,26px);color:var(--goldl);direction:rtl;margin:3px 0 14px;font-family:'Cormorant Garamond',serif;font-weight:300;}
-.houppa-date{font-family:'Marcellus',serif;font-size:14px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:2px;}
-.houppa-time{font-family:'Marcellus',serif;font-size:19px;color:var(--gold);letter-spacing:2px;margin-bottom:11px;}
-.houppa-lieu{font-family:'Marcellus',serif;font-size:14px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin:11px 0 2px;}
-.houppa-addr{font-size:13px;color:var(--mid);line-height:1.6;}
-.houppa-reception{font-size:15px;font-style:italic;color:var(--mid);margin:13px 0 5px;}
-.houppa-pensee{font-size:13px;font-style:italic;color:var(--mid);line-height:1.7;margin:7px 0;}
+.houppa-fam-label{font-family:'Marcellus',serif;font-size:7px;letter-spacing:2px;text-transform:uppercase;color:var(--mid);margin-bottom:1px;}
+.houppa-fam-name{font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:var(--goldl);line-height:1.3;}
+.houppa-fam-prenom{font-family:'Cormorant Garamond',serif;font-size:12px;color:var(--mid);font-style:italic;}
+.houppa-invite{font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:var(--mid);line-height:1.7;margin:9px 0;}
+.houppa-couple{font-family:'Great Vibes',cursive;font-size:clamp(40px,8vw,64px);color:var(--gold);line-height:1;margin:4px 0 2px;}
+.houppa-couple-heb{font-size:clamp(16px,3vw,22px);color:var(--goldl);direction:rtl;margin:3px 0 12px;font-family:'Cormorant Garamond',serif;font-weight:300;}
+.houppa-date{font-family:'Marcellus',serif;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:2px;}
+.houppa-time{font-family:'Marcellus',serif;font-size:17px;color:var(--gold);letter-spacing:2px;margin-bottom:9px;}
+.houppa-lieu{font-family:'Marcellus',serif;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin:9px 0 2px;}
+.houppa-addr{font-size:12px;color:var(--mid);line-height:1.6;}
+.houppa-reception{font-size:13px;font-style:italic;color:var(--mid);margin:11px 0 4px;}
+.houppa-pensee{font-size:12px;font-style:italic;color:var(--mid);line-height:1.7;margin:5px 0;}
 
 /* ── FORM ── */
-.fg{margin-bottom:11px;text-align:left;}
-.frow{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-.fg label{display:block;font-family:'Marcellus',serif;font-size:8px;color:var(--mid);margin-bottom:3px;letter-spacing:1.5px;text-transform:uppercase;}
-.fg input,.fg select,.fg textarea{width:100%;border:1px solid var(--bord);padding:9px 12px;font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--dark);background:#fff;outline:none;transition:border-color .2s;}
-.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--gold);}
-.pb-block{background:#fff;border:1px solid var(--bord);padding:13px 16px;margin-bottom:11px;text-align:left;}
-.pb-label{font-size:14px;color:var(--dark);font-style:italic;margin-bottom:7px;font-weight:600;}
-.rrow{display:flex;gap:18px;margin-bottom:6px;}
-.ropt{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:15px;color:var(--dark);}
-.ropt input{accent-color:var(--gold);width:14px;height:14px;}
-.nbrow{display:none;align-items:center;gap:8px;font-size:13px;font-style:italic;color:var(--mid);margin-top:6px;}
-.nbrow.on{display:flex;}
-.nbrow select{width:72px;padding:4px 7px;border:1px solid var(--bord);background:#fff;font-family:'Cormorant Garamond',serif;font-size:14px;}
-.ok-msg{display:none;margin-top:14px;padding:16px 20px;border:1px solid var(--bord);background:rgba(192,144,32,.05);font-style:italic;font-size:16px;color:var(--gold);line-height:1.7;}
-.err-msg{display:none;margin-top:10px;padding:12px 16px;border:1px solid rgba(180,60,60,.2);font-style:italic;font-size:14px;color:#8a3030;}
-.wait-msg{display:none;margin-top:10px;font-size:14px;color:var(--mid);font-style:italic;text-align:center;}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .9s,transform .9s;}
+.fg{margin-bottom:12px;text-align:left;}
+.fg label{display:block;font-family:'Marcellus',serif;font-size:9px;color:var(--mid);margin-bottom:4px;letter-spacing:1.5px;text-transform:uppercase;}
+.fg input,.fg textarea{
+  width:100%;border:1px solid var(--bord);
+  padding:10px 12px;font-family:'Cormorant Garamond',serif;
+  font-size:16px;color:var(--dark);background:#fff;
+  outline:none;transition:border-color .2s;
+  -webkit-appearance:none;border-radius:0;
+}
+.fg input:focus,.fg textarea:focus{border-color:var(--gold);}
+
+/* présence block */
+.pres-block{border:1px solid var(--bord);padding:14px 16px;margin-bottom:12px;text-align:left;background:#fff;}
+.pres-title{font-family:'Marcellus',serif;font-size:9px;color:var(--mid);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.radio-row{display:flex;gap:20px;margin-bottom:0;}
+.radio-opt{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:15px;color:var(--dark);font-style:italic;}
+.radio-opt input[type=radio]{accent-color:var(--gold);width:14px;height:14px;cursor:pointer;}
+
+/* nb invités — caché par défaut */
+.nb-row{display:none;align-items:center;gap:10px;margin-top:10px;font-size:14px;font-style:italic;color:var(--mid);}
+.nb-row.on{display:flex;}
+.nb-row input[type=number]{
+  width:60px;border:1px solid var(--bord);
+  padding:6px 8px;text-align:center;
+  font-family:'Cormorant Garamond',serif;font-size:16px;
+  color:var(--dark);background:#fff;outline:none;
+  -webkit-appearance:none;border-radius:0;
+}
+.nb-row input[type=number]:focus{border-color:var(--gold);}
+
+.ok-msg{display:none;margin-top:14px;padding:16px 18px;border:1px solid var(--bord);background:rgba(192,144,32,.05);font-style:italic;font-size:15px;color:var(--gold);line-height:1.7;text-align:center;}
+.err-msg{display:none;margin-top:10px;padding:12px 15px;border:1px solid rgba(180,60,60,.2);font-style:italic;font-size:13px;color:#8a3030;}
+.wait-msg{display:none;margin-top:10px;font-size:13px;color:var(--mid);font-style:italic;text-align:center;}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .85s,transform .85s;}
 .reveal.in{opacity:1;transform:translateY(0);}
-footer{background:var(--bg3);padding:24px 36px;text-align:center;border-top:1px solid var(--bord);}
+
+footer{background:var(--bg3);padding:22px 28px;text-align:center;border-top:1px solid var(--bord);}
 footer p{font-size:10px;letter-spacing:3px;color:var(--mid);font-style:italic;}
-footer p+p{margin-top:5px;font-size:9px;opacity:.55;}
+footer p+p{margin-top:4px;font-size:9px;opacity:.55;}
 </style>
 </head>
 <body>
 
-<div id="music-btn" onclick="toggleMusic()">
-  <svg id="ico-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+<!-- MUSIC -->
+<div id="music-btn" onclick="toggleMusic()" title="Musique">
+  <svg id="ico-play"  viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
   <svg id="ico-pause" viewBox="0 0 24 24" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
 </div>
 <audio id="bgm" loop><source src="musique.mp3" type="audio/mpeg"></audio>
@@ -152,35 +204,28 @@ footer p+p{margin-top:5px;font-size:9px;opacity:.55;}
 <nav>
   <div class="nav-logo-wrap">
     <!--
-      LOGO NAV (petit) — fidèle à l'image de référence :
-      Y en haut à gauche, & au centre, E en bas à droite
-      demi-cercle ouvert à gauche + branche végétale gauche
+      Logo nav 28px rendu — viewBox 120×120
+      Y haut-gauche · & centre · E bas-droite
+      Demi-cercle + branche gauche — police fine, pas de gras
     -->
-    <svg width="42" height="42" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Demi-cercle (arc ouvert côté gauche, comme la référence) -->
-      <path d="M 50,5 A 45,45 0 1,1 50,95" stroke="#c09020" stroke-width="2" fill="none" opacity="0.7"/>
-      <!-- Branche végétale gauche -->
-      <g stroke="#c09020" stroke-width="1" fill="none" opacity="0.65">
-        <line x1="12" y1="75" x2="12" y2="30"/>
-        <path d="M12 65 Q4 58 8 50 Q4 42 12 48"/>
-        <path d="M12 55 Q3 46 7 38 Q3 30 12 38"/>
-        <path d="M12 70 Q5 65 7 58"/>
-      </g>
-      <!-- Y — haut gauche, serif bold -->
-      <text x="26" y="50"
-        font-family="Georgia, 'Times New Roman', serif"
-        font-size="40" font-weight="700"
-        fill="#c09020">Y</text>
-      <!-- & — centre, plus petit -->
-      <text x="44" y="64"
-        font-family="Georgia, 'Times New Roman', serif"
-        font-size="28" font-weight="700"
-        fill="#c09020">&amp;</text>
-      <!-- E — bas droite, serif bold -->
-      <text x="58" y="82"
-        font-family="Georgia, 'Times New Roman', serif"
-        font-size="36" font-weight="700"
-        fill="#c09020">E</text>
+    <svg width="28" height="28" viewBox="0 0 120 120" fill="none">
+      <path d="M60,5 A55,55 0 1,1 60,115" stroke="#c09020" stroke-width="2.5" fill="none"/>
+      <line x1="17" y1="95" x2="17" y2="35" stroke="#c09020" stroke-width="1.5"/>
+      <path d="M17,80 Q5,70 9,60 Q5,50 17,56" stroke="#c09020" stroke-width="1.2" fill="none"/>
+      <path d="M17,62 Q4,52 8,42 Q4,32 17,39"  stroke="#c09020" stroke-width="1.2" fill="none"/>
+      <path d="M17,35 Q12,27 17,21 Q22,27 17,35Z" stroke="#c09020" stroke-width="1" fill="none"/>
+      <!-- Y -->
+      <text x="32" y="60"
+        font-family="Georgia,'Times New Roman',serif"
+        font-size="38" font-weight="400" fill="#c09020">Y</text>
+      <!-- & -->
+      <text x="55" y="78"
+        font-family="Georgia,'Times New Roman',serif"
+        font-size="26" font-weight="400" fill="#c09020">&amp;</text>
+      <!-- E -->
+      <text x="73" y="98"
+        font-family="Georgia,'Times New Roman',serif"
+        font-size="34" font-weight="400" fill="#c09020">E</text>
     </svg>
   </div>
   <a class="nav-link" href="#hero">Accueil</a>
@@ -197,40 +242,39 @@ footer p+p{margin-top:5px;font-size:9px;opacity:.55;}
     <div class="bh">ב״ה</div>
 
     <!--
-      LOGO HERO (grand) — même fidélité à la référence :
-      Y en haut à gauche, grand & au centre, E en bas à droite
-      demi-cercle + branche végétale gauche dessinée finement
+      Logo hero 130px rendu — viewBox 180×180
+      Y haut-gauche · & centre-droit du Y · E bas-droite
+      Police fine (400), pas de gras — sans aucun chevauchement
     -->
-    <svg class="hero-logo" width="160" height="160" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Demi-cercle ouvert côté gauche -->
-      <path d="M 100,8 A 92,92 0 1,1 100,192" stroke="#c09020" stroke-width="2.2" fill="none" opacity="0.65"/>
+    <div class="hero-logo-wrap">
+      <svg width="130" height="130" viewBox="0 0 180 180" fill="none">
+        <!-- demi-cercle ouvert à gauche -->
+        <path d="M90,6 A84,84 0 1,1 90,174" stroke="#c09020" stroke-width="2" fill="none" opacity="0.85"/>
+        <!-- tige branche gauche -->
+        <line x1="20" y1="148" x2="20" y2="46" stroke="#c09020" stroke-width="1.6" opacity="0.7"/>
+        <!-- feuilles -->
+        <path d="M20,132 Q6,120 10,108 Q6,96  20,103" stroke="#c09020" stroke-width="1.2" fill="none" opacity="0.65"/>
+        <path d="M20,114 Q5,102 9,90  Q5,78  20,86"  stroke="#c09020" stroke-width="1.2" fill="none" opacity="0.65"/>
+        <path d="M20,96  Q6,85  10,74  Q6,63  20,70"  stroke="#c09020" stroke-width="1.1" fill="none" opacity="0.6"/>
+        <path d="M20,78  Q7,68  11,59"                stroke="#c09020" stroke-width="1"   fill="none" opacity="0.55"/>
+        <path d="M20,46  Q15,38 20,32 Q25,38 20,46Z"  stroke="#c09020" stroke-width="1"   fill="none" opacity="0.5"/>
 
-      <!-- Branche végétale gauche — tige principale -->
-      <line x1="22" y1="158" x2="22" y2="60" stroke="#c09020" stroke-width="1.4" opacity="0.6"/>
-      <!-- feuilles gauche -->
-      <path d="M22 145 Q7 132 13 118 Q7 104 22 114" stroke="#c09020" stroke-width="1.1" fill="none" opacity="0.55"/>
-      <path d="M22 130 Q6 115 12 100 Q6 85 22 97" stroke="#c09020" stroke-width="1.1" fill="none" opacity="0.55"/>
-      <path d="M22 115 Q8 100 14 88 Q8 76 22 84" stroke="#c09020" stroke-width="1.1" fill="none" opacity="0.5"/>
-      <path d="M22 100 Q9 88 14 78" stroke="#c09020" stroke-width="1" fill="none" opacity="0.45"/>
-      <!-- petite feuille pointe -->
-      <path d="M22 60 Q17 52 22 46 Q27 52 22 60Z" stroke="#c09020" stroke-width="0.9" fill="none" opacity="0.5"/>
+        <!-- Y — en haut, sans toucher E ni & -->
+        <text x="44" y="90"
+          font-family="Georgia,'Times New Roman',serif"
+          font-size="66" font-weight="400" fill="#c09020">Y</text>
 
-      <!-- Y — grand, haut gauche -->
-      <text x="46" y="108"
-        font-family="Georgia, 'Times New Roman', serif"
-        font-size="90" font-weight="700"
-        fill="#c09020">Y</text>
-      <!-- & — centre, taille intermédiaire -->
-      <text x="80" y="140"
-        font-family="Georgia, 'Times New Roman', serif"
-        font-size="62" font-weight="700"
-        fill="#c09020">&amp;</text>
-      <!-- E — bas droite, grand -->
-      <text x="118" y="170"
-        font-family="Georgia, 'Times New Roman', serif"
-        font-size="76" font-weight="700"
-        fill="#c09020">E</text>
-    </svg>
+        <!-- & — sous le ventre du Y, à droite -->
+        <text x="84" y="120"
+          font-family="Georgia,'Times New Roman',serif"
+          font-size="40" font-weight="400" fill="#c09020">&amp;</text>
+
+        <!-- E — en bas à droite, sous & -->
+        <text x="118" y="154"
+          font-family="Georgia,'Times New Roman',serif"
+          font-size="52" font-weight="400" fill="#c09020">E</text>
+      </svg>
+    </div>
 
     <p class="pre">Mariage de</p>
     <div class="hero-names">Yael<span class="hero-amp">&amp;</span>Elias</div>
@@ -254,30 +298,29 @@ footer p+p{margin-top:5px;font-size:9px;opacity:.55;}
   <div class="wm" style="right:-30px;top:-10px;">M</div>
   <div class="sec-in reveal">
 
-    <!-- Mini logo section -->
-    <svg class="sec-logo" width="44" height="44" viewBox="0 0 100 100" fill="none">
-      <path d="M 50,5 A 45,45 0 1,1 50,95" stroke="#c09020" stroke-width="2.5" fill="none" opacity="0.65"/>
-      <g stroke="#c09020" stroke-width="1.2" fill="none" opacity="0.6">
-        <line x1="12" y1="75" x2="12" y2="32"/>
-        <path d="M12 65 Q4 57 8 50 Q4 43 12 48"/>
-        <path d="M12 52 Q4 44 8 37 Q4 30 12 36"/>
-      </g>
-      <text x="26" y="50" font-family="Georgia,serif" font-size="40" font-weight="700" fill="#c09020">Y</text>
-      <text x="44" y="64" font-family="Georgia,serif" font-size="28" font-weight="700" fill="#c09020">&amp;</text>
-      <text x="58" y="82" font-family="Georgia,serif" font-size="36" font-weight="700" fill="#c09020">E</text>
-    </svg>
+    <div class="sec-logo-wrap">
+      <svg width="36" height="36" viewBox="0 0 120 120" fill="none">
+        <path d="M60,5 A55,55 0 1,1 60,115" stroke="#c09020" stroke-width="2.5" fill="none"/>
+        <line x1="17" y1="95" x2="17" y2="35" stroke="#c09020" stroke-width="1.5"/>
+        <path d="M17,80 Q5,70 9,60 Q5,50 17,56" stroke="#c09020" stroke-width="1.2" fill="none"/>
+        <path d="M17,62 Q4,52 8,42 Q4,32 17,39"  stroke="#c09020" stroke-width="1.2" fill="none"/>
+        <text x="32" y="60" font-family="Georgia,serif" font-size="38" font-weight="400" fill="#c09020">Y</text>
+        <text x="55" y="78" font-family="Georgia,serif" font-size="26" font-weight="400" fill="#c09020">&amp;</text>
+        <text x="73" y="98" font-family="Georgia,serif" font-size="34" font-weight="400" fill="#c09020">E</text>
+      </svg>
+    </div>
 
     <p class="s-eyebrow">Cérémonie Civile</p>
     <div class="s-title">La Mairie</div>
-    <div class="rule"><span>❧</span></div>
+    <div class="rule" style="margin-bottom:20px;"><span>❧</span></div>
 
-    <div class="mairie-names">Yael <span class="mairie-amp2">&amp;</span> Elias</div>
+    <div class="mairie-names">Yael <span style="font-size:.75em;color:var(--goldl);">&amp;</span> Elias</div>
     <p class="mairie-fam">Azoulay &nbsp;·&nbsp; Alimi</p>
     <p class="mairie-se-diront">se diront</p>
     <span class="mairie-oui">Oui</span>
     <p class="mairie-date-line">le Mercredi 26 Août 2026 &nbsp;·&nbsp; 14h00</p>
 
-    <div class="rule" style="margin-top:18px;"><span>✦</span></div>
+    <div class="rule" style="margin-top:15px;"><span>✦</span></div>
     <p class="dc-place">Mairie de Maisons-Alfort</p>
     <p class="dc-sub">Place du Général de Gaulle, 94700 Maisons-Alfort</p>
 
@@ -288,38 +331,44 @@ footer p+p{margin-top:5px;font-size:9px;opacity:.55;}
     </div>
 
     <div class="btn-row">
-      <a class="btn" href="https://waze.com/ul?ll=48.8143,2.4419&navigate=yes&zoom=17" target="_blank" rel="noopener">🧭 Waze</a>
-      <a class="btn" href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0APRODID:-//YE//FR%0ABEGIN:VEVENT%0ADTSTART:20260826T120000Z%0ADTEND:20260826T140000Z%0ASUMMARY:Mariage Yael %26 Elias — Mairie%0ALOCATION:Mairie de Maisons-Alfort%0AEND:VEVENT%0AEND:VCALENDAR" download="mariage-mairie.ics">🍎 Calendrier</a>
+      <a class="btn" href="https://waze.com/ul?ll=48.8143,2.4419&navigate=yes&zoom=17" target="_blank" rel="noopener">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/></svg>
+        Waze
+      </a>
+      <a class="btn" href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0APRODID:-//YE//FR%0ABEGIN:VEVENT%0ADTSTART:20260826T120000Z%0ADTEND:20260826T140000Z%0ASUMMARY:Mariage Yael %26 Elias — Mairie%0ALOCATION:Mairie de Maisons-Alfort%0AEND:VEVENT%0AEND:VCALENDAR" download="mariage-mairie.ics">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Calendrier
+      </a>
     </div>
   </div>
 </section>
 
-<!-- PHOTO INTERCONTINENTAL -->
+<!-- PHOTO INTERCONTINENTAL — juste au-dessus de la section Houppa -->
 <div class="pb">
-  <img src="https://alansite.github.io/Yael-site/intercontinental.jpg" alt="InterContinental Paris Le Grand"
-    onerror="this.src='https://dynamic-media-cdn.tripadvisor.com/media/photo-o/29/0a/dc/a5/intercontinental-paris.jpg?w=900&h=-1&s=1'">
+  <img src="image.jpeg" alt="InterContinental Paris Le Grand — Salle de la Houppa"
+       onerror="this.src='intercontinental.jpg'">
   <div class="pb-ov"></div>
 </div>
 
 <!-- ═══ HOUPPA ═══ -->
 <section class="sec sec-mid" id="houppa">
-  <div class="wm" style="left:-30px;bottom:-30px;">H</div>
+  <div class="wm" style="left:-25px;bottom:-25px;">H</div>
   <div class="sec-in reveal">
 
     <div class="houppa-title">Houppa &amp; Soirée</div>
 
-    <!-- Kol Sasson en arc — texte hébreu courbé -->
-    <svg class="kol-arc-wrap" width="100%" height="68" viewBox="0 0 310 68" preserveAspectRatio="xMidYMid meet">
+    <!-- Kol Sasson en arc -->
+    <svg class="kol-arc-wrap" width="100%" height="60" viewBox="0 0 290 60" preserveAspectRatio="xMidYMid meet">
       <defs>
-        <path id="arc1" d="M 14,62 A 142,142 0 0,1 296,62" fill="none"/>
+        <path id="arc1" d="M10,54 A133,133 0 0,1 280,54" fill="none"/>
       </defs>
-      <text font-family="'Cormorant Garamond',Georgia,serif" font-size="16" fill="#c09020">
+      <text font-family="'Cormorant Garamond',Georgia,serif" font-size="15" fill="#c09020">
         <textPath href="#arc1" startOffset="50%" text-anchor="middle">
           קוֹל שָׂשׂוֹן וְקוֹל שִׂמְחָה קוֹל חָתָן וְקוֹל כַּלָּה
         </textPath>
       </text>
-      <circle cx="14" cy="62" r="2" fill="#c09020" opacity="0.4"/>
-      <circle cx="296" cy="62" r="2" fill="#c09020" opacity="0.4"/>
+      <circle cx="10"  cy="54" r="2" fill="#c09020" opacity="0.4"/>
+      <circle cx="280" cy="54" r="2" fill="#c09020" opacity="0.4"/>
     </svg>
 
     <!-- Familles -->
@@ -346,13 +395,19 @@ footer p+p{margin-top:5px;font-size:9px;opacity:.55;}
     <p class="houppa-time">à 18h30</p>
     <p class="houppa-lieu">InterContinental Paris Le Grand</p>
     <p class="houppa-addr">2 Rue Scribe, 75009 Paris</p>
-    <div class="rule" style="margin:14px auto;"><span>✦</span></div>
+    <div class="rule" style="margin:12px auto;"><span>✦</span></div>
     <p class="houppa-reception">La cérémonie sera suivie de la réception</p>
     <p class="houppa-pensee">En ce jour de joie, une pensée remplie d'émotion<br>pour ceux qui restent à jamais dans nos cœurs…</p>
 
-    <div class="btn-row" style="margin-top:16px;">
-      <a class="btn" href="https://waze.com/ul?ll=48.8732,2.3314&navigate=yes&zoom=17" target="_blank" rel="noopener">🧭 Waze</a>
-      <a class="btn" href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0APRODID:-//YE//FR%0ABEGIN:VEVENT%0ADTSTART:20260901T163000Z%0ADTEND:20260902T000000Z%0ASUMMARY:Mariage Yael %26 Elias — Houppa%0ALOCATION:InterContinental Paris Le Grand%0AEND:VEVENT%0AEND:VCALENDAR" download="mariage-houppa.ics">🍎 Calendrier</a>
+    <div class="btn-row" style="margin-top:14px;">
+      <a class="btn" href="https://waze.com/ul?ll=48.8732,2.3314&navigate=yes&zoom=17" target="_blank" rel="noopener">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/></svg>
+        Waze
+      </a>
+      <a class="btn" href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0APRODID:-//YE//FR%0ABEGIN:VEVENT%0ADTSTART:20260901T163000Z%0ADTEND:20260902T000000Z%0ASUMMARY:Mariage Yael %26 Elias — Houppa%0ALOCATION:InterContinental Paris Le Grand%0AEND:VEVENT%0AEND:VCALENDAR" download="mariage-houppa.ics">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Calendrier
+      </a>
     </div>
   </div>
 </section>
@@ -361,60 +416,88 @@ footer p+p{margin-top:5px;font-size:9px;opacity:.55;}
 
 <!-- ═══ RÉPONSE ═══ -->
 <section class="sec sec-light" id="reponse">
-  <div class="wm" style="right:-30px;top:-10px;">R</div>
+  <div class="wm" style="right:-25px;top:-10px;">R</div>
   <div class="sec-in reveal">
 
-    <svg class="sec-logo" width="44" height="44" viewBox="0 0 100 100" fill="none">
-      <path d="M 50,5 A 45,45 0 1,1 50,95" stroke="#c09020" stroke-width="2.5" fill="none" opacity="0.65"/>
-      <g stroke="#c09020" stroke-width="1.2" fill="none" opacity="0.6">
-        <line x1="12" y1="75" x2="12" y2="32"/>
-        <path d="M12 65 Q4 57 8 50 Q4 43 12 48"/>
-        <path d="M12 52 Q4 44 8 37 Q4 30 12 36"/>
-      </g>
-      <text x="26" y="50" font-family="Georgia,serif" font-size="40" font-weight="700" fill="#c09020">Y</text>
-      <text x="44" y="64" font-family="Georgia,serif" font-size="28" font-weight="700" fill="#c09020">&amp;</text>
-      <text x="58" y="82" font-family="Georgia,serif" font-size="36" font-weight="700" fill="#c09020">E</text>
-    </svg>
+    <div class="sec-logo-wrap">
+      <svg width="36" height="36" viewBox="0 0 120 120" fill="none">
+        <path d="M60,5 A55,55 0 1,1 60,115" stroke="#c09020" stroke-width="2.5" fill="none"/>
+        <line x1="17" y1="95" x2="17" y2="35" stroke="#c09020" stroke-width="1.5"/>
+        <path d="M17,80 Q5,70 9,60 Q5,50 17,56" stroke="#c09020" stroke-width="1.2" fill="none"/>
+        <path d="M17,62 Q4,52 8,42 Q4,32 17,39"  stroke="#c09020" stroke-width="1.2" fill="none"/>
+        <text x="32" y="60" font-family="Georgia,serif" font-size="38" font-weight="400" fill="#c09020">Y</text>
+        <text x="55" y="78" font-family="Georgia,serif" font-size="26" font-weight="400" fill="#c09020">&amp;</text>
+        <text x="73" y="98" font-family="Georgia,serif" font-size="34" font-weight="400" fill="#c09020">E</text>
+      </svg>
+    </div>
 
     <div class="s-title">Réponse</div>
     <div class="rule" style="margin-bottom:22px;"><span>✦</span></div>
 
-    <div class="frow">
-      <div class="fg"><label>Monsieur — Nom</label><input id="nom-m" type="text" placeholder="Nom de famille"></div>
-      <div class="fg"><label>Madame — Nom</label><input id="nom-f" type="text" placeholder="Nom de famille"></div>
-    </div>
-    <div class="frow">
-      <div class="fg"><label>Prénom (M.)</label><input id="prenom-m" type="text" placeholder="Prénom"></div>
-      <div class="fg"><label>Prénom (Mme)</label><input id="prenom-f" type="text" placeholder="Prénom"></div>
-    </div>
-    <div class="pb-block">
-      <div class="pb-label">Présence à La Mairie</div>
-      <div class="rrow">
-        <label class="ropt"><input type="radio" name="mairie" value="oui" onchange="showNb('mairie',true)"> Oui</label>
-        <label class="ropt"><input type="radio" name="mairie" value="non" onchange="showNb('mairie',false)"> Non</label>
-      </div>
-      <div class="nbrow" id="nbm"><span>Nombre de personnes :</span>
-        <select id="nb-mairie"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select>
-      </div>
-    </div>
-    <div class="pb-block">
-      <div class="pb-label">Présence à la Houppa &amp; Soirée</div>
-      <div class="rrow">
-        <label class="ropt"><input type="radio" name="houppa" value="oui" onchange="showNb('houppa',true)"> Oui</label>
-        <label class="ropt"><input type="radio" name="houppa" value="non" onchange="showNb('houppa',false)"> Non</label>
-      </div>
-      <div class="nbrow" id="nbh"><span>Nombre de personnes :</span>
-        <select id="nb-houppa"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select>
-      </div>
+    <!-- Nom & Prénom (un seul champ nom, un seul champ prénom) -->
+    <div class="fg">
+      <label>Nom</label>
+      <input id="f-nom" type="text" placeholder="Votre nom de famille">
     </div>
     <div class="fg">
-      <label>Un petit mot pour les mariés</label>
-      <textarea id="msg" rows="4" placeholder="Laissez-nous un message…" style="resize:vertical;"></textarea>
+      <label>Prénom</label>
+      <input id="f-prenom" type="text" placeholder="Votre prénom">
     </div>
-    <button class="btn btn-f" id="submit-btn" onclick="sendForm()" style="margin-top:7px;width:100%;justify-content:center;">Envoyer ma réponse</button>
+
+    <!-- Présence Mairie -->
+    <div class="pres-block">
+      <p class="pres-title">Présence à la Mairie — 26 Août</p>
+      <div class="radio-row">
+        <label class="radio-opt">
+          <input type="radio" name="mairie" value="oui" onchange="showNb('mairie',true)">
+          Oui
+        </label>
+        <label class="radio-opt">
+          <input type="radio" name="mairie" value="non" onchange="showNb('mairie',false)">
+          Non
+        </label>
+      </div>
+      <div class="nb-row" id="nb-mairie">
+        <span>Nombre d'invités :</span>
+        <input type="number" id="nb-mairie-val" min="1" max="20" value="1">
+      </div>
+    </div>
+
+    <!-- Présence Houppa -->
+    <div class="pres-block">
+      <p class="pres-title">Présence à la Houppa &amp; Soirée — 1<sup>er</sup> Septembre</p>
+      <div class="radio-row">
+        <label class="radio-opt">
+          <input type="radio" name="houppa" value="oui" onchange="showNb('houppa',true)">
+          Oui
+        </label>
+        <label class="radio-opt">
+          <input type="radio" name="houppa" value="non" onchange="showNb('houppa',false)">
+          Non
+        </label>
+      </div>
+      <div class="nb-row" id="nb-houppa">
+        <span>Nombre d'invités :</span>
+        <input type="number" id="nb-houppa-val" min="1" max="20" value="1">
+      </div>
+    </div>
+
+    <!-- Petit mot -->
+    <div class="fg">
+      <label>Un petit mot pour les mariés</label>
+      <textarea id="f-msg" rows="4" placeholder="Laissez-nous un message…" style="resize:vertical;"></textarea>
+    </div>
+
+    <button class="btn btn-f" id="submit-btn" onclick="sendForm()" style="width:100%;justify-content:center;margin-top:4px;">
+      Envoyer ma réponse
+    </button>
     <p class="wait-msg" id="wait">⏳ Envoi en cours…</p>
-    <div class="ok-msg" id="ok">✦ &nbsp; Merci ! Votre réponse a bien été enregistrée. Nous avons hâte de partager ce moment avec vous. &nbsp; ✦</div>
-    <div class="err-msg" id="err">⚠️ Une erreur s'est produite. Merci de réessayer ou de nous contacter directement.</div>
+    <div class="ok-msg" id="ok">
+      ✦ &nbsp; Merci ! Votre réponse a bien été enregistrée.<br>Nous avons hâte de partager ce moment avec vous. &nbsp; ✦
+    </div>
+    <div class="err-msg" id="err">
+      ⚠️ Une erreur s'est produite. Merci de réessayer ou de nous contacter directement.
+    </div>
   </div>
 </section>
 
@@ -423,35 +506,175 @@ footer p+p{margin-top:5px;font-size:9px;opacity:.55;}
   <p>Avec tout notre amour</p>
 </footer>
 
+<!-- ═══ SCRIPTS ═══ -->
 <script>
-const SCRIPT_URL='COLLER_ICI_L_URL_DU_SCRIPT_GOOGLE';
-const T=new Date('2026-08-26T14:00:00');
-function pad(n){return String(n).padStart(2,'0');}
-function tick(){const d=T-new Date();if(d<=0){['cd-j','cd-h','cd-m','cd-s'].forEach(i=>document.getElementById(i).textContent='00');return;}document.getElementById('cd-j').textContent=Math.floor(d/864e5);document.getElementById('cd-h').textContent=pad(Math.floor(d%864e5/36e5));document.getElementById('cd-m').textContent=pad(Math.floor(d%36e5/6e4));document.getElementById('cd-s').textContent=pad(Math.floor(d%6e4/1e3));}
-tick();setInterval(tick,1000);
-function showNb(n,s){document.getElementById(n==='mairie'?'nbm':'nbh').classList.toggle('on',s);}
-function sendForm(){
-  const nm=document.getElementById('nom-m').value.trim(),pm=document.getElementById('prenom-m').value.trim(),nf=document.getElementById('nom-f').value.trim(),pf=document.getElementById('prenom-f').value.trim();
-  if(!nm&&!pm&&!nf&&!pf){alert('Merci de renseigner au moins un nom.');return;}
-  const mEl=document.querySelector('input[name="mairie"]:checked'),hEl=document.querySelector('input[name="houppa"]:checked');
-  const mv=mEl?mEl.value:'non répondu',hv=hEl?hEl.value:'non répondu';
-  const payload={nom_m:nm,prenom_m:pm,nom_f:nf,prenom_f:pf,mairie:mv,nb_mairie:mv==='oui'?document.getElementById('nb-mairie').value:'0',houppa:hv,nb_houppa:hv==='oui'?document.getElementById('nb-houppa').value:'0',message:document.getElementById('msg').value};
-  document.getElementById('submit-btn').style.display='none';document.getElementById('wait').style.display='block';
-  fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
-    .then(()=>{document.getElementById('wait').style.display='none';document.getElementById('ok').style.display='block';})
-    .catch(()=>{document.getElementById('wait').style.display='none';document.getElementById('err').style.display='block';document.getElementById('submit-btn').style.display='flex';});
+/* ──────────────────────────────────────
+   GOOGLE SHEETS — Apps Script Web App
+   ──────────────────────────────────────
+   Instructions :
+   1. Ouvrez votre Google Sheet
+   2. Extensions → Apps Script → collez ce code :
+
+   function doPost(e) {
+     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+     var data  = JSON.parse(e.postData.contents);
+     sheet.appendRow([
+       new Date(),
+       data.nom,
+       data.prenom,
+       data.mairie,
+       data.nb_mairie,
+       data.houppa,
+       data.nb_houppa,
+       data.message
+     ]);
+     return ContentService
+       .createTextOutput(JSON.stringify({status:'ok'}))
+       .setMimeType(ContentService.MimeType.JSON);
+   }
+
+   3. Déployer → Nouvelle version → Application web
+      → Accès : Tout le monde (anonyme) → Déployer
+   4. Copiez l'URL de déploiement et collez-la ci-dessous :
+   ──────────────────────────────────────────────────────── */
+const SCRIPT_URL = 'COLLER_ICI_URL_GOOGLE_APPS_SCRIPT';
+
+/* ── COUNTDOWN ── */
+const TARGET = new Date('2026-08-26T14:00:00');
+function pad(n){ return String(n).padStart(2,'0'); }
+function tick(){
+  const diff = TARGET - Date.now();
+  if(diff <= 0){
+    ['cd-j','cd-h','cd-m','cd-s'].forEach(id => document.getElementById(id).textContent = '00');
+    return;
+  }
+  document.getElementById('cd-j').textContent = Math.floor(diff / 864e5);
+  document.getElementById('cd-h').textContent = pad(Math.floor(diff % 864e5 / 36e5));
+  document.getElementById('cd-m').textContent = pad(Math.floor(diff % 36e5 / 6e4));
+  document.getElementById('cd-s').textContent = pad(Math.floor(diff % 6e4 / 1e3));
 }
-const bgm=document.getElementById('bgm');let started=false,playing=false;bgm.volume=0;
-function setUI(p){playing=p;document.getElementById('ico-play').style.display=p?'none':'block';document.getElementById('ico-pause').style.display=p?'block':'none';}
-function fadeIn(){let v=0;const iv=setInterval(()=>{v=Math.min(v+.02,.48);bgm.volume=v;if(v>=.48)clearInterval(iv);},80);}
-function startMusic(){if(started)return;started=true;bgm.play().then(()=>{setUI(true);fadeIn();}).catch(()=>{});}
-function toggleMusic(){if(!started){startMusic();return;}playing?(bgm.pause(),setUI(false)):(bgm.play(),setUI(true));}
-window.addEventListener('scroll',function s(){if(window.scrollY>80){startMusic();window.removeEventListener('scroll',s);}},{passive:true});
-const rio=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rio.unobserve(e.target);}});},{threshold:.08});
-document.querySelectorAll('.reveal').forEach(el=>rio.observe(el));
-const nls=document.querySelectorAll('.nav-link'),ss=['hero','mairie','houppa','reponse'].map(i=>document.getElementById(i));
-function upNav(){const y=window.scrollY+80;let c=ss[0];ss.forEach(s=>{if(s&&s.offsetTop<=y)c=s;});nls.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+c.id));}
-window.addEventListener('scroll',upNav,{passive:true});upNav();
+tick();
+setInterval(tick, 1000);
+
+/* ── FORM — afficher nb invités ── */
+function showNb(event, show){
+  document.getElementById('nb-' + event).classList.toggle('on', show);
+}
+
+/* ── FORM — envoi ── */
+function sendForm(){
+  const nom    = document.getElementById('f-nom').value.trim();
+  const prenom = document.getElementById('f-prenom').value.trim();
+  if(!nom && !prenom){
+    alert('Merci de renseigner au moins votre nom ou prénom.');
+    return;
+  }
+
+  const mEl = document.querySelector('input[name="mairie"]:checked');
+  const hEl = document.querySelector('input[name="houppa"]:checked');
+  const mv  = mEl ? mEl.value : 'non répondu';
+  const hv  = hEl ? hEl.value : 'non répondu';
+
+  const payload = {
+    nom,
+    prenom,
+    mairie:    mv,
+    nb_mairie: mv === 'oui' ? document.getElementById('nb-mairie-val').value : '0',
+    houppa:    hv,
+    nb_houppa: hv === 'oui' ? document.getElementById('nb-houppa-val').value : '0',
+    message:   document.getElementById('f-msg').value
+  };
+
+  document.getElementById('submit-btn').style.display = 'none';
+  document.getElementById('wait').style.display       = 'block';
+
+  fetch(SCRIPT_URL, {
+    method:  'POST',
+    mode:    'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body:    JSON.stringify(payload)
+  })
+  .then(() => {
+    document.getElementById('wait').style.display = 'none';
+    document.getElementById('ok').style.display   = 'block';
+  })
+  .catch(() => {
+    document.getElementById('wait').style.display       = 'none';
+    document.getElementById('err').style.display        = 'block';
+    document.getElementById('submit-btn').style.display = 'flex';
+  });
+}
+
+/* ── MUSIC — démarre au scroll ── */
+const bgm = document.getElementById('bgm');
+let musicStarted = false;
+let musicPlaying = false;
+
+function setMusicUI(playing){
+  musicPlaying = playing;
+  document.getElementById('ico-play').style.display  = playing ? 'none'  : 'block';
+  document.getElementById('ico-pause').style.display = playing ? 'block' : 'none';
+}
+
+function fadeIn(){
+  let vol = 0;
+  bgm.volume = 0;
+  const iv = setInterval(() => {
+    vol = Math.min(vol + 0.02, 0.5);
+    bgm.volume = vol;
+    if(vol >= 0.5) clearInterval(iv);
+  }, 80);
+}
+
+function startMusic(){
+  if(musicStarted) return;
+  musicStarted = true;
+  bgm.play()
+    .then(() => { setMusicUI(true); fadeIn(); })
+    .catch(() => {});
+}
+
+function toggleMusic(){
+  if(!musicStarted){ startMusic(); return; }
+  if(musicPlaying){
+    bgm.pause();
+    setMusicUI(false);
+  } else {
+    bgm.play();
+    setMusicUI(true);
+  }
+}
+
+/* Démarrage automatique au premier scroll */
+window.addEventListener('scroll', function onScroll(){
+  if(window.scrollY > 60){
+    startMusic();
+    window.removeEventListener('scroll', onScroll);
+  }
+}, { passive: true });
+
+/* ── SCROLL REVEAL ── */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ── NAV ACTIVE ── */
+const navLinks = document.querySelectorAll('.nav-link');
+const sections = ['hero','mairie','houppa','reponse'].map(id => document.getElementById(id));
+function updateNav(){
+  const y = window.scrollY + 80;
+  let current = sections[0];
+  sections.forEach(s => { if(s && s.offsetTop <= y) current = s; });
+  navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current.id));
+}
+window.addEventListener('scroll', updateNav, { passive: true });
+updateNav();
 </script>
 </body>
 </html>
