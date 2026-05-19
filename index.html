@@ -18,13 +18,19 @@
 }
 html{scroll-behavior:smooth;}
 body{background:#fff;font-family:'Cormorant Garamond',serif;color:var(--dark);overflow-x:hidden;}
+
+/* MUSIC BTN */
 #music-btn{position:fixed;bottom:24px;right:24px;z-index:3000;width:42px;height:42px;border-radius:50%;background:#fff;border:1px solid var(--goldl);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 14px rgba(192,144,32,.16);transition:transform .3s;}
 #music-btn:hover{transform:scale(1.1);}
 #music-btn svg{width:14px;height:14px;fill:var(--gold);}
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--bord);display:flex;justify-content:center;align-items:center;height:54px;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--bord);display:flex;justify-content:center;align-items:center;height:54px;flex-wrap:wrap;}
 .nav-logo-wrap{padding:0 16px 0 12px;border-right:1px solid var(--bord);display:flex;align-items:center;height:54px;}
 .nav-link{padding:0 14px;font-family:'Marcellus',serif;font-size:10px;letter-spacing:3px;color:var(--mid);text-decoration:none;text-transform:uppercase;line-height:54px;transition:color .25s;}
 .nav-link:hover,.nav-link.active{color:var(--gold);}
+
+/* HERO */
 #hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#fff;}
 .hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:.10;}
 .hero-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 5%,rgba(255,255,255,.94) 100%);}
@@ -38,17 +44,23 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255
 .hero-rule{display:flex;align-items:center;gap:14px;margin:16px auto;max-width:200px;opacity:0;animation:fadeUp .8s 1.2s forwards;}
 .hero-rule::before,.hero-rule::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,var(--goldl),transparent);}
 .hero-rule span{color:var(--goldl);font-size:11px;}
+
+/* COUNTDOWN */
 .cd{display:flex;gap:8px;justify-content:center;margin-bottom:28px;opacity:0;animation:fadeUp .8s 1.4s forwards;}
 .cd-b{text-align:center;}
 .cd-box{border:1px solid var(--bord);background:#fff;padding:9px;min-width:54px;margin-bottom:3px;}
 .cd-n{font-family:'Great Vibes',cursive;font-size:36px;color:var(--gold);line-height:1;display:block;}
 .cd-l{font-family:'Marcellus',serif;font-size:8px;letter-spacing:3px;color:var(--mid);text-transform:uppercase;}
+
+/* SCROLL CUE */
 .scroll-cue{display:inline-flex;flex-direction:column;align-items:center;gap:10px;font-family:'Marcellus',serif;font-size:10px;letter-spacing:4px;color:var(--light);text-transform:uppercase;opacity:0;animation:fadeUp .8s 1.7s forwards;background:none;border:1px solid var(--bord);padding:14px 32px 18px;cursor:pointer;transition:border-color .3s,color .3s,background .3s;}
 .scroll-cue:hover{border-color:var(--goldl);color:var(--gold);background:rgba(192,144,32,.04);}
 .scroll-arr{display:block;width:10px;height:10px;border-right:1px solid var(--goldl);border-bottom:1px solid var(--goldl);transform:rotate(45deg);margin:0 auto;animation:bounce 1.8s infinite;transition:border-color .3s;}
 .scroll-cue:hover .scroll-arr{border-color:var(--gold);}
 @keyframes bounce{0%,100%{transform:rotate(45deg) translateY(0);}50%{transform:rotate(45deg) translateY(4px);}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+
+/* SECTIONS */
 .sec{position:relative;overflow:hidden;}
 .sec-light,.sec-mid{background:#fff;}
 .sec-in{max-width:480px;margin:0 auto;padding:64px 32px;text-align:center;position:relative;z-index:2;}
@@ -59,6 +71,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255
 .rule{display:flex;align-items:center;gap:12px;margin:10px auto;max-width:180px;}
 .rule::before,.rule::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,var(--golll),transparent);}
 .rule span{color:var(--goldl);font-size:10px;}
+
+/* MAIRIE */
 .mairie-names{font-family:'Great Vibes',cursive;font-size:clamp(34px,6vw,48px);color:var(--gold);line-height:1.2;margin-bottom:6px;}
 .mairie-fam{font-size:13px;letter-spacing:4px;color:var(--mid);font-style:italic;margin-bottom:24px;}
 .mairie-se-diront{font-family:'Marcellus',serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--mid);margin-bottom:8px;display:block;}
@@ -66,24 +80,48 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255
 .mairie-date-line{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#1a1a1a;line-height:1.6;}
 .dc-place{font-size:17px;color:#1a1a1a;font-style:italic;margin:14px 0 2px;}
 .dc-sub{font-size:14px;color:#1a1a1a;}
+
+/* VIN */
 .vin{margin:14px 0;padding:12px 16px;border:1px solid var(--bord);background:#fff;}
 .vin-eyebrow{font-family:'Marcellus',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--mid);margin-bottom:2px;}
 .vin-title{font-family:'Great Vibes',cursive;font-size:30px;color:var(--gold);line-height:1.1;}
 .vin-note{font-size:13px;color:var(--mid);font-style:italic;margin-top:2px;}
+
+/* BUTTONS */
 .btn-row{display:flex;gap:10px;justify-content:center;margin-top:16px;flex-wrap:wrap;}
 .btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--goldl);color:var(--gold);background:transparent;padding:10px 20px;font-family:'Marcellus',serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:all .25s;}
 .btn:hover,.btn-f{background:var(--gold);color:#fff;border-color:var(--gold);}
 .btn-f:hover{background:var(--dark);border-color:var(--dark);}
+
+/* PHOTO BAND */
 .pb{width:100%;height:270px;position:relative;overflow:hidden;background:#f5f0e6;}
 .pb img{width:100%;height:100%;object-fit:cover;object-position:center 35%;}
 .pb-ov{position:absolute;inset:0;background:linear-gradient(to bottom,#fff 0%,transparent 14%,transparent 86%,#fff 100%);}
+
+/* SEP */
 .sep{text-align:center;padding:14px 0;background:#f5f0e6;}
 .sep-t{font-family:'Great Vibes',cursive;font-size:20px;color:var(--golll);letter-spacing:10px;}
+
+/* HOUPPA */
 .houppa-title{font-family:'Marcellus',serif;font-size:clamp(16px,4vw,24px);letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:4px;}
-.kol-wrap{display:block;margin:18px auto 0;width:320px;max-width:100%;height:80px;}
+
+/* ── KOL SASSON — HTML pur, fiable sur tous mobiles ── */
+.kol-wrap{margin:18px auto 0;width:100%;max-width:340px;}
+.kol-text{
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-size:16px;
+  color:#c09020;
+  letter-spacing:3px;
+  text-align:center;
+  line-height:2;
+  direction:rtl;
+  unicode-bidi:bidi-override;
+}
+
 .kol-rule{display:flex;align-items:center;gap:10px;margin:6px auto 22px;max-width:220px;}
 .kol-rule::before,.kol-rule::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,var(--golll),transparent);}
 .kol-rule span{color:var(--goldl);font-size:10px;}
+
 .houppa-families{display:flex;justify-content:space-between;gap:16px;margin:0 0 18px;text-align:left;}
 .houppa-fam-col{flex:1;}
 .houppa-fam-col:last-child{text-align:right;}
@@ -98,6 +136,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255
 .houppa-addr{font-size:14px;color:#1a1a1a;line-height:1.6;}
 .houppa-reception{font-size:14px;font-style:italic;color:var(--mid);margin:11px 0 4px;}
 .houppa-pensee{font-size:13px;font-style:italic;color:var(--mid);line-height:1.7;margin:5px 0;}
+
+/* FORM */
 .fg{margin-bottom:14px;text-align:left;}
 .fg label{display:block;font-family:'Marcellus',serif;font-size:10px;color:var(--mid);margin-bottom:5px;letter-spacing:1.5px;text-transform:uppercase;}
 .fg input,.fg textarea{width:100%;border:1px solid var(--bord);padding:11px 13px;font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--dark);background:#fff;outline:none;transition:border-color .2s;-webkit-appearance:none;border-radius:0;}
@@ -114,11 +154,23 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255
 .ok-msg{display:none;margin-top:14px;padding:16px 18px;border:1px solid var(--bord);background:#fff;font-style:italic;font-size:16px;color:var(--gold);line-height:1.7;text-align:center;}
 .err-msg{display:none;margin-top:10px;padding:12px 15px;border:1px solid rgba(180,60,60,.2);font-style:italic;font-size:14px;color:#8a3030;}
 .wait-msg{display:none;margin-top:10px;font-size:14px;color:var(--mid);font-style:italic;text-align:center;}
+
+/* REVEAL */
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .85s,transform .85s;}
 .reveal.in{opacity:1;transform:translateY(0);}
+
+/* FOOTER */
 footer{background:#fff;padding:22px 28px;text-align:center;border-top:1px solid var(--bord);}
 footer p{font-size:11px;letter-spacing:3px;color:var(--mid);font-style:italic;}
 footer p+p{margin-top:4px;font-size:10px;opacity:.55;}
+
+/* MOBILE */
+@media(max-width:480px){
+  .nav-link{padding:0 8px;font-size:9px;letter-spacing:2px;}
+  .houppa-families{flex-direction:column;gap:24px;}
+  .houppa-fam-col:last-child{text-align:left;}
+  .sec-in{padding:48px 20px;}
+}
 </style>
 </head>
 <body>
@@ -148,6 +200,7 @@ footer p+p{margin-top:4px;font-size:10px;opacity:.55;}
   <a class="nav-link" href="#reponse">Répondre</a>
 </nav>
 
+<!-- ═══════════════ HERO ═══════════════ -->
 <section id="hero">
   <img class="hero-photo" src="https://alansite.github.io/Yael-site/couple.jpg" alt="" onerror="this.style.display='none'">
   <div class="hero-vignette"></div>
@@ -186,6 +239,7 @@ footer p+p{margin-top:4px;font-size:10px;opacity:.55;}
 
 <div class="sep"><div class="sep-t">✦ &nbsp; ✦ &nbsp; ✦</div></div>
 
+<!-- ═══════════════ MAIRIE ═══════════════ -->
 <section class="sec sec-light" id="mairie">
   <div class="wm" style="right:-30px;top:-10px;">M</div>
   <div class="sec-in reveal">
@@ -232,6 +286,7 @@ footer p+p{margin-top:4px;font-size:10px;opacity:.55;}
   <div class="pb-ov"></div>
 </div>
 
+<!-- ═══════════════ HOUPPA ═══════════════ -->
 <section class="sec sec-mid" id="houppa">
   <div class="wm" style="left:-25px;bottom:-25px;">H</div>
   <div class="sec-in reveal">
@@ -246,21 +301,23 @@ footer p+p{margin-top:4px;font-size:10px;opacity:.55;}
         <text x="74" y="97" font-family="Georgia,serif" font-size="23" font-weight="400" fill="#c09020">E</text>
       </svg>
     </div>
+
     <div class="houppa-title">Houppa &amp; Soirée</div>
 
-    <!-- Arc hébreu via Canvas — fiable sur tous les navigateurs -->
-    <svg class="kol-wrap" viewBox="0 0 320 80" style="overflow:visible;">
-  <defs>
-    <path id="kolArc" d="M 10,75 A 155,155 0 0,1 310,75"/>
-  </defs>
-  <text font-family="'Cormorant Garamond', Georgia, serif" font-size="15" fill="#c09020" text-anchor="middle">
-    <textPath href="#kolArc" startOffset="50%">
-      קוֹל שָׂשׂוֹן וְקוֹל שִׂמְחָה קוֹל חָתָן וְקוֹל כַּלָּה
-    </textPath>
-  </text>
-</svg>
+    <!-- ── KOL SASSON en arc SVG textPath ── -->
+    <svg class="kol-wrap" viewBox="0 0 320 70" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;width:100%;max-width:340px;display:block;margin:18px auto 0;">
+      <defs>
+        <path id="kolArc" d="M 20,68 A 150,150 0 0,1 300,68"/>
+      </defs>
+      <text font-family="'Cormorant Garamond',Georgia,serif" font-size="14.5" fill="#c09020" letter-spacing="2">
+        <textPath href="#kolArc" startOffset="50%" text-anchor="middle">
+          קוֹל שָׂשׂוֹן וְקוֹל שִׂמְחָה קוֹל חָתָן וְקוֹל כַּלָּה
+        </textPath>
+      </text>
+    </svg>
 
     <div class="kol-rule"><span>✦</span></div>
+
     <div class="houppa-families">
       <div class="houppa-fam-col">
         <p class="houppa-fam-title">Famille Azoulay</p>
@@ -275,6 +332,7 @@ footer p+p{margin-top:4px;font-size:10px;opacity:.55;}
         <p class="houppa-fam-entry">Mme Azoulay<br><span style="font-size:13px;color:var(--mid);">Marcelle</span></p>
       </div>
     </div>
+
     <p class="houppa-invite">Ont la joie de vous convier à la cérémonie religieuse de leurs enfants,</p>
     <div class="houppa-couple">Yael <span style="font-size:.74em;color:var(--goldl);">&amp;</span> Elias</div>
     <div class="houppa-couple-heb">אֵלִיָּאס &amp; יַעַל</div>
@@ -299,6 +357,7 @@ footer p+p{margin-top:4px;font-size:10px;opacity:.55;}
 
 <div class="sep"><div class="sep-t">✦ &nbsp; ✦ &nbsp; ✦</div></div>
 
+<!-- ═══════════════ RÉPONSE ═══════════════ -->
 <section class="sec sec-light" id="reponse">
   <div class="wm" style="right:-25px;top:-10px;">R</div>
   <div class="sec-in reveal">
@@ -366,64 +425,120 @@ footer p+p{margin-top:4px;font-size:10px;opacity:.55;}
 <script>
 const SCRIPT_URL = 'COLLER_ICI_URL_GOOGLE_APPS_SCRIPT';
 
-// COUNTDOWN
+// ── COUNTDOWN ──
 const TARGET = new Date('2026-08-26T14:00:00');
 function pad(n){ return String(n).padStart(2,'0'); }
 function tick(){
   const d = TARGET - Date.now();
-  if(d <= 0){ ['cd-j','cd-h','cd-m','cd-s'].forEach(id => document.getElementById(id).textContent='00'); return; }
+  if(d <= 0){
+    ['cd-j','cd-h','cd-m','cd-s'].forEach(id => document.getElementById(id).textContent='00');
+    return;
+  }
   document.getElementById('cd-j').textContent = Math.floor(d/864e5);
   document.getElementById('cd-h').textContent = pad(Math.floor(d%864e5/36e5));
   document.getElementById('cd-m').textContent = pad(Math.floor(d%36e5/6e4));
   document.getElementById('cd-s').textContent = pad(Math.floor(d%6e4/1e3));
 }
-tick(); setInterval(tick, 1000);
+tick();
+setInterval(tick, 1000);
 
-// MUSIQUE
+// ── MUSIQUE ──
 const bgm = document.getElementById('bgm');
 let musicStarted = false, musicPlaying = false;
-function setMusicUI(p){ musicPlaying=p; document.getElementById('ico-play').style.display=p?'none':'block'; document.getElementById('ico-pause').style.display=p?'block':'none'; }
-function fadeIn(){ let v=0; bgm.volume=0; const iv=setInterval(()=>{ v=Math.min(v+.02,.5); bgm.volume=v; if(v>=.5)clearInterval(iv); },80); }
-function startMusic(){ if(musicStarted)return; musicStarted=true; bgm.play().then(()=>{ setMusicUI(true); fadeIn(); }).catch(()=>{}); }
-function toggleMusic(){ if(!musicStarted){ startMusic(); return; } musicPlaying?(bgm.pause(),setMusicUI(false)):(bgm.play(),setMusicUI(true)); }
+function setMusicUI(p){
+  musicPlaying = p;
+  document.getElementById('ico-play').style.display  = p ? 'none'  : 'block';
+  document.getElementById('ico-pause').style.display = p ? 'block' : 'none';
+}
+function fadeIn(){
+  let v = 0;
+  bgm.volume = 0;
+  const iv = setInterval(() => {
+    v = Math.min(v + .02, .5);
+    bgm.volume = v;
+    if(v >= .5) clearInterval(iv);
+  }, 80);
+}
+function startMusic(){
+  if(musicStarted) return;
+  musicStarted = true;
+  bgm.play().then(() => { setMusicUI(true); fadeIn(); }).catch(() => {});
+}
+function toggleMusic(){
+  if(!musicStarted){ startMusic(); return; }
+  musicPlaying ? (bgm.pause(), setMusicUI(false)) : (bgm.play(), setMusicUI(true));
+}
 
-// BOUTON DECOUVRIR
+// ── DÉCOUVRIR ──
 function decouvrir(){
   startMusic();
   document.getElementById('mairie').scrollIntoView({ behavior: 'smooth' });
 }
 
-// FORM
-function showNb(ev, show){ document.getElementById('nb-'+ev).classList.toggle('on', show); }
+// ── FORMULAIRE ──
+function showNb(ev, show){
+  document.getElementById('nb-' + ev).classList.toggle('on', show);
+}
 function sendForm(){
-  const nom = document.getElementById('f-nom').value.trim();
+  const nom    = document.getElementById('f-nom').value.trim();
   const prenom = document.getElementById('f-prenom').value.trim();
-  if(!nom && !prenom){ alert('Merci de renseigner au moins votre nom ou prénom.'); return; }
+  if(!nom && !prenom){
+    alert('Merci de renseigner au moins votre nom ou prénom.');
+    return;
+  }
   const mEl = document.querySelector('input[name="mairie"]:checked');
   const hEl = document.querySelector('input[name="houppa"]:checked');
-  const mv = mEl ? mEl.value : 'non répondu';
-  const hv = hEl ? hEl.value : 'non répondu';
-  const payload = { nom, prenom, mairie: mv,
-    nb_mairie: mv==='oui' ? document.getElementById('nb-mairie-val').value : '0',
-    houppa: hv,
-    nb_houppa: hv==='oui' ? document.getElementById('nb-houppa-val').value : '0',
-    message: document.getElementById('f-msg').value };
+  const mv  = mEl ? mEl.value : 'non répondu';
+  const hv  = hEl ? hEl.value : 'non répondu';
+  const payload = {
+    nom, prenom,
+    mairie:    mv,
+    nb_mairie: mv === 'oui' ? document.getElementById('nb-mairie-val').value : '0',
+    houppa:    hv,
+    nb_houppa: hv === 'oui' ? document.getElementById('nb-houppa-val').value : '0',
+    message:   document.getElementById('f-msg').value
+  };
   document.getElementById('submit-btn').style.display = 'none';
   document.getElementById('wait').style.display = 'block';
-  fetch(SCRIPT_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) })
-    .then(() => { document.getElementById('wait').style.display='none'; document.getElementById('ok').style.display='block'; })
-    .catch(() => { document.getElementById('wait').style.display='none'; document.getElementById('err').style.display='block'; document.getElementById('submit-btn').style.display='flex'; });
+  fetch(SCRIPT_URL, {
+    method: 'POST',
+    mode:   'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body:   JSON.stringify(payload)
+  })
+  .then(() => {
+    document.getElementById('wait').style.display = 'none';
+    document.getElementById('ok').style.display   = 'block';
+  })
+  .catch(() => {
+    document.getElementById('wait').style.display        = 'none';
+    document.getElementById('err').style.display         = 'block';
+    document.getElementById('submit-btn').style.display  = 'flex';
+  });
 }
 
-// REVEAL
-const observer = new IntersectionObserver(entries => { entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); observer.unobserve(e.target); } }); }, {threshold:.08});
+// ── REVEAL AU SCROLL ──
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: .08 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// NAV ACTIVE
+// ── NAV ACTIVE ──
 const navLinks = document.querySelectorAll('.nav-link');
 const sections = ['hero','mairie','houppa','reponse'].map(id => document.getElementById(id));
-function updateNav(){ const y=window.scrollY+80; let c=sections[0]; sections.forEach(s=>{ if(s&&s.offsetTop<=y)c=s; }); navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+c.id)); }
-window.addEventListener('scroll', updateNav, {passive:true}); updateNav();
+function updateNav(){
+  const y = window.scrollY + 80;
+  let c = sections[0];
+  sections.forEach(s => { if(s && s.offsetTop <= y) c = s; });
+  navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + c.id));
+}
+window.addEventListener('scroll', updateNav, { passive: true });
+updateNav();
 </script>
 </body>
 </html>
