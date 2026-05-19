@@ -8,13 +8,13 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{
---gold:  #c09020;
---goldl: #d4a830;
---golll: #e8c060;
---dark:  #2a1f08;
---mid:   #7a5518;
---light: #a07828;
---bord:  rgba(192,144,32,.22);
+  --gold:  #c09020;
+  --goldl: #d4a830;
+  --golll: #e8c060;
+  --dark:  #2a1f08;
+  --mid:   #7a5518;
+  --light: #a07828;
+  --bord:  rgba(192,144,32,.22);
 }
 html{scroll-behavior:smooth;}
 body{background:#fff;font-family:'Cormorant Garamond',serif;color:var(--dark);overflow-x:hidden;}
@@ -105,17 +105,21 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255
 /* HOUPPA */
 .houppa-title{font-family:'Marcellus',serif;font-size:clamp(16px,4vw,24px);letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:4px;}
 
-/* ── KOL SASSON — HTML pur, fiable sur tous mobiles ── */
-.kol-wrap{margin:18px auto 0;width:100%;max-width:340px;}
-.kol-text{
-  font-family:'Cormorant Garamond',Georgia,serif;
-  font-size:16px;
-  color:#c09020;
-  letter-spacing:3px;
+/* ── KOL SASSON — texte hébreu correct ── */
+.kol-hebrew{
+  font-family:'Times New Roman','David','FrankRuehl','Noto Serif Hebrew',Georgia,serif;
+  font-size:18px;
+  color:var(--gold);
+  letter-spacing:1px;
   text-align:center;
   line-height:2;
   direction:rtl;
-  unicode-bidi:bidi-override;
+  unicode-bidi:embed;
+  margin:18px auto 0;
+  padding:0 12px;
+  width:100%;
+  max-width:380px;
+  display:block;
 }
 
 .kol-rule{display:flex;align-items:center;gap:10px;margin:6px auto 22px;max-width:220px;}
@@ -129,7 +133,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255
 .houppa-fam-entry{font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--dark);line-height:1.6;margin-bottom:2px;}
 .houppa-invite{font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:var(--mid);line-height:1.7;margin:9px 0;}
 .houppa-couple{font-family:'Great Vibes',cursive;font-size:clamp(40px,8vw,64px);color:var(--gold);line-height:1;margin:4px 0 2px;}
-.houppa-couple-heb{font-size:clamp(18px,3.5vw,24px);color:var(--goldl);direction:rtl;margin:3px 0 12px;font-family:'Cormorant Garamond',serif;font-weight:300;}
+.houppa-couple-heb{
+  font-family:'Times New Roman','David','FrankRuehl','Noto Serif Hebrew',Georgia,serif;
+  font-size:clamp(18px,3.5vw,24px);
+  color:var(--goldl);
+  direction:rtl;
+  unicode-bidi:embed;
+  margin:3px 0 12px;
+  font-weight:400;
+  display:block;
+}
 .houppa-date{font-family:'Marcellus',serif;font-size:14px;letter-spacing:2px;text-transform:uppercase;color:#1a1a1a;margin-bottom:2px;}
 .houppa-time{font-family:'Marcellus',serif;font-size:19px;color:#1a1a1a;letter-spacing:2px;margin-bottom:9px;}
 .houppa-lieu{font-family:'Marcellus',serif;font-size:14px;letter-spacing:2px;text-transform:uppercase;color:#1a1a1a;margin:9px 0 2px;}
@@ -293,19 +306,19 @@ footer p+p{margin-top:4px;font-size:10px;opacity:.55;}
 
     <div class="houppa-title">Houppa &amp; Soirée</div>
 
-    <!-- ── KOL SASSON — courbe de Bézier comme le site de référence ── -->
-    <svg viewBox="0 0 340 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px;display:block;margin:18px auto 0;">
+    <!-- ── KOL SASSON — arc de cercle SVG avec police hébraïque système ── -->
+    <svg viewBox="0 0 360 110" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:360px;display:block;margin:18px auto 0;overflow:visible;">
       <defs>
-        <path id="arcPath" d="M 30,90 Q 170,10 310,90"/>
+        <path id="arcTop" d="M 30,95 Q 180,5 330,95"/>
       </defs>
-      <text font-family="'Cormorant Garamond',Georgia,serif" font-size="17" fill="#c09020" font-style="italic">
-        <textPath href="#arcPath" startOffset="50%" text-anchor="middle">
-          קוֹל שָׂשׂוֹן וְקוֹל שִׂמְחָה, קוֹל חָתָן וְקוֹל כַּלָּה
+      <text font-family="'Times New Roman','David','FrankRuehl',Georgia,serif" font-size="19" fill="#c09020" direction="rtl">
+        <textPath href="#arcTop" startOffset="50%" text-anchor="middle">
+          קוֹל שָׂשׂוֹן וְקוֹל שִׂמְחָה · קוֹל חָתָן וְקוֹל כַּלָּה
         </textPath>
       </text>
     </svg>
 
-    <div class="kol-rule"><span>✦</span></div>
+    <div class="kol-rule" style="margin-top:6px;"><span>✦</span></div>
 
     <div class="houppa-families">
       <div class="houppa-fam-col">
@@ -321,7 +334,7 @@ footer p+p{margin-top:4px;font-size:10px;opacity:.55;}
 
     <p class="houppa-invite">Ont la joie de vous convier à la cérémonie religieuse de leurs enfants et petits enfants</p>
     <div class="houppa-couple">Yael <span style="font-size:.74em;color:var(--goldl);">&amp;</span> Elias</div>
-    <div class="houppa-couple-heb">אֵלִיָּאס &amp; יַעַל</div>
+    <span class="houppa-couple-heb">אֵלִיָּאס &amp; יַעַל</span>
     <div class="rule"><span>✦</span></div>
     <p class="houppa-date">Le Mardi 1<sup>er</sup> Septembre 2026</p>
     <p class="houppa-time">à 18h00</p>
