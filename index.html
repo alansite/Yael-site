@@ -207,7 +207,7 @@ footer p+p{margin-top:4px;font-size:10px;opacity:.55;}
   <div class="bh">ב״ה</div>
   <div class="hero-content">
     <div class="hero-logo-wrap">
-      <img src="Gemini_Generated_Image_xmfgsxmfgsxmfgsx-removebg-preview.png" src="image2.png" style="width:160px;height:auto;opacity:.92;">
+      <img src="image2.png" alt="Cœurs fleuris" style="width:160px;height:auto;opacity:.92;">
     </div>
     <p class="pre">Mariage de</p>
     <div class="hero-names">Yael<span class="hero-amp">&amp;</span>Elias</div>
@@ -293,56 +293,17 @@ footer p+p{margin-top:4px;font-size:10px;opacity:.55;}
 
     <div class="houppa-title">Houppa &amp; Soirée</div>
 
-    <!-- ── KOL SASSON ── -->
-    <svg id="kolSvg" viewBox="0 0 320 72" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px;display:block;margin:18px auto 0;overflow:visible;"></svg>
-    <script>
-    (function(){
-      var text = "קוֹל שָׂשׂוֹן וְקוֹל שִׂמְחָה קוֹל חָתָן וְקוֹל כַּלָּה";
-      var svg  = document.getElementById('kolSvg');
-      var ns   = 'http://www.w3.org/2000/svg';
-      var R    = 180, cx = 160, cy = 230;
-      var startAngle = -Math.PI * 0.72, endAngle = -Math.PI * 0.28;
-
-      // Mesure avec un élément SVG temporaire
-      var tmp = document.createElementNS(ns,'text');
-      tmp.setAttribute('font-family',"'Cormorant Garamond',Georgia,serif");
-      tmp.setAttribute('font-size','15');
-      tmp.style.visibility = 'hidden';
-      svg.appendChild(tmp);
-
-      // Découper en caractères (hébreu: on garde les combinaisons base+diacritiques)
-      var chars = Array.from(text);
-      // Mesure chaque char
-      var widths = chars.map(function(c){
-        tmp.textContent = c;
-        try { return tmp.getComputedTextLength() || 8; } catch(e){ return 8; }
-      });
-      svg.removeChild(tmp);
-
-      var totalW = widths.reduce(function(a,b){return a+b;},0);
-      var totalAngle = endAngle - startAngle;
-
-      var pos = 0;
-      chars.forEach(function(c, i){
-        if(c === ' '){ pos += widths[i]; return; }
-        var t = (pos + widths[i]/2) / totalW;
-        var angle = startAngle + t * totalAngle;
-        var x = cx + R * Math.cos(angle);
-        var y = cy + R * Math.sin(angle);
-        var rot = (angle * 180/Math.PI) + 90;
-
-        var el = document.createElementNS(ns,'text');
-        el.textContent = c;
-        el.setAttribute('font-family',"'Cormorant Garamond',Georgia,serif");
-        el.setAttribute('font-size','15');
-        el.setAttribute('fill','#c09020');
-        el.setAttribute('text-anchor','middle');
-        el.setAttribute('transform','translate('+x+','+y+') rotate('+rot+')');
-        svg.appendChild(el);
-        pos += widths[i];
-      });
-    })();
-    </script>
+    <!-- ── KOL SASSON — courbe de Bézier comme le site de référence ── -->
+    <svg viewBox="0 0 340 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px;display:block;margin:18px auto 0;">
+      <defs>
+        <path id="arcPath" d="M 30,90 Q 170,10 310,90"/>
+      </defs>
+      <text font-family="'Cormorant Garamond',Georgia,serif" font-size="17" fill="#c09020" font-style="italic">
+        <textPath href="#arcPath" startOffset="50%" text-anchor="middle">
+          קוֹל שָׂשׂוֹן וְקוֹל שִׂמְחָה, קוֹל חָתָן וְקוֹל כַּלָּה
+        </textPath>
+      </text>
+    </svg>
 
     <div class="kol-rule"><span>✦</span></div>
 
