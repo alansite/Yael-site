@@ -3,29 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yael &amp; Elias — 26 Août · 1er Septembre 2026</title>
+<title>Yael & Elias — 26 Août · 1er Septembre 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Marcellus&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{
---gold:  #c09020;
---goldl: #d4a830;
---golll: #e8c060;
---dark:  #2a1f08;
---mid:   #7a5518;
---light: #a07828;
---bord:  rgba(192,144,32,.22);
+  --gold:  #c09020;
+  --goldl: #d4a830;
+  --golll: #e8c060;
+  --dark:  #2a1f08;
+  --mid:   #7a5518;
+  --light: #a07828;
+  --bord:  rgba(192,144,32,.22);
 }
 html{scroll-behavior:smooth;}
 body{background:#fff;font-family:'Cormorant Garamond',serif;color:var(--dark);overflow-x:hidden;}
 
-/* MUSIC BTN */
+/* MUSIC */
 #music-btn{position:fixed;bottom:24px;right:24px;z-index:3000;width:42px;height:42px;border-radius:50%;background:#fff;border:1px solid var(--goldl);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 14px rgba(192,144,32,.16);transition:transform .3s;}
 #music-btn:hover{transform:scale(1.1);}
 #music-btn svg{width:14px;height:14px;fill:var(--gold);}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--bord);display:flex;justify-content:center;align-items:center;height:54px;flex-wrap:wrap;}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--bord);display:flex;justify-content:center;align-items:center;height:54px;}
 .nav-logo-wrap{padding:0 16px 0 12px;border-right:1px solid var(--bord);display:flex;align-items:center;height:54px;}
 .nav-link{padding:0 14px;font-family:'Marcellus',serif;font-size:10px;letter-spacing:3px;color:var(--mid);text-decoration:none;text-transform:uppercase;line-height:54px;transition:color .25s;}
 .nav-link:hover,.nav-link.active{color:var(--gold);}
@@ -35,7 +35,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255
 .hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:.10;}
 .hero-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 5%,rgba(255,255,255,.94) 100%);}
 .hero-content{position:relative;z-index:2;text-align:center;padding:96px 28px 76px;max-width:560px;width:100%;}
-.bh{position:absolute;top:70px;right:24px;font-size:13px;color:var(--goldl);letter-spacing:2px;font-style:italic;opacity:0;animation:fadeUp .8s .2s forwards;}
+
+/* ב״ה en haut à droite */
+.bh{
+  position:absolute;
+  top:70px;right:24px;
+  font-size:13px;color:var(--goldl);
+  letter-spacing:2px;font-style:italic;
+  opacity:0;animation:fadeUp .8s .2s forwards;
+}
+
 .hero-logo-wrap{margin:0 auto 20px;opacity:0;animation:fadeUp 1s .1s forwards;display:flex;justify-content:center;}
 .pre{font-family:'Marcellus',serif;font-size:11px;color:var(--mid);letter-spacing:6px;text-transform:uppercase;margin-bottom:10px;opacity:0;animation:fadeUp .8s .5s forwards;}
 .hero-names{font-family:'Great Vibes',cursive;font-size:clamp(56px,9vw,90px);color:var(--gold);line-height:1.1;opacity:0;animation:fadeUp .9s .7s forwards;}
@@ -46,17 +55,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255
 .hero-rule span{color:var(--goldl);font-size:11px;}
 
 /* COUNTDOWN */
-.cd{display:flex;gap:8px;justify-content:center;margin-bottom:28px;opacity:0;animation:fadeUp .8s 1.4s forwards;}
+.cd{display:flex;gap:8px;justify-content:center;margin-bottom:22px;opacity:0;animation:fadeUp .8s 1.4s forwards;}
 .cd-b{text-align:center;}
 .cd-box{border:1px solid var(--bord);background:#fff;padding:9px;min-width:54px;margin-bottom:3px;}
 .cd-n{font-family:'Great Vibes',cursive;font-size:36px;color:var(--gold);line-height:1;display:block;}
 .cd-l{font-family:'Marcellus',serif;font-size:8px;letter-spacing:3px;color:var(--mid);text-transform:uppercase;}
-
-/* SCROLL CUE */
-.scroll-cue{display:inline-flex;flex-direction:column;align-items:center;gap:10px;font-family:'Marcellus',serif;font-size:10px;letter-spacing:4px;color:var(--light);text-transform:uppercase;opacity:0;animation:fadeUp .8s 1.7s forwards;background:none;border:1px solid var(--bord);padding:14px 32px 18px;cursor:pointer;transition:border-color .3s,color .3s,background .3s;}
-.scroll-cue:hover{border-color:var(--goldl);color:var(--gold);background:rgba(192,144,32,.04);}
-.scroll-arr{display:block;width:10px;height:10px;border-right:1px solid var(--goldl);border-bottom:1px solid var(--goldl);transform:rotate(45deg);margin:0 auto;animation:bounce 1.8s infinite;transition:border-color .3s;}
-.scroll-cue:hover .scroll-arr{border-color:var(--gold);}
+.scroll-cue{font-family:'Marcellus',serif;font-size:10px;letter-spacing:4px;color:var(--light);text-transform:uppercase;opacity:0;animation:fadeUp .8s 1.7s forwards;}
+.scroll-arr{display:block;width:10px;height:10px;border-right:1px solid var(--goldl);border-bottom:1px solid var(--goldl);transform:rotate(45deg);margin:5px auto 0;animation:bounce 1.8s infinite;}
 @keyframes bounce{0%,100%{transform:rotate(45deg) translateY(0);}50%{transform:rotate(45deg) translateY(4px);}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
 
@@ -77,11 +82,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255
 .mairie-fam{font-size:13px;letter-spacing:4px;color:var(--mid);font-style:italic;margin-bottom:24px;}
 .mairie-se-diront{font-family:'Marcellus',serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--mid);margin-bottom:8px;display:block;}
 .mairie-oui{font-family:'Great Vibes',cursive;font-size:clamp(64px,13vw,100px);color:var(--gold);line-height:1.05;display:block;margin:0 auto 18px;}
+/* dates et lieux en NOIR */
 .mairie-date-line{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#1a1a1a;line-height:1.6;}
 .dc-place{font-size:17px;color:#1a1a1a;font-style:italic;margin:14px 0 2px;}
 .dc-sub{font-size:14px;color:#1a1a1a;}
 
-/* VIN */
 .vin{margin:14px 0;padding:12px 16px;border:1px solid var(--bord);background:#fff;}
 .vin-eyebrow{font-family:'Marcellus',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--mid);margin-bottom:2px;}
 .vin-title{font-family:'Great Vibes',cursive;font-size:30px;color:var(--gold);line-height:1.1;}
@@ -98,38 +103,30 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255
 .pb img{width:100%;height:100%;object-fit:cover;object-position:center 35%;}
 .pb-ov{position:absolute;inset:0;background:linear-gradient(to bottom,#fff 0%,transparent 14%,transparent 86%,#fff 100%);}
 
-/* SEP */
+/* SÉPARATEUR beige */
 .sep{text-align:center;padding:14px 0;background:#f5f0e6;}
 .sep-t{font-family:'Great Vibes',cursive;font-size:20px;color:var(--golll);letter-spacing:10px;}
 
 /* HOUPPA */
 .houppa-title{font-family:'Marcellus',serif;font-size:clamp(16px,4vw,24px);letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:4px;}
 
-/* ── KOL SASSON — HTML pur, fiable sur tous mobiles ── */
-.kol-wrap{margin:18px auto 0;width:100%;max-width:340px;}
-.kol-text{
-  font-family:'Cormorant Garamond',Georgia,serif;
-  font-size:16px;
-  color:#c09020;
-  letter-spacing:3px;
-  text-align:center;
-  line-height:2;
-  direction:rtl;
-  unicode-bidi:bidi-override;
-}
-
+/* Kol Sasson arc */
+.kol-arc-svg{display:block;margin:0 auto 4px;overflow:visible;}
 .kol-rule{display:flex;align-items:center;gap:10px;margin:6px auto 22px;max-width:220px;}
 .kol-rule::before,.kol-rule::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,var(--golll),transparent);}
 .kol-rule span{color:var(--goldl);font-size:10px;}
 
+/* Familles — liste propre sans "Les familles" */
 .houppa-families{display:flex;justify-content:space-between;gap:16px;margin:0 0 18px;text-align:left;}
 .houppa-fam-col{flex:1;}
 .houppa-fam-col:last-child{text-align:right;}
 .houppa-fam-title{font-family:'Marcellus',serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;border-bottom:1px solid var(--bord);padding-bottom:4px;}
 .houppa-fam-entry{font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--dark);line-height:1.6;margin-bottom:2px;}
+
 .houppa-invite{font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:var(--mid);line-height:1.7;margin:9px 0;}
 .houppa-couple{font-family:'Great Vibes',cursive;font-size:clamp(40px,8vw,64px);color:var(--gold);line-height:1;margin:4px 0 2px;}
 .houppa-couple-heb{font-size:clamp(18px,3.5vw,24px);color:var(--goldl);direction:rtl;margin:3px 0 12px;font-family:'Cormorant Garamond',serif;font-weight:300;}
+/* dates houppa en NOIR */
 .houppa-date{font-family:'Marcellus',serif;font-size:14px;letter-spacing:2px;text-transform:uppercase;color:#1a1a1a;margin-bottom:2px;}
 .houppa-time{font-family:'Marcellus',serif;font-size:19px;color:#1a1a1a;letter-spacing:2px;margin-bottom:9px;}
 .houppa-lieu{font-family:'Marcellus',serif;font-size:14px;letter-spacing:2px;text-transform:uppercase;color:#1a1a1a;margin:9px 0 2px;}
@@ -155,22 +152,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255
 .err-msg{display:none;margin-top:10px;padding:12px 15px;border:1px solid rgba(180,60,60,.2);font-style:italic;font-size:14px;color:#8a3030;}
 .wait-msg{display:none;margin-top:10px;font-size:14px;color:var(--mid);font-style:italic;text-align:center;}
 
-/* REVEAL */
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .85s,transform .85s;}
 .reveal.in{opacity:1;transform:translateY(0);}
 
-/* FOOTER */
 footer{background:#fff;padding:22px 28px;text-align:center;border-top:1px solid var(--bord);}
 footer p{font-size:11px;letter-spacing:3px;color:var(--mid);font-style:italic;}
 footer p+p{margin-top:4px;font-size:10px;opacity:.55;}
-
-/* MOBILE */
-@media(max-width:480px){
-  .nav-link{padding:0 8px;font-size:9px;letter-spacing:2px;}
-  .houppa-families{flex-direction:column;gap:24px;}
-  .houppa-fam-col:last-child{text-align:left;}
-  .sec-in{padding:48px 20px;}
-}
 </style>
 </head>
 <body>
@@ -181,6 +168,7 @@ footer p+p{margin-top:4px;font-size:10px;opacity:.55;}
 </div>
 <audio id="bgm" loop><source src="musique.mp3" type="audio/mpeg"></audio>
 
+<!-- NAV -->
 <nav>
   <div class="nav-logo-wrap">
     <svg width="28" height="28" viewBox="0 0 120 120" fill="none">
@@ -200,11 +188,14 @@ footer p+p{margin-top:4px;font-size:10px;opacity:.55;}
   <a class="nav-link" href="#reponse">Répondre</a>
 </nav>
 
-<!-- ═══════════════ HERO ═══════════════ -->
+<!-- HERO -->
 <section id="hero">
   <img class="hero-photo" src="https://alansite.github.io/Yael-site/couple.jpg" alt="" onerror="this.style.display='none'">
   <div class="hero-vignette"></div>
+
+  <!-- ב״ה en haut à droite -->
   <div class="bh">ב״ה</div>
+
   <div class="hero-content">
     <div class="hero-logo-wrap">
       <svg width="72" height="72" viewBox="0 0 180 180" fill="none">
@@ -220,29 +211,29 @@ footer p+p{margin-top:4px;font-size:10px;opacity:.55;}
         <text x="122" y="152" font-family="Georgia,'Times New Roman',serif" font-size="36" font-weight="400" fill="#c09020">E</text>
       </svg>
     </div>
+
     <p class="pre">Mariage de</p>
     <div class="hero-names">Yael<span class="hero-amp">&amp;</span>Elias</div>
     <p class="hero-fam">Azoulay &nbsp;·&nbsp; Alimi</p>
     <div class="hero-rule"><span>✦</span></div>
+
     <div class="cd">
       <div class="cd-b"><div class="cd-box"><span class="cd-n" id="cd-j">—</span></div><span class="cd-l">Jours</span></div>
       <div class="cd-b"><div class="cd-box"><span class="cd-n" id="cd-h">—</span></div><span class="cd-l">Heures</span></div>
       <div class="cd-b"><div class="cd-box"><span class="cd-n" id="cd-m">—</span></div><span class="cd-l">Minutes</span></div>
       <div class="cd-b"><div class="cd-box"><span class="cd-n" id="cd-s">—</span></div><span class="cd-l">Secondes</span></div>
     </div>
-    <button class="scroll-cue" onclick="decouvrir()">
-      Découvrir
-      <span class="scroll-arr"></span>
-    </button>
+    <p class="scroll-cue">Découvrir <span class="scroll-arr"></span></p>
   </div>
 </section>
 
 <div class="sep"><div class="sep-t">✦ &nbsp; ✦ &nbsp; ✦</div></div>
 
-<!-- ═══════════════ MAIRIE ═══════════════ -->
+<!-- MAIRIE -->
 <section class="sec sec-light" id="mairie">
   <div class="wm" style="right:-30px;top:-10px;">M</div>
   <div class="sec-in reveal">
+
     <div class="sec-logo-wrap">
       <svg width="36" height="36" viewBox="0 0 120 120" fill="none">
         <path d="M60,5 A55,55 0 1,1 60,115" stroke="#c09020" stroke-width="2.5" fill="none"/>
@@ -254,42 +245,52 @@ footer p+p{margin-top:4px;font-size:10px;opacity:.55;}
         <text x="74" y="97" font-family="Georgia,serif" font-size="23" font-weight="400" fill="#c09020">E</text>
       </svg>
     </div>
+
     <p class="s-eyebrow">Cérémonie Civile</p>
     <div class="s-title">La Mairie</div>
     <div class="rule" style="margin-bottom:20px;"><span>❧</span></div>
+
     <div class="mairie-names">Yael <span style="font-size:.75em;color:var(--goldl);">&amp;</span> Elias</div>
     <p class="mairie-fam">Azoulay &nbsp;·&nbsp; Alimi</p>
     <p class="mairie-se-diront">se diront</p>
     <span class="mairie-oui">Oui</span>
+
+    <!-- date et lieu en NOIR -->
     <p class="mairie-date-line">le Mercredi 26 Août 2026 &nbsp;·&nbsp; 14h00</p>
     <div class="rule" style="margin-top:15px;"><span>✦</span></div>
     <p class="dc-place">Mairie de Maisons-Alfort</p>
     <p class="dc-sub">Place du Général de Gaulle, 94700 Maisons-Alfort</p>
+
     <div class="vin">
       <p class="vin-eyebrow">Suivie d'un</p>
       <p class="vin-title">Vin d'Honneur</p>
       <p class="vin-note">Lieu à définir — restez connectés !</p>
     </div>
+
     <div class="btn-row">
       <a class="btn" href="https://waze.com/ul?ll=48.8143,2.4419&navigate=yes&zoom=17" target="_blank" rel="noopener">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/></svg>Waze
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/></svg>
+        Waze
       </a>
       <a class="btn" href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0APRODID:-//YE//FR%0ABEGIN:VEVENT%0ADTSTART:20260826T120000Z%0ADTEND:20260826T140000Z%0ASUMMARY:Mariage Yael %26 Elias — Mairie%0ALOCATION:Mairie de Maisons-Alfort%0AEND:VEVENT%0AEND:VCALENDAR" download="mariage-mairie.ics">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Calendrier
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Calendrier
       </a>
     </div>
   </div>
 </section>
 
+<!-- PHOTO INTERCONTINENTAL -->
 <div class="pb">
-  <img src="image.jpg" alt="InterContinental Paris Le Grand" onerror="this.src='intercontinental.jpg'">
+  <img src="image.jpeg" alt="InterContinental Paris Le Grand" onerror="this.src='intercontinental.jpg'">
   <div class="pb-ov"></div>
 </div>
 
-<!-- ═══════════════ HOUPPA ═══════════════ -->
+<!-- HOUPPA -->
 <section class="sec sec-mid" id="houppa">
   <div class="wm" style="left:-25px;bottom:-25px;">H</div>
   <div class="sec-in reveal">
+
     <div class="sec-logo-wrap">
       <svg width="36" height="36" viewBox="0 0 120 120" fill="none">
         <path d="M60,5 A55,55 0 1,1 60,115" stroke="#c09020" stroke-width="2.5" fill="none"/>
@@ -304,20 +305,22 @@ footer p+p{margin-top:4px;font-size:10px;opacity:.55;}
 
     <div class="houppa-title">Houppa &amp; Soirée</div>
 
-    <!-- ── KOL SASSON en arc SVG textPath ── -->
-    <svg class="kol-wrap" viewBox="0 0 320 70" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;width:100%;max-width:340px;display:block;margin:18px auto 0;">
+    <!-- Kol Sasson en arc — bien sous le titre -->
+    <svg class="kol-arc-svg" style="margin-top:20px;" width="300" height="56" viewBox="0 0 300 56" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <path id="kolArc" d="M 20,68 A 150,150 0 0,1 300,68"/>
+        <path id="kolArc" d="M 10,48 A 200,200 0 0,1 290,48"/>
       </defs>
-      <text font-family="'Cormorant Garamond',Georgia,serif" font-size="14.5" fill="#c09020" letter-spacing="2">
-        <textPath href="#kolArc" startOffset="50%" text-anchor="middle">
+      <circle cx="10"  cy="48" r="2" fill="#c09020" opacity="0.45"/>
+      <circle cx="290" cy="48" r="2" fill="#c09020" opacity="0.45"/>
+      <text font-family="Cormorant Garamond,Georgia,serif" font-size="14.5" fill="#c09020" text-anchor="middle">
+        <textPath xlink:href="#kolArc" href="#kolArc" startOffset="50%">
           קוֹל שָׂשׂוֹן וְקוֹל שִׂמְחָה קוֹל חָתָן וְקוֹל כַּלָּה
         </textPath>
       </text>
     </svg>
-
     <div class="kol-rule"><span>✦</span></div>
 
+    <!-- Familles — sans "Les familles", directement les noms -->
     <div class="houppa-families">
       <div class="houppa-fam-col">
         <p class="houppa-fam-title">Famille Azoulay</p>
@@ -334,9 +337,14 @@ footer p+p{margin-top:4px;font-size:10px;opacity:.55;}
     </div>
 
     <p class="houppa-invite">Ont la joie de vous convier à la cérémonie religieuse de leurs enfants,</p>
-    <div class="houppa-couple">Yael <span style="font-size:.74em;color:var(--goldl);">&amp;</span> Elias</div>
+
+    <div class="houppa-couple">יעל <span style="font-size:.74em;color:var(--goldl);">&amp;</span> Elias</div>
+    <!-- יעל avec ayin — prénom hébreu correct -->
     <div class="houppa-couple-heb">אֵלִיָּאס &amp; יַעַל</div>
+
     <div class="rule"><span>✦</span></div>
+
+    <!-- date, heure, lieu en NOIR -->
     <p class="houppa-date">Le Mardi 1<sup>er</sup> Septembre 2026</p>
     <p class="houppa-time">à 18h00</p>
     <p class="houppa-lieu">InterContinental Paris Le Grand</p>
@@ -344,12 +352,15 @@ footer p+p{margin-top:4px;font-size:10px;opacity:.55;}
     <div class="rule" style="margin:12px auto;"><span>✦</span></div>
     <p class="houppa-reception">La cérémonie sera suivie de la réception</p>
     <p class="houppa-pensee">En ce jour de joie, une pensée remplie d'émotion<br>pour ceux qui restent à jamais dans nos cœurs…</p>
+
     <div class="btn-row" style="margin-top:14px;">
       <a class="btn" href="https://waze.com/ul?ll=48.8732,2.3314&navigate=yes&zoom=17" target="_blank" rel="noopener">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/></svg>Waze
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/></svg>
+        Waze
       </a>
       <a class="btn" href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0APRODID:-//YE//FR%0ABEGIN:VEVENT%0ADTSTART:20260901T160000Z%0ADTEND:20260902T000000Z%0ASUMMARY:Mariage Yael %26 Elias — Houppa%0ALOCATION:InterContinental Paris Le Grand%0AEND:VEVENT%0AEND:VCALENDAR" download="mariage-houppa.ics">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Calendrier
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Calendrier
       </a>
     </div>
   </div>
@@ -357,10 +368,11 @@ footer p+p{margin-top:4px;font-size:10px;opacity:.55;}
 
 <div class="sep"><div class="sep-t">✦ &nbsp; ✦ &nbsp; ✦</div></div>
 
-<!-- ═══════════════ RÉPONSE ═══════════════ -->
+<!-- RÉPONSE -->
 <section class="sec sec-light" id="reponse">
   <div class="wm" style="right:-25px;top:-10px;">R</div>
   <div class="sec-in reveal">
+
     <div class="sec-logo-wrap">
       <svg width="36" height="36" viewBox="0 0 120 120" fill="none">
         <path d="M60,5 A55,55 0 1,1 60,115" stroke="#c09020" stroke-width="2.5" fill="none"/>
@@ -372,8 +384,10 @@ footer p+p{margin-top:4px;font-size:10px;opacity:.55;}
         <text x="74" y="97" font-family="Georgia,serif" font-size="23" font-weight="400" fill="#c09020">E</text>
       </svg>
     </div>
+
     <div class="s-title">Réponse</div>
     <div class="rule" style="margin-bottom:22px;"><span>✦</span></div>
+
     <div class="fg">
       <label>Nom</label>
       <input id="f-nom" type="text" placeholder="Votre nom de famille">
@@ -382,6 +396,7 @@ footer p+p{margin-top:4px;font-size:10px;opacity:.55;}
       <label>Prénom</label>
       <input id="f-prenom" type="text" placeholder="Votre prénom">
     </div>
+
     <div class="pres-block">
       <p class="pres-title">Présence à la Mairie — 26 Août</p>
       <div class="radio-row">
@@ -393,6 +408,7 @@ footer p+p{margin-top:4px;font-size:10px;opacity:.55;}
         <input type="number" id="nb-mairie-val" min="1" max="20" value="1">
       </div>
     </div>
+
     <div class="pres-block">
       <p class="pres-title">Présence à la Houppa &amp; Soirée — 1<sup>er</sup> Septembre</p>
       <div class="radio-row">
@@ -404,10 +420,12 @@ footer p+p{margin-top:4px;font-size:10px;opacity:.55;}
         <input type="number" id="nb-houppa-val" min="1" max="20" value="1">
       </div>
     </div>
+
     <div class="fg">
       <label>Un petit mot pour les mariés</label>
       <textarea id="f-msg" rows="4" placeholder="Laissez-nous un message…" style="resize:vertical;"></textarea>
     </div>
+
     <button class="btn btn-f" id="submit-btn" onclick="sendForm()" style="width:100%;justify-content:center;margin-top:4px;">
       Envoyer ma réponse
     </button>
@@ -425,120 +443,55 @@ footer p+p{margin-top:4px;font-size:10px;opacity:.55;}
 <script>
 const SCRIPT_URL = 'COLLER_ICI_URL_GOOGLE_APPS_SCRIPT';
 
-// ── COUNTDOWN ──
 const TARGET = new Date('2026-08-26T14:00:00');
 function pad(n){ return String(n).padStart(2,'0'); }
 function tick(){
   const d = TARGET - Date.now();
-  if(d <= 0){
-    ['cd-j','cd-h','cd-m','cd-s'].forEach(id => document.getElementById(id).textContent='00');
-    return;
-  }
+  if(d <= 0){ ['cd-j','cd-h','cd-m','cd-s'].forEach(id => document.getElementById(id).textContent='00'); return; }
   document.getElementById('cd-j').textContent = Math.floor(d/864e5);
   document.getElementById('cd-h').textContent = pad(Math.floor(d%864e5/36e5));
   document.getElementById('cd-m').textContent = pad(Math.floor(d%36e5/6e4));
   document.getElementById('cd-s').textContent = pad(Math.floor(d%6e4/1e3));
 }
-tick();
-setInterval(tick, 1000);
+tick(); setInterval(tick, 1000);
 
-// ── MUSIQUE ──
-const bgm = document.getElementById('bgm');
-let musicStarted = false, musicPlaying = false;
-function setMusicUI(p){
-  musicPlaying = p;
-  document.getElementById('ico-play').style.display  = p ? 'none'  : 'block';
-  document.getElementById('ico-pause').style.display = p ? 'block' : 'none';
-}
-function fadeIn(){
-  let v = 0;
-  bgm.volume = 0;
-  const iv = setInterval(() => {
-    v = Math.min(v + .02, .5);
-    bgm.volume = v;
-    if(v >= .5) clearInterval(iv);
-  }, 80);
-}
-function startMusic(){
-  if(musicStarted) return;
-  musicStarted = true;
-  bgm.play().then(() => { setMusicUI(true); fadeIn(); }).catch(() => {});
-}
-function toggleMusic(){
-  if(!musicStarted){ startMusic(); return; }
-  musicPlaying ? (bgm.pause(), setMusicUI(false)) : (bgm.play(), setMusicUI(true));
-}
+function showNb(ev, show){ document.getElementById('nb-'+ev).classList.toggle('on', show); }
 
-// ── DÉCOUVRIR ──
-function decouvrir(){
-  startMusic();
-  document.getElementById('mairie').scrollIntoView({ behavior: 'smooth' });
-}
-
-// ── FORMULAIRE ──
-function showNb(ev, show){
-  document.getElementById('nb-' + ev).classList.toggle('on', show);
-}
 function sendForm(){
-  const nom    = document.getElementById('f-nom').value.trim();
+  const nom = document.getElementById('f-nom').value.trim();
   const prenom = document.getElementById('f-prenom').value.trim();
-  if(!nom && !prenom){
-    alert('Merci de renseigner au moins votre nom ou prénom.');
-    return;
-  }
+  if(!nom && !prenom){ alert('Merci de renseigner au moins votre nom ou prénom.'); return; }
   const mEl = document.querySelector('input[name="mairie"]:checked');
   const hEl = document.querySelector('input[name="houppa"]:checked');
-  const mv  = mEl ? mEl.value : 'non répondu';
-  const hv  = hEl ? hEl.value : 'non répondu';
-  const payload = {
-    nom, prenom,
-    mairie:    mv,
-    nb_mairie: mv === 'oui' ? document.getElementById('nb-mairie-val').value : '0',
-    houppa:    hv,
-    nb_houppa: hv === 'oui' ? document.getElementById('nb-houppa-val').value : '0',
-    message:   document.getElementById('f-msg').value
-  };
+  const mv = mEl ? mEl.value : 'non répondu';
+  const hv = hEl ? hEl.value : 'non répondu';
+  const payload = { nom, prenom, mairie: mv,
+    nb_mairie: mv==='oui' ? document.getElementById('nb-mairie-val').value : '0',
+    houppa: hv,
+    nb_houppa: hv==='oui' ? document.getElementById('nb-houppa-val').value : '0',
+    message: document.getElementById('f-msg').value };
   document.getElementById('submit-btn').style.display = 'none';
   document.getElementById('wait').style.display = 'block';
-  fetch(SCRIPT_URL, {
-    method: 'POST',
-    mode:   'no-cors',
-    headers: { 'Content-Type': 'application/json' },
-    body:   JSON.stringify(payload)
-  })
-  .then(() => {
-    document.getElementById('wait').style.display = 'none';
-    document.getElementById('ok').style.display   = 'block';
-  })
-  .catch(() => {
-    document.getElementById('wait').style.display        = 'none';
-    document.getElementById('err').style.display         = 'block';
-    document.getElementById('submit-btn').style.display  = 'flex';
-  });
+  fetch(SCRIPT_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) })
+    .then(() => { document.getElementById('wait').style.display='none'; document.getElementById('ok').style.display='block'; })
+    .catch(() => { document.getElementById('wait').style.display='none'; document.getElementById('err').style.display='block'; document.getElementById('submit-btn').style.display='flex'; });
 }
 
-// ── REVEAL AU SCROLL ──
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if(e.isIntersecting){
-      e.target.classList.add('in');
-      observer.unobserve(e.target);
-    }
-  });
-}, { threshold: .08 });
+const bgm = document.getElementById('bgm');
+let musicStarted = false, musicPlaying = false;
+function setMusicUI(p){ musicPlaying=p; document.getElementById('ico-play').style.display=p?'none':'block'; document.getElementById('ico-pause').style.display=p?'block':'none'; }
+function fadeIn(){ let v=0; bgm.volume=0; const iv=setInterval(()=>{ v=Math.min(v+.02,.5); bgm.volume=v; if(v>=.5)clearInterval(iv); },80); }
+function startMusic(){ if(musicStarted)return; musicStarted=true; bgm.play().then(()=>{ setMusicUI(true); fadeIn(); }).catch(()=>{}); }
+function toggleMusic(){ if(!musicStarted){ startMusic(); return; } musicPlaying?(bgm.pause(),setMusicUI(false)):(bgm.play(),setMusicUI(true)); }
+window.addEventListener('scroll', function onScroll(){ if(window.scrollY>60){ startMusic(); window.removeEventListener('scroll',onScroll); } }, {passive:true});
+
+const observer = new IntersectionObserver(entries => { entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); observer.unobserve(e.target); } }); }, {threshold:.08});
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// ── NAV ACTIVE ──
 const navLinks = document.querySelectorAll('.nav-link');
 const sections = ['hero','mairie','houppa','reponse'].map(id => document.getElementById(id));
-function updateNav(){
-  const y = window.scrollY + 80;
-  let c = sections[0];
-  sections.forEach(s => { if(s && s.offsetTop <= y) c = s; });
-  navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + c.id));
-}
-window.addEventListener('scroll', updateNav, { passive: true });
-updateNav();
+function updateNav(){ const y=window.scrollY+80; let c=sections[0]; sections.forEach(s=>{ if(s&&s.offsetTop<=y)c=s; }); navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+c.id)); }
+window.addEventListener('scroll', updateNav, {passive:true}); updateNav();
 </script>
 </body>
 </html>
