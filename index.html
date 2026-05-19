@@ -483,8 +483,6 @@ function setMusicUI(p){ musicPlaying=p; document.getElementById('ico-play').styl
 function fadeIn(){ let v=0; bgm.volume=0; const iv=setInterval(()=>{ v=Math.min(v+.02,.5); bgm.volume=v; if(v>=.5)clearInterval(iv); },80); }
 function startMusic(){ if(musicStarted)return; musicStarted=true; bgm.play().then(()=>{ setMusicUI(true); fadeIn(); }).catch(()=>{}); }
 function toggleMusic(){ if(!musicStarted){ startMusic(); return; } musicPlaying?(bgm.pause(),setMusicUI(false)):(bgm.play(),setMusicUI(true)); }
-window.addEventListener('scroll', function onScroll(){ if(window.scrollY>60){ startMusic(); window.removeEventListener('scroll',onScroll); } }, {passive:true});
-
 const observer = new IntersectionObserver(entries => { entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); observer.unobserve(e.target); } }); }, {threshold:.08});
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
