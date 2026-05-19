@@ -249,7 +249,16 @@ footer p+p{margin-top:4px;font-size:10px;opacity:.55;}
     <div class="houppa-title">Houppa &amp; Soirée</div>
 
     <!-- Arc hébreu via Canvas — fiable sur tous les navigateurs -->
-    <canvas id="kolCanvas" class="kol-wrap"></canvas>
+    <svg class="kol-wrap" viewBox="0 0 320 80" style="overflow:visible;">
+  <defs>
+    <path id="kolArc" d="M 10,75 A 155,155 0 0,1 310,75"/>
+  </defs>
+  <text font-family="'Cormorant Garamond', Georgia, serif" font-size="15" fill="#c09020" text-anchor="middle">
+    <textPath href="#kolArc" startOffset="50%">
+      קוֹל שָׂשׂוֹן וְקוֹל שִׂמְחָה קוֹל חָתָן וְקוֹל כַּלָּה
+    </textPath>
+  </text>
+</svg>
 
     <div class="kol-rule"><span>✦</span></div>
     <div class="houppa-families">
@@ -405,67 +414,6 @@ function sendForm(){
     .then(() => { document.getElementById('wait').style.display='none'; document.getElementById('ok').style.display='block'; })
     .catch(() => { document.getElementById('wait').style.display='none'; document.getElementById('err').style.display='block'; document.getElementById('submit-btn').style.display='flex'; });
 }
-
-// ─── KOL SASSON EN ARC (Canvas) ───
-// On dessine le texte hébreu mot par mot sur un arc de cercle.
-// L'hébreu est RTL : on inverse l'ordre des mots et on les place de droite à gauche.
-function drawKolArc() {
-  const canvas = document.getElementById('kolCanvas');
-  if (!canvas) return;
-  const dpr = window.devicePixelRatio || 1;
-  const W = canvas.offsetWidth || 320;
-  const H = 80;
-  canvas.width  = W * dpr;
-  canvas.height = H * dpr;
-  canvas.style.width  = W + 'px';
-  canvas.style.height = H + 'px';
-  const ctx = canvas.getContext('2d');
-  ctx.scale(dpr, dpr);
-
-  const fontSize = 15;
-  ctx.font = fontSize + 'px "Cormorant Garamond", Georgia, serif';
-  ctx.fillStyle = '#c09020';
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'alphabetic';
-
-  // Mots hébreux dans l'ordre naturel (RTL) — on les affiche dans cet ordre
-  const words = [
-    'קוֹל','שָׂשׂוֹן','וְקוֹל','שִׂמְחָה','חאַׁ','קוֹל','חָתָן','וְקוֹל','כַּלָּה'
-  ];
-
-  // Mesure totale
-  const spaces = words.length - 1;
-  const spaceW = ctx.measureText(' ').width * 1.4;
-  let totalW = words.reduce((s, w) => s + ctx.measureText(w).width, 0) + spaces * spaceW;
-
-  // Arc : centre sous le canvas, grand rayon = courbe douce
-  const cx = W / 2;
-  const r  = 340;
-  const cy = H + r - 18; // centre bien en dessous
-  const arcSpan = totalW / r; // angle total en radians
-
-  const startAngle = -Math.PI / 2 - arcSpan / 2;
-
-  // Placer chaque mot
-  let advance = 0;
-  words.forEach((word, i) => {
-    const wW = ctx.measureText(word).width;
-    // Centre du mot sur l'arc
-    const t = (advance + wW / 2) / totalW;
-    const angle = startAngle + t * arcSpan;
-    const x = cx + r * Math.cos(angle);
-    const y = cy + r * Math.sin(angle);
-    ctx.save();
-    ctx.translate(x, y);
-    ctx.rotate(angle + Math.PI / 2);
-    ctx.fillText(word, 0, 0);
-    ctx.restore();
-    advance += wW + spaceW;
-  });
-}
-
-document.fonts.ready.then(drawKolArc);
-window.addEventListener('resize', drawKolArc);
 
 // REVEAL
 const observer = new IntersectionObserver(entries => { entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); observer.unobserve(e.target); } }); }, {threshold:.08});
